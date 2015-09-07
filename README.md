@@ -54,6 +54,19 @@ count a b = a + b
 count a b = a + b
 ```
 
+```
+> :t count
+count :: Num a => a -> a -> a
+```
+
 ### Hoogle
 
 - https://www.haskell.org/hoogle/
+
+### Haskell is Lazy
+
+- TODO
+
+### Haskell is Immutable
+
+- TODO

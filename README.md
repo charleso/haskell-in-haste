@@ -11,7 +11,13 @@ This workshop is
 
          git clone https://github.com/charleso/haskell-in-haste.git
 
-3. Run the `stack` executable in the root of the directory
+3. Run `stack setup` in the root of the directory
+4. Run `stack build` in the root of the directory
+
+## Running
+
+1. Run `stack ghci`
+2. Type `main` and enter
 
 ## Haskell Overview
 

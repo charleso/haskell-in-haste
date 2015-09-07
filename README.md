@@ -18,6 +18,7 @@ This workshop is
 
 1. Run `stack ghci`
 2. Type `main` and enter
+3. Type ":r" to reload
 
 ## Haskell Overview
 
@@ -28,3 +29,31 @@ TODO This should probably live in a separate file
 ```haskell
 main = putStrLn "Hello world"
 ```
+
+### Reading a type signature
+
+```haskell
+count :: Int -> Int -> Int
+count a b = a + b
+```
+
+```
+> count 1 2
+3
+
+> count "a" 2
+<interactive>:8:1:
+    Couldn't match expected type ‘Int’ with actual type ‘[Char]’
+```
+
+- Last type is the return type
+
+### Type Inference
+
+```haskell
+count a b = a + b
+```
+
+### Hoogle
+
+- https://www.haskell.org/hoogle/

@@ -20,53 +20,7 @@ This workshop is
 2. Type `main` and enter
 3. Type ":r" to reload
 
-## Haskell Overview
+## Introduction
 
-TODO This should probably live in a separate file
-
-### Hello World
-
-```haskell
-main = putStrLn "Hello world"
-```
-
-### Reading a type signature
-
-```haskell
-count :: Int -> Int -> Int
-count a b = a + b
-```
-
-```
-> count 1 2
-3
-
-> count "a" 2
-<interactive>:8:1:
-    Couldn't match expected type ‘Int’ with actual type ‘[Char]’
-```
-
-- Last type is the return type
-
-### Type Inference
-
-```haskell
-count a b = a + b
-```
-
-```
-> :t count
-count :: Num a => a -> a -> a
-```
-
-### Hoogle
-
-- https://www.haskell.org/hoogle/
-
-### Haskell is Lazy
-
-- TODO
-
-### Haskell is Immutable
-
-- TODO
+See [here](Introduction.md) for the material to be used for teaching (very) basic Haskell.
+Some concepts are intentionally not being covered due to the time available, which are listed [here](Avoid.md)

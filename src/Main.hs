@@ -1,8 +1,18 @@
 {-# LANGUAGE OverloadedStrings #-}
-import           Web.Scotty
+{-# LANGUAGE QuasiQuotes #-}
+import Chat
+
 
 main :: IO ()
-main = scotty 8080 $ do
+main =
+  startChat [
+      marcoPolo
+    ]
 
-  get "/" $ do
-    html $ "<html><body>Hello world"
+
+-- | A bot is just a function that might return a new message
+type Bot = String -> Maybe String
+
+marcoPolo :: Bot
+marcoPolo "marco" = Just "polo"
+marcoPolo _ = Nothing

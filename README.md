@@ -4,8 +4,6 @@ A (very) short workshop designed to introduce Haskell quickly but practically.
 
 ## Getting Started
 
-This workshop is
-
 1. [Download Stack](https://github.com/commercialhaskell/stack/wiki/Downloads) for your operating system (scroll to the bottom for download links)
 2. Clone this repository
 

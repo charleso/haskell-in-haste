@@ -13,6 +13,7 @@ executable haskell-in-haste-exe
   build-depends:       base
                      , blaze-markup                    >= 0.7        && <0.9
                      , blaze-html                      >= 0.7        && <0.9
+                     , random                          == 1.1.*
                      , scotty                          == 0.10.*
                      , scotty-cookie                   == 0.1.*
                      , shakespeare                     == 2.0.*

@@ -47,7 +47,7 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 
 ### Easy
 
-- ???
+- [Guessing game](src/Chat/Bot/Guess.hs)
 
 ### Medium
 

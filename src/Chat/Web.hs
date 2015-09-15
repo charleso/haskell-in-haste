@@ -1,9 +1,10 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE QuasiQuotes #-}
-module Chat (
+module Chat.Web (
     startChat
   ) where
 
+import           Chat.Data
 import           Control.Concurrent
 import           Control.Monad.IO.Class
 import           Data.Maybe
@@ -15,26 +16,6 @@ import           Text.Blaze.Html.Renderer.Text (renderHtml)
 import           Text.Hamlet
 import           Web.Scotty
 import           Web.Scotty.Cookie
-
-
-type User = String
-
-data Room =
-  Room {
-    roomUsers :: [User]
-  , roomMessages :: [Message]
-  } deriving (Eq, Show)
-
-data Message =
-  Message {
-    messageUser :: User
-  , messageBody :: String
-  , messageTime :: UTCTime
-  } deriving (Eq, Show)
-
-type Messages = MVar [Message]
-
-type Bot = String -> Maybe String
 
 
 startChat :: [Bot] -> IO ()
@@ -63,7 +44,8 @@ startChat bots = do
       body <- param "body"
       user <- currentUser
       now <- liftIO getCurrentTime
-      let botMessages = fmap (\b -> Message "bot" b now) $ catMaybes (fmap (\b -> b body) bots)
+      botReplies <- liftIO $ mapM (\b -> b body) bots
+      let botMessages = fmap (\b -> Message "bot" b now) $ catMaybes botReplies
       let message = Message user body now
       liftIO . modifyMVar_ room $ \r ->
         pure $ r { roomMessages = roomMessages r <> [message] <> botMessages }

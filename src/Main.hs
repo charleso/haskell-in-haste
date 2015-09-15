@@ -1,18 +1,11 @@
-{-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE QuasiQuotes #-}
-import Chat
+import           Chat.Bot.MarcoPolo
+import           Chat.Data
+import           Chat.Web
 
 
 main :: IO ()
-main =
-  startChat [
-      marcoPolo
+main = do
+  bots <- sequence [
+      return marcoPoloBot
     ]
-
-
--- | A bot is just a function that might return a new message
-type Bot = String -> Maybe String
-
-marcoPolo :: Bot
-marcoPolo "marco" = Just "polo"
-marcoPolo _ = Nothing
+  startChat bots

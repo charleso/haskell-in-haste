@@ -55,4 +55,4 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 
 ### Hard
 
-- ???
+- [Calculator](src/Chat/Bot/Calculator.hs)

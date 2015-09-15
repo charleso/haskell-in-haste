@@ -11,6 +11,7 @@ executable haskell-in-haste-exe
   main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
   build-depends:       base
+                     , attoparsec                      == 0.12.*
                      , blaze-markup                    >= 0.7        && <0.9
                      , blaze-html                      >= 0.7        && <0.9
                      , random                          == 1.1.*

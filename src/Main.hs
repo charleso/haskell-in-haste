@@ -1,3 +1,4 @@
+import           Chat.Bot.Calculator
 import           Chat.Bot.Guess
 import           Chat.Bot.MarcoPolo
 import           Chat.Data
@@ -9,5 +10,6 @@ main = do
   bots <- sequence [
       return marcoPoloBot
     , guessBot
+    , return calculatorBot
     ]
   startChat bots

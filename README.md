@@ -36,3 +36,23 @@ and Haskell especially so. Pick something really simple to start with and
 don't feel bad or frustrated if you don't finish.
 There should be plenty of people floating around, ready to help and you
 shouldn't hesitate to ask for help.
+
+## Challenges
+
+A number of "bots" have been partially implemented as part of the chat program.
+These are grouped in to three rough levels of difficulty.
+
+To state the obvious, but it's recommend that they are tackled in this order.
+Once you feel comfortable, or perhaps you're getting bored, try moving to the next level.
+
+### Easy
+
+- ???
+
+### Medium
+
+- ???
+
+### Hard
+
+- ???

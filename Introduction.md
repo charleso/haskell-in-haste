@@ -249,7 +249,7 @@ contains v [] =
 contains v (h : t) =
   if v == h
     then True
-    else loop v t
+    else contains v t
 ```
 
 ```haskell
@@ -261,11 +261,44 @@ main = do
   main
 ```
 
+## Higher Order Function
 
+- Functions that take functions as inputs
+  - E.g Have f x and [x1,x2...xN]
+  - Want [f x1,f x2,...,f xN]
 
+```haskell
+add3 :: Int -> Int
+add3 x = x + 3
 
+myMap _ [] = []
+myMap f (x:xt) = f x : myMap f xt
+```
+```haskell
+> myMap add3 [1..5] 
+[4,5,6,7,8]
 
+>:t myMap
+myMap :: (a -> b) -> [a] -> [b]
+```
+- (a -> b) is "a function that takes an a and outputs a b
+- Common ones done for us
+  - map "maps" a function over a list
+  - filter takes a predicate and a list and outputs the parts of the list which satisfy the predicate
+  - There are many more that wont be covered e.g. flip, fold, zipWith...
+```haskell
+>:t map
+map :: (a -> b) -> [a] -> [b]
 
+> map (+3) [1..5]
+[4,5,6,7,8]
+
+>:t filter
+filter :: (a -> Bool) -> [a] -> [a]
+
+> filter (<3) [1..5]
+[1,2]
+```
 
 
 ## Hoogle

@@ -1,3 +1,4 @@
+import           Chat.Bot.Cipher
 import           Chat.Bot.Calculator
 import           Chat.Bot.Guess
 import           Chat.Bot.MarcoPolo
@@ -11,5 +12,6 @@ main = do
       return marcoPoloBot
     , guessBot
     , return calculatorBot
+    , return cipherBot
     ]
   startChat bots

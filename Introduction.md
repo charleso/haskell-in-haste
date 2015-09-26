@@ -296,7 +296,8 @@ map :: (a -> b) -> [a] -> [b]
 >:t filter
 filter :: (a -> Bool) -> [a] -> [a]
 
-> filter (<3) [1..5]
+> let lessThen3 x = x < 3
+> filter (lessThen3) [1..5]
 [1,2]
 ```
 

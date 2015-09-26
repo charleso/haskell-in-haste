@@ -51,7 +51,7 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 
 ### Medium
 
-- ???
+- [Rotational cipher](src/Chat/Bot/Cipher.hs)
 
 ### Hard
 

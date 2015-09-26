@@ -1,3 +1,4 @@
+import           Chat.Bot.Triangle
 import           Chat.Bot.Cipher
 import           Chat.Bot.Calculator
 import           Chat.Bot.Guess
@@ -13,5 +14,6 @@ main = do
     , guessBot
     , return calculatorBot
     , return cipherBot
+    , return triangleBot
     ]
   startChat bots

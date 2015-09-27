@@ -28,6 +28,7 @@ scalene a b c = a /= b && b /= c && a /= c
 impossible :: Double -> Double -> Double -> Bool
 impossible a b c = (a + b) < c && (a + c) < b && (b + c) < a
 
+-- Worth teaching guards?
 implementMe :: Double -> Double -> Double -> String
 implementMe a b c 
     | equilateral a b c == True = "This triangle is equilateral"

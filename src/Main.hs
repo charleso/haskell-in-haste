@@ -2,6 +2,7 @@ import           Chat.Bot.Cipher
 import           Chat.Bot.Calculator
 import           Chat.Bot.Guess
 import           Chat.Bot.MarcoPolo
+import           Chat.Bot.TicTacToe
 import           Chat.Data
 import           Chat.Web
 
@@ -13,5 +14,6 @@ main = do
     , guessBot
     , return calculatorBot
     , return cipherBot
+    , ticTacToeBot
     ]
   startChat bots

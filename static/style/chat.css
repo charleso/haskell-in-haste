@@ -1,0 +1,109 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+.current-user {
+  background-color: lightblue;
+}
+table {
+  border-spacing: 0px;
+  height: 100%;
+  width: 100%;
+}
+table td {
+  padding: 0px;
+}
+.user {
+  font-weight: bold;
+}
+
+.date {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #aaa;
+  text-align: center;
+}
+
+.author {
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;
+}
+
+.sidebar {
+  background: #4D394B;
+  width: 220px;
+  vertical-align: top;
+}
+.sidebar h2 {
+  text-align: left;
+  font-size: .8rem;
+  line-height: 1.25rem;
+  margin: 0 1rem .1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #ab9ba9;
+  width: 165px;
+  font-family: Slack-Lato,appleLogo,sans-serif;
+}
+.sidebar ul {
+  list-style: none;
+  list-style-type: none;
+  text-align: left;
+  color: #ab9ba9;
+  margin: 0 1px 0 0;
+  width: 204px;
+  padding: 0;
+}
+.sidebar .section {
+  margin: 1rem 0 2rem;
+}
+
+.sidebar ul li {
+  padding: 1px 15px;
+}
+
+.messages {
+  overflow-y: scroll;
+  height: 100%;
+}
+
+.messageRow {
+  word-wrap: break-word;
+  padding-right: 15px;
+  overflow: hidden;
+}
+
+.mainbar {
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.footer {
+  height: 64px;
+}
+
+.footer input {
+  background: #fff;
+  width: 100%;
+  font-size: 15px;
+  line-height: 1.2rem;
+  border: 2px solid #E0E0E0;
+  background-clip: padding-box;
+  font-family: Slack-Lato,appleLogo,sans-serif;
+  margin: 0;
+  color: #3d3c40;
+  -webkit-appearance: none;
+  box-shadow: none;
+  outline: 0;
+  bottom: 0;
+  min-height: 42px!important;
+  padding: 9px 40px 9px 8px;
+  max-height: 10pc!important;
+  resize: none!important;
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+  border-radius: 6px;
+}

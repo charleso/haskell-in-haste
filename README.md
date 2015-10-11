@@ -31,6 +31,8 @@ Some concepts are intentionally not being covered due to the time available, whi
 
 ## Practical
 
+![screenshot](static/images/screenshot.png)
+
 It's _really_ important to remember that learning a new language can be tricky,
 and Haskell especially so. Pick something really simple to start with and
 don't feel bad or frustrated if you don't finish.

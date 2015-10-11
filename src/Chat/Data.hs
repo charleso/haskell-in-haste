@@ -2,7 +2,6 @@ module Chat.Data (
     User
   , Room (..)
   , Message (..)
-  , Messages
   , Bot
   , message
   , noMessage
@@ -26,8 +25,6 @@ data Message =
   , messageBody :: String
   , messageTime :: UTCTime
   } deriving (Eq, Show)
-
-type Messages = MVar [Message]
 
 -- | A bot is just a function that might return a new message
 type Bot = String -> IO (Maybe String)

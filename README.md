@@ -56,3 +56,11 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 ### Hard
 
 - [Calculator](src/Chat/Bot/Calculator.hs)
+
+## Further Reading
+
+The best place to start is probably the Yorgey lectures.
+Both the online material and talks given by the BFPG group
+can be found here:
+
+- https://github.com/bfpg/cis194-yorgey-lectures

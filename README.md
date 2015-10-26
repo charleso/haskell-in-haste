@@ -19,9 +19,9 @@ A (very) short workshop designed to introduce Haskell quickly but practically.
 3. Go to: http://localhost:8080
 
 ### To reload files
-1. `ctrl-c` to stop app
-2. `:r` to reload files
-3. `main` to start app
+1. Hit `ctrl-c` to stop app
+2. Enter `:r` or `:reload` to recompile the project
+3. Type `main` to start app again
 
 ## Introduction
 
@@ -36,8 +36,7 @@ Some concepts are intentionally not being covered due to the time available, whi
 It's _really_ important to remember that learning a new language can be tricky,
 and Haskell especially so. Pick something really simple to start with and
 don't feel bad or frustrated if you don't finish.
-There should be plenty of people floating around, ready to help and you
-shouldn't hesitate to ask for help.
+There should be plenty of mentors floating around, don't hesitate to ask for help.
 
 ## Challenges
 

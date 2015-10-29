@@ -31,16 +31,8 @@ import           Data.List
 --
 -- length :: [a] -> Int
 move :: Game -> Position -> Result
-move (Game b pl) pos =
-  if not (canMove b pos)
-  then InProgress (Game b pl)
-  else
-    let b' = (pos, pl) : b
-    in if hasWon b' pl
-       then Won pl $ EndBoard b'
-         else if length b == 15
-           then Draw $ EndBoard b'
-           else InProgress (Game b' (nextPlayer pl))
+move g pos =
+  error "move not implemented"
 
 -- Determine if the Position is already taken.
 --
@@ -49,7 +41,7 @@ move (Game b pl) pos =
 -- any :: (a -> Bool) -> [a] -> Bool
 canMove :: Board -> Position -> Bool
 canMove b p =
-  not $ any ((==) p . fst) b
+  error "canMove not implemented"
 
 -- If you want to save yourself some time calculating this, the following is a useful trick.
 --
@@ -61,25 +53,7 @@ canMove b p =
 -- any :: (a -> Bool) -> [a] -> Bool
 hasWon :: Board -> Player -> Bool
 hasWon b p =
-  let toMagic x = case x of
-          NW -> 8
-          N -> 1
-          NE -> 6
-          W -> 3
-          M -> 5
-          E -> 7
-          SW -> 4
-          S -> 9
-          SE -> 2
-      b' = b >>= \(pos, pl) -> if pl == p then [pos] else []
-  in any ((==) 15 . sum . take 3) . permutations . fmap toMagic $ b'
-
-printBoard :: Board -> String
-printBoard b =
-  intercalate "\n" . chunksOf 3 . flip fmap allPositions $ \pos' ->
-    case find ((==) pos' . fst) b of
-      Just (_, pl) -> head $ show pl
-      Nothing -> ' '
+  error "hasWon not implemented"
 
 
 data Position = NW | N | NE | W | M | E | SW | S | SE deriving (Bounded, Enum, Eq, Ord, Show)
@@ -142,23 +116,14 @@ windowsOf :: Int -> [a] -> [[a]]
 windowsOf m =
   foldr (zipWith (:)) (repeat []) . take m . tails
 
--------------------------------------------------------------------
-------------------------- IGNORE BELOW HERE -----------------------
--------------------------------------------------------------------
-
 (>>>) :: Result -> Position -> Result
 (>>>) r p = case r of
   InProgress g -> move g p
   r -> r
 
-
-ticTacToeBot :: IO Bot
-ticTacToeBot = do
-  game <- newMVar []
-  return $ \m -> case stripPrefix "/ttt " m of
-    Nothing ->
-      return Nothing
-    Just g -> do
-      b <- readMVar game
-      let g' = readPosition g
-      return $ maybe (Just "Invalid position") undefined g'
+printBoard :: Board -> String
+printBoard b =
+  intercalate "\n" . chunksOf 3 . flip fmap allPositions $ \pos' ->
+    case find ((==) pos' . fst) b of
+      Just (_, pl) -> head $ show pl
+      Nothing -> ' '

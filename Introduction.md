@@ -228,6 +228,7 @@ Multiple declarations of ‘ten’
 
 - Special `do` syntax
   - Indentation aware (like Python)
+  - (Curly brackets and semicolon are available, too.)
 
 ```haskell
 main :: IO ()

@@ -26,6 +26,12 @@ add a b = a + b
 > add 1 2
 3
 
+> add 1 (add 2 3)
+6
+
+> add (add 1 2) 3
+6
+
 > add "a" 2
 <interactive>:8:1:
     Couldn't match expected type ‘Int’ with actual type ‘[Char]’
@@ -202,14 +208,7 @@ startsWith i (h : v) = i == h
 
 
 
-## Everything is a function
-
-```haskell
-ten :: Int
-ten = 10
-```
-
-## Everything is immutable
+## Everything is immutable (by default)
 
 ```haskell
 > ten = ten + 1
@@ -229,6 +228,7 @@ Multiple declarations of ‘ten’
 
 - Special `do` syntax
   - Indentation aware (like Python)
+  - (Curly brackets and semicolon are available, too.)
 
 ```haskell
 main :: IO ()
@@ -256,7 +256,7 @@ contains v (h : t) =
 main :: IO ()
 main = do
   putStrLn "Input value"
-  v <- input
+  v <- getLine
   putStrLn ("You entered" ++ show v)
   main
 ```
@@ -285,7 +285,7 @@ myMap :: (a -> b) -> [a] -> [b]
 - Common ones done for us
   - map "maps" a function over a list
   - filter takes a predicate and a list and outputs the parts of the list which satisfy the predicate
-  - There are many more that wont be covered e.g. flip, fold, zipWith...
+  - There are many more that wont be covered e.g. flip, foldr, zipWith...
 ```haskell
 >:t map
 map :: (a -> b) -> [a] -> [b]
@@ -304,4 +304,5 @@ filter :: (a -> Bool) -> [a] -> [a]
 
 ## Hoogle
 
+- Search the libraries by type
 - https://www.haskell.org/hoogle/

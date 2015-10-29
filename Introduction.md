@@ -256,7 +256,7 @@ contains v (h : t) =
 main :: IO ()
 main = do
   putStrLn "Input value"
-  v <- input
+  v <- getLine
   putStrLn ("You entered" ++ show v)
   main
 ```

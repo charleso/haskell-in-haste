@@ -208,7 +208,7 @@ startsWith i (h : v) = i == h
 
 
 
-## Everything is immutable
+## Everything is immutable (by default)
 
 ```haskell
 > ten = ten + 1

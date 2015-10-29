@@ -8,7 +8,7 @@ import           Data.List
 import           System.Random
 
 
-guessMeAnswer :: Secret -> Guess -> String
+guessMeAnswer :: Int -> Int -> String
 guessMeAnswer s g = case compare s g of
   LT -> "lower"
   GT -> "higher"

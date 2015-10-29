@@ -285,7 +285,7 @@ myMap :: (a -> b) -> [a] -> [b]
 - Common ones done for us
   - map "maps" a function over a list
   - filter takes a predicate and a list and outputs the parts of the list which satisfy the predicate
-  - There are many more that wont be covered e.g. flip, fold, zipWith...
+  - There are many more that wont be covered e.g. flip, foldr, zipWith...
 ```haskell
 >:t map
 map :: (a -> b) -> [a] -> [b]

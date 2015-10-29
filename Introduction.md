@@ -304,4 +304,5 @@ filter :: (a -> Bool) -> [a] -> [a]
 
 ## Hoogle
 
+- Search the libraries by type
 - https://www.haskell.org/hoogle/

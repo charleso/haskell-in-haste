@@ -26,6 +26,12 @@ add a b = a + b
 > add 1 2
 3
 
+> add 1 (add 2 3)
+6
+
+> add (add 1 2) 3
+6
+
 > add "a" 2
 <interactive>:8:1:
     Couldn't match expected type ‘Int’ with actual type ‘[Char]’

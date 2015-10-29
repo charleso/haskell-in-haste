@@ -208,13 +208,6 @@ startsWith i (h : v) = i == h
 
 
 
-## Everything is a function
-
-```haskell
-ten :: Int
-ten = 10
-```
-
 ## Everything is immutable
 
 ```haskell

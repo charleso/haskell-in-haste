@@ -7,8 +7,8 @@ import           Chat.Data
 --
 -- This requires implementing comparing two numbers and display a message depending on the result
 guessMe :: Secret -> Guess -> String
-guessMe s g =
+guessMe (Secret s) (Guess g) =
   error "guessMe not implemented"
 
-type Guess = Int
-type Secret = Int
+newtype Guess = Guess Int
+newtype Secret = Secret Int

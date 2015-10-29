@@ -9,7 +9,7 @@ import           System.Random
 
 
 guessMeAnswer :: Secret -> Guess -> String
-guessMeAnswer s g = case compare s g of
+guessMeAnswer (Secret s) (Guess g) = case compare s g of
   LT -> "lower"
   GT -> "higher"
   EQ -> "hit!"
@@ -30,7 +30,7 @@ guessBot = do
       let g' = read g
       -- Reset the guess when it's correct
       when (n == g') $ nextGuess number
-      return . Just $ guessMe n g'
+      return . Just $ guessMe (Secret n) (Guess g')
 
 nextGuess :: MVar Int -> IO ()
 nextGuess number =

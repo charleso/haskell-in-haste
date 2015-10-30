@@ -1,5 +1,7 @@
 # Haskell in Haste
 
+[![Build Status](https://travis-ci.org/charleso/haskell-in-haste.svg)](https://travis-ci.org/charleso/haskell-in-haste)
+
 [![Join the chat at https://gitter.im/charleso/haskell-in-haste](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/charleso/haskell-in-haste?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A (very) short workshop designed to introduce Haskell quickly but practically.

@@ -63,6 +63,10 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 - [TicTacToe](src/Chat/Bot/TicTacToe.hs)
 - [Calculator](src/Chat/Bot/Calculator.hs)
 
+## Answers
+
+Full solutions can be found in the [Chat.Bot.Answer](src/Chat/Bot/Answer/) module.
+
 ## Further Reading
 
 The best place to start is probably the Yorgey lectures.

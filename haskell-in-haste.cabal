@@ -3,13 +3,14 @@ version:             0.1.0.0
 license:             BSD3
 author:              Charles O'Farrell
 category:            Web
-build-type:          Simple
+build-type:          Custom
 cabal-version:       >=1.10
 
-executable haskell-in-haste-exe
+library
   hs-source-dirs:      src
-  main-is:             Main.hs
   ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
   build-depends:       base
                      , attoparsec                      == 0.12.*
                      , blaze-markup                    >= 0.7        && <0.9
@@ -22,4 +23,47 @@ executable haskell-in-haste-exe
                      , time                            == 1.5.*
                      , transformers                    == 0.4.*
                      , wai-middleware-static           == 0.7.*
-  default-language:    Haskell2010
+
+  exposed-modules:     Chat
+                     , Chat.Data
+                     , Chat.Web
+
+                     , Chat.Bot.Calculator
+                     , Chat.Bot.Answer.Calculator
+                     , Chat.Bot.Misc.Calculator
+                     , Chat.Bot.Run.Calculator
+
+                     , Chat.Bot.Cipher
+                     , Chat.Bot.Answer.Cipher
+                     , Chat.Bot.Misc.Cipher
+                     , Chat.Bot.Run.Cipher
+
+                     , Chat.Bot.Guess
+                     , Chat.Bot.Answer.Guess
+                     , Chat.Bot.Misc.Guess
+                     , Chat.Bot.Run.Guess
+
+                     , Chat.Bot.TicTacToe
+                     , Chat.Bot.Answer.TicTacToe
+                     , Chat.Bot.Misc.TicTacToe
+                     , Chat.Bot.Run.TicTacToe
+
+                     , Chat.Bot.WordCount
+                     , Chat.Bot.Answer.WordCount
+                     , Chat.Bot.Run.WordCount
+
+test-suite           doctests
+  type:              exitcode-stdio-1.0
+  main-is:           doctests.hs
+  ghc-options:       -threaded
+  default-language:  Haskell2010
+  hs-source-dirs:    test
+
+  build-depends:
+                       base
+                     , haskell-in-haste
+                     , directory                      == 1.2.*
+                     , doctest                        == 0.10.*
+                     , filepath                       == 1.4.*
+                     , QuickCheck                     == 2.8.*
+                     , template-haskell

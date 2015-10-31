@@ -1,5 +1,6 @@
 module Chat.Bot.WordCount where
 
+import           Chat.Bot.Answer.WordCount
 import           Chat.Data
 
 
@@ -16,7 +17,7 @@ import           Chat.Data
 -- 9
 wordCount :: String -> Int
 wordCount s =
-  error "wordCount not implemented"
+  notImplemented "WordCount.wordCount" (wordCountAnswer s)
 
 
 -- LEVEL: Medium
@@ -35,4 +36,4 @@ wordCount s =
 -- ["the", "quick", "brown", "fox", "jumps", "over", "the", "lazy", "dog"]
 wordss :: String -> [String]
 wordss s =
-  error "words not implemented"
+  notImplemented "WordCount.wordss" (wordsAnswer s)

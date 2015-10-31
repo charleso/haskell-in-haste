@@ -2,19 +2,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 module Chat.Bot.Answer.Calculator where
 
-import           Chat.Bot.Calculator
-import           Chat.Data
-import           Control.Concurrent
-import           Control.Monad
+import           Chat.Bot.Misc.Calculator
 import           Data.Attoparsec.Text
 import qualified Data.Text as T
 import           Data.List
 
+
 calculateAnswer :: Operation -> Int -> Int -> Int
-calculateAnswer op a b = case op of
-  Plus -> a + b
-  Minus -> a - b
-  Multiply -> a * b
+calculateAnswer op a b =
+  case op of
+    Plus -> a + b
+    Minus -> a - b
+    Multiply -> a * b
 
 operationParserAnswer :: Parser (Operation, Int, Int)
 operationParserAnswer = do
@@ -29,18 +28,6 @@ operationParserAnswer = do
   b <- decimal
   return (op, a, b)
 
-calculateParseAnswer :: T.Text -> Either String Int
+calculateParseAnswer :: String -> Either String Int
 calculateParseAnswer m =
-  (\(o, a, b) -> calculateAnswer o a b) <$> parseOnly operationParserAnswer m
-
--------------------------------------------------------------------
-------------------------- IGNORE BELOW HERE -----------------------
--------------------------------------------------------------------
-
-calculatorBot :: Bot
-calculatorBot m =
-  case stripPrefix "/calculator " m of
-    Nothing -> noMessage
-    Just m' -> message
-      . either id show
-      $ calculateParse (T.pack m')
+  (\(o, a, b) -> calculateAnswer o a b) <$> parseOnly operationParserAnswer (T.pack m)

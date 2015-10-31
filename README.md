@@ -19,13 +19,19 @@ A (very) short workshop designed to introduce Haskell quickly but practically.
 ## Running
 
 1. Run `stack ghci`
-2. Type `main` to start app
+2. Type `start` to start app
 3. Go to: http://localhost:8080
 
-### To reload files
+## To reload files
+
 1. Hit `ctrl-c` to stop app
 2. Enter `:r` or `:reload` to recompile the project
-3. Type `main` to start app again
+3. Type `start` to start app again
+
+## Testing
+
+1. Type `tests` to run them all
+2. Type `test "guess"` for matching test(s) names
 
 ## Introduction
 
@@ -67,6 +73,10 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 ## Answers
 
 Full solutions can be found in the [Chat.Bot.Answer](src/Chat/Bot/Answer/) module.
+
+Answers can be enabled for testing/running:
+
+    > ANSWERS_ENABLED=true stack ghci
 
 ## Further Reading
 

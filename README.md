@@ -56,6 +56,7 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 
 ### Medium
 
+- [Word count](src/Chat/Bot/WordCount.hs)
 - [Rotational cipher](src/Chat/Bot/Cipher.hs)
 
 ### Hard

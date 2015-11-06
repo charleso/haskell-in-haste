@@ -14,7 +14,7 @@ A (very) short workshop designed to introduce Haskell quickly but practically.
          git clone https://github.com/charleso/haskell-in-haste.git
 
 3. Run `stack setup` in the root of the directory
-4. Run `stack build` in the root of the directory
+4. Run `stack test` in the root of the directory (ignore the test failures)
 
 ## Running
 

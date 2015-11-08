@@ -439,7 +439,7 @@ function add(a, b) {
 
 ```haskell
 
-      \a b -> a + b
+add = \a b -> a + b
 ```
 
 ---
@@ -448,16 +448,9 @@ function add(a, b) {
 
 ```haskell
 
-> :t  \a b -> a + b
-```
+add = \a b -> a + b
 
----
-
-## Lambda
-
-```haskell
-
-> :t  \a b -> a + b
+> :t add
 Int -> Int -> Int
 ```
 
@@ -1182,6 +1175,20 @@ drop1 :: [Int] -> [Int]
 drop1 l = case l of
   [] -> []
   a : b -> b
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+
+> drop1 (1 : 2 : 3 : [])
+[2,3]
 ```
 
 ---

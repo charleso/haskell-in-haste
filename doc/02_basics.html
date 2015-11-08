@@ -277,7 +277,7 @@ putStrLn "Hello world"
 > add (add 1 2) 3
 6
 
-> add "a" 2
+> add "1" 2
 ```
 
 ---
@@ -294,10 +294,26 @@ putStrLn "Hello world"
 > add (add 1 2) 3
 6
 
-> add "a" 2
+> add "1" 2
 <interactive>:8:1:
 Couldn't match expected type ‘Int’
   with actual type ‘[Char]’
+```
+
+---
+
+## Writing a function
+
+```haskell
+add     =
+```
+
+---
+
+## Writing a function
+
+```haskell
+add a b =
 ```
 
 ---
@@ -334,7 +350,19 @@ add a b = a + b
 
 ```
 > :t add
-add :: Num a => a -> a -> a
+```
+
+---
+
+## Type Inference
+
+```haskell
+add a b = a + b
+```
+
+```
+> :t add
+add :: Int -> Int -> Int
 ```
 
 ---
@@ -358,7 +386,7 @@ add a b = a + b
 ### Java
 
 ```java
-public void add(Int a, Int b) {
+public void add(int a, int b) {
   return a + b;
 }
 ```
@@ -420,15 +448,26 @@ function add(a, b) {
 
 ```haskell
 
-      \a b -> a + b
+> :t  \a b -> a + b
 ```
 
-### Javascript
+---
 
-```javascript
-          function(a, b) {
-  return a + b;
-}
+## Lambda
+
+```haskell
+
+> :t  \a b -> a + b
+Int -> Int -> Int
+```
+
+---
+
+## Lambda
+
+```haskell
+add :: Int -> Int -> Int
+add = \a b -> a + b
 ```
 
 ---
@@ -994,6 +1033,34 @@ list = [1, 2, 3, 4]
 
 ---
 
+## Character
+
+```haskell
+
+       'a'
+```
+
+---
+
+## Char
+
+```haskell
+
+> :t   'a'
+```
+
+---
+
+## Char
+
+```haskell
+
+> :t   'a'
+Char
+```
+
+---
+
 ## Char
 
 ```haskell
@@ -1008,6 +1075,15 @@ a   =  'a'
 ```haskell
 a   :: Char
 a   =  'a'
+```
+
+---
+
+## List of Chars
+
+```haskell
+a   :: [Char]
+a   = ['a']
 ```
 
 ---

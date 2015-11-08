@@ -8,7 +8,7 @@ A (very) short workshop designed to introduce Haskell quickly but practically.
 
 ## Getting Started
 
-1. [Download Stack](https://github.com/commercialhaskell/stack/wiki/Downloads) for your operating system (scroll to the bottom for download links)
+1. [Download Stack](https://github.com/commercialhaskell/stack/blob/master/doc/install_and_upgrade.md) for your operating system (scroll to the bottom for download links)
 2. Clone this repository
 
          git clone https://github.com/charleso/haskell-in-haste.git

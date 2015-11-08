@@ -35,7 +35,7 @@ A (very) short workshop designed to introduce Haskell quickly but practically.
 
 ## Introduction
 
-See [here](Introduction.md) for the material to be used for teaching (very) basic Haskell.
+See [here](doc/README.md) for the material to be used for teaching (very) basic Haskell.
 
 Some concepts are intentionally not being covered due to the time available, which are listed [here](Avoid.md)
 

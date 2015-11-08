@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Haskell in Haste - Basics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      /* latin-ext */
+      @font-face {
+        font-family: 'Yanone Kaffeesatz';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'), url(fonts/YDAoLskQQ5MOAgvHUQCcLaa0P60JZGaCMFbL3N9v4H0.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Yanone Kaffeesatz';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'), url(../fonts/YDAoLskQQ5MOAgvHUQCcLWjF_m7mVnhXExjNED3rUtY.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+
+      /* latin */
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(../fonts/0AKsP294HTD-nvJgucYTaIgp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Droid Serif Bold'), local('DroidSerif-Bold'), url(../fonts/QQt14e8dY39u-eYBZmppwf79_ZuUxCigM2DespTnFaw.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: italic;
+        font-weight: 400;
+        src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(../fonts/cj2hUnSRBhwmSPr9kS589weOulFbQKHxPa89BaxZzA0.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+      @font-face {
+        font-family: 'Ubuntu Mono';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(../fonts/ceqTZGKHipo8pJj4molytv79_ZuUxCigM2DespTnFaw.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+      @font-face {
+        font-family: 'Ubuntu Mono';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(../fonts/ViZhet7Ak-LRXZMXzuAfkYgp9Q8gbYrhqGlRav_IXfk.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+      }
+
+      body {
+        font-family: Futura, 'Yanone Kaffeesatz';
+      }
+      li {
+        font-size: 30px;
+        padding-top: 20px;
+      }
+      .remark-code {
+        font-size: 30px;
+      }
+      h1, h2, h3 {
+        font-weight: normal;
+      }
+      .inverse {
+        background: #4795c6;
+        color: white;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+      }
+      .relative h1 {
+        position: relative !important;
+      }
+      .question {
+        background: #76b242;
+        color: white;
+      }
+      .rule {
+        background: #ee2a24;
+        color: white;
+      }
+      .error {
+        color: #ee2a24;
+        font-size: 30px;
+      }
+      .image {
+        padding: 0px;
+        color: white;
+        background-color: black;
+
+        position: relative;
+      }
+      .image img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        float: left;
+      }
+      .image h1, .image h2 {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        left: 20px;
+      }
+      .image-white {
+        color: black;
+        background-color: white;
+      }
+      .image-last h1 {
+        right: 0;
+        bottom: 100px;
+      }
+      .remark-code, .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+      }
+      .remark-slide-content {
+        padding: 10px 10px 10px 30px;
+      }
+      .hljs-default .hljs {
+        background-color: transparent;
+        padding: 0px !important;
+      }
+      .top h1 {
+        top: 0px;
+      }
+      .toc {
+         color: #777;
+         margin-top: 135px;
+      }
+      .toc-selected {
+         color: #000;
+      }
+      .code-small .remark-code {
+        font-size: 20px;
+      }
+      .remark-container {
+        height: 100%;
+        width: 100%;
+      }
+      .remark-slide-number {
+        display: none;
+      }
+      .red span {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <textarea id="source">
+name: image
+layout: true
+class: center, middle, image
+
+---
+name: image-white
+layout: true
+class: center, middle, image, image-white
+
+---
+name: image-last
+layout: true
+class: center, middle, image, image-last
+
+---
+name: code-small
+layout: true
+class: code-small
+
+---
+name: question
+layout: true
+class: center, middle, question
+
+---
+name: rule
+layout: true
+class: center, middle, rule
+
+---
+name: boom
+layout: true
+class: boom
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+class: center, middle
+template: image
+layout: false
+
+# Basics
+
+
+
+
+
+
+
+
+
+
+
+---
+layout: false
+
+## Hello World
+
+```haskell
+putStrLn "Hello world"
+```
+
+---
+
+## Calling a function
+
+```haskell
+> add 1 2
+3
+
+> add 1 (add 2 3)
+6
+
+> add (add 1 2) 3
+6
+
+> add "a" 2
+<interactive>:8:1:
+Couldn't match expected type ‘Int’ with actual type ‘[Char]’
+```
+
+---
+
+## Writing a function
+
+```haskell
+add a b = a + b
+```
+
+```js
+function add(a, b) {
+  return a + b;
+}
+```
+
+---
+
+## Type Inference
+
+```haskell
+add a b = a + b
+```
+
+```
+> :t add
+add :: Num a => a -> a -> a
+```
+
+---
+
+## Reading a function type signature
+
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+```
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## Lambda
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+
+val add = function(a, b) {
+  return a + b;
+}
+```
+
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+
+add :: Int -> Int -> Int
+add = \a b -> a + b
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = [1, 2, 3, 4]
+```
+
+---
+
+## Functions
+
+```haskell
+> map (\x -> x + 1) [1, 2, 3, 4]
+[2, 3, 4, 5]
+
+> take 2 [1, 2, 3, 4]
+[1, 2]
+```
+
+---
+
+## Strings are just Lists
+
+```haskell
+helloWorld :: String
+helloWorld = "hello world"
+```
+
+```haskell
+> :i String
+type String = [Char]
+```
+
+```haskell
+helloWorld :: [Char]
+helloWorld = "hello world"
+```
+
+```haskell
+helloWorld :: [Char]
+helloWorld = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
+```
+
+```haskell
+import Data.Char
+
+> map (\x -> toUpper x) "hello world"
+"HELLO WORLD"
+
+> take 2 "hello world"
+"he"
+```
+
+
+
+
+
+---
+
+## Data types
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+```
+
+- Similar to an "enum"
+- _Must_ start with Upper Case
+
+---
+
+## Pattern Matching
+
+```haskell
+fruitRender :: Fruit -> String
+fruitRender Apple = "apple"
+fruitRender Banana = "banana"
+fruitRender Tomato = "tomato"
+```
+
+```haskell
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Apple -> "apple"
+  Banana -> "banana"
+  Tomato -> "tomato"
+```
+
+---
+
+## Exhaustive Pattern Matching
+
+```haskell
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Banana -> "banana"
+  Tomato -> "tomato"
+```
+
+```
+Fruit.hs:5:1: Warning:
+  Pattern match(es) are non-exhaustive
+  In an equation for ‘fruitRender’: Patterns not matched: Apple
+```
+
+
+
+
+
+
+
+
+---
+
+## Deriving
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+> Apple
+&lt;interactive&gt;:9:1:
+    No instance for (Show Fruit) arising from a use of ‘print’
+```
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+deriving Show
+
+> Apple
+Apple
+```
+
+- Special Haskell
+- Think of it like `toString()` in many languages
+- Except it's not added to data types by default
+
+
+
+
+
+---
+
+## Boolean
+
+- Just a data type
+
+```haskell
+data Bool = True | False
+```
+
+```haskell
+not :: Bool -> Bool
+not True = False
+not False = True
+```
+
+---
+
+## Boolean - Special syntax
+
+```haskell
+if ... then ... else ...
+```
+
+```haskell
+not :: Bool -> Bool
+not b = if b then False else True
+```
+
+
+
+
+
+
+
+
+
+---
+
+## Data types ++
+
+- Data constructors can contain values
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+---
+
+## _Very_ loose comparison
+
+```java
+interface Eat { }
+
+class Yum extends Eat {
+
+  public Yum(Fruit f) { .. }
+}
+
+class Yuck extends Eat {
+
+  public Yuck(Fruit f, String m) { .. }
+}
+```
+
+---
+
+## Constructors are just functions
+
+```haskell
+> :t Yum
+Fruit -> Eat
+
+> :t Yuck
+Fruit -> String -> Eat
+```
+
+---
+
+## Constructors are just functions
+
+```haskell
+> :t Yum Apple
+Eat
+
+> :t Yuck Tomato "Not a fruit"
+Eat
+```
+
+```java
+new Yum(Apple)
+
+new Yuck(Tomato, "Not a fruit")
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+eat :: Fruit -> Eat
+eat fruit = case fruit of
+  Apple -> Yum Apple
+  Banana -> Yum Banana
+  Tomato -> Yuck Tomato "It's not a real fruit"
+
+eatRender :: Eat -> String
+eatRender e = case e of
+  Yum f ->
+    "I ate " ++ fruitRender f
+  Yuck f m ->
+    "I refuse to eat " ++ fruitRender f ++ " because " ++ m
+```
+
+
+
+
+
+
+
+---
+
+## Lists (again)
+
+- Lists are actually linked-lists
+
+```haskell
+empty :: [Int]
+empty = []
+
+one :: [Int]
+one = 1 : []
+
+list :: [Int]
+list = 1 : 2 : 3 : 4 : []
+```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+startsWith i [] = False
+startsWith i (h : v) = i == h
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## Everything is immutable (by default)
+
+```haskell
+data Count = Count Int deriving Show
+
+plusOne :: Count -> Count
+plusOne (Count c) = Count (c + 1)
+
+> plusOne (Count 1)
+Count 2
+```
+
+- Create a _new_ `Count`
+- _No_ (easy) way to mutate
+- And needs something "special"
+- Let's not talk about it...
+
+
+
+
+
+
+
+---
+
+## Loops?
+
+- Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v [] =
+  False
+contains v (h : t) =
+  if v == h
+    then True
+    else contains v t
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## Higher Order Function
+
+- Functions that take functions as inputs
+
+```haskell
+add3 :: Int -> Int
+add3 x = x + 3
+
+myMap :: (Int -> Int) -> [Int] -> [Int]
+myMap _ [] = []
+myMap f (x: xt) = f x : myMap f xt
+
+> myMap add3 [1..5]
+[4,5,6,7,8]
+```
+
+
+
+
+
+
+
+
+
+
+
+---
+
+## "Real world"
+
+- Special `do` syntax
+- Indentation aware (like Python)
+- (Curly brackets and semicolon are available, too.)
+
+```haskell
+main :: IO ()
+main = do
+  putStrLn "Input value"
+  v &lt;- input
+  putStrLn ("You entered" ++ show v)
+```
+
+
+
+
+    </textarea>
+    <link rel="stylesheet" href="../js/styles/idea.css">
+    <script src="../js/remark.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>

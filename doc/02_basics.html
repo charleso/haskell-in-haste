@@ -234,6 +234,59 @@ putStrLn "Hello world"
 ```haskell
 > add 1 2
 3
+```
+
+---
+
+## Calling a function
+
+```haskell
+> add 1 2
+3
+
+> add 1 (add 2 3)
+6
+```
+
+---
+
+## Calling a function
+
+```haskell
+> add 1 2
+3
+
+> add 1 (add 2 3)
+6
+
+> add (add 1 2) 3
+6
+```
+
+---
+
+## Calling a function
+
+```haskell
+> add 1 2
+3
+
+> add 1 (add 2 3)
+6
+
+> add (add 1 2) 3
+6
+
+> add "a" 2
+```
+
+---
+
+## Calling a function
+
+```haskell
+> add 1 2
+3
 
 > add 1 (add 2 3)
 6
@@ -243,7 +296,8 @@ putStrLn "Hello world"
 
 > add "a" 2
 <interactive>:8:1:
-Couldn't match expected type ‘Int’ with actual type ‘[Char]’
+Couldn't match expected type ‘Int’
+  with actual type ‘[Char]’
 ```
 
 ---
@@ -253,6 +307,16 @@ Couldn't match expected type ‘Int’ with actual type ‘[Char]’
 ```haskell
 add a b = a + b
 ```
+
+---
+
+## Writing a function
+
+```haskell
+add a b = a + b
+```
+
+### Javascript
 
 ```js
 function add(a, b) {
@@ -282,6 +346,22 @@ add :: Int -> Int -> Int
 add a b = a + b
 ```
 
+---
+
+## Reading a function type signature
+
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+```
+
+### Java
+
+```java
+public void add(Int a, Int b) {
+  return a + b;
+}
+```
 
 
 
@@ -292,28 +372,85 @@ add a b = a + b
 
 
 
+
+---
+
+template: inverse
+
+## Lambda
 
 ---
 
 ## Lambda
 
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+```
+
+---
+
+## Lambda
+
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+```
+
+### Javascript
+
 ```javascript
 function add(a, b) {
   return a + b;
 }
+```
 
+---
+
+## Lambda
+
+```haskell
+
+      \a b -> a + b
+```
+
+---
+
+## Lambda
+
+```haskell
+
+      \a b -> a + b
+```
+
+### Javascript
+
+```javascript
+          function(a, b) {
+  return a + b;
+}
+```
+
+---
+
+## Lambda
+
+```haskell
+add :: Int -> Int -> Int
+add = \a b -> a + b
+```
+
+### Javascript
+
+```javascript
 val add = function(a, b) {
   return a + b;
 }
 ```
 
-```haskell
-add :: Int -> Int -> Int
-add a b = a + b
 
-add :: Int -> Int -> Int
-add = \a b -> a + b
-```
+
+
 
 
 
@@ -330,62 +467,17 @@ add = \a b -> a + b
 
 ---
 
-## Lists
+template: inverse
 
-```haskell
-list :: [Int]
-list = [1, 2, 3, 4]
-```
+## Data types
 
 ---
 
-## Functions
+## Data types
 
 ```haskell
-> map (\x -> x + 1) [1, 2, 3, 4]
-[2, 3, 4, 5]
-
-> take 2 [1, 2, 3, 4]
-[1, 2]
+data Fruit = Apple | Banana | Tomato
 ```
-
----
-
-## Strings are just Lists
-
-```haskell
-helloWorld :: String
-helloWorld = "hello world"
-```
-
-```haskell
-> :i String
-type String = [Char]
-```
-
-```haskell
-helloWorld :: [Char]
-helloWorld = "hello world"
-```
-
-```haskell
-helloWorld :: [Char]
-helloWorld = ['h', 'e', 'l', 'l', 'o', ' ', 'w', 'o', 'r', 'l', 'd']
-```
-
-```haskell
-import Data.Char
-
-> map (\x -> toUpper x) "hello world"
-"HELLO WORLD"
-
-> take 2 "hello world"
-"he"
-```
-
-
-
-
 
 ---
 
@@ -400,7 +492,76 @@ data Fruit = Apple | Banana | Tomato
 
 ---
 
+## Data types - Uppercase
+
+```haskell
+data fruit = Apple | Banana | Tomato
+```
+
+---
+
+## Data types - Uppercase
+
+```haskell
+data fruit = Apple | Banana | Tomato
+```
+
+<pre class="error">
+Malformed head of type or class declaration:
+  fruit
+</pre>
+
+---
+
+## Data types - Uppercase
+
+```haskell
+data Fruit = apple | banana | tomato
+```
+
+---
+
+## Data types - Uppercase
+
+```haskell
+data Fruit = apple | banana | tomato
+```
+
+<pre class="error">
+Not a data constructor: &quot;apple&quot;
+<pre>
+
+---
+
+## Data types - Uppercase
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+```
+
+---
+
 ## Pattern Matching
+
+```haskell
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Apple -> "apple"
+  Banana -> "banana"
+  Tomato -> "tomato"
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Apple -> "apple"
+  Banana -> "banana"
+  Tomato -> "tomato"
+```
 
 ```haskell
 fruitRender :: Fruit -> String
@@ -409,10 +570,13 @@ fruitRender Banana = "banana"
 fruitRender Tomato = "tomato"
 ```
 
+---
+
+## Exhaustive Pattern Matching
+
 ```haskell
 fruitRender :: Fruit -> String
 fruitRender fruit = case fruit of
-  Apple -> "apple"
   Banana -> "banana"
   Tomato -> "tomato"
 ```
@@ -428,17 +592,12 @@ fruitRender fruit = case fruit of
   Tomato -> "tomato"
 ```
 
-```
+<pre class="error">
 Fruit.hs:5:1: Warning:
   Pattern match(es) are non-exhaustive
-  In an equation for ‘fruitRender’: Patterns not matched: Apple
-```
-
-
-
-
-
-
+  In an equation for ‘fruitRender’:
+    Patterns not matched: Apple
+</pre>
 
 
 ---
@@ -449,13 +608,51 @@ Fruit.hs:5:1: Warning:
 data Fruit = Apple | Banana | Tomato
 
 > Apple
-&lt;interactive&gt;:9:1:
-    No instance for (Show Fruit) arising from a use of ‘print’
 ```
+
+---
+
+## Deriving
 
 ```haskell
 data Fruit = Apple | Banana | Tomato
-deriving Show
+
+> Apple
+```
+
+<pre class="error">
+No instance for (Show Fruit) arising from a 
+  use of ‘print’
+</pre>
+
+---
+
+## Deriving
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+  deriving Show
+```
+
+---
+
+## Deriving
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+  deriving Show
+
+> Apple
+Apple
+```
+
+---
+
+## Deriving
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+  deriving Show
 
 > Apple
 Apple
@@ -469,15 +666,40 @@ Apple
 
 
 
+
+---
+
+template: question
+
+## Boolean
+
 ---
 
 ## Boolean
 
-- Just a data type
+```haskell
+data Bool = True | False
+```
+
+---
+
+## Boolean
 
 ```haskell
 data Bool = True | False
 ```
+
+- Just a data type
+
+---
+
+## Boolean
+
+```haskell
+data Bool = True | False
+```
+
+<br/>
 
 ```haskell
 not :: Bool -> Bool
@@ -487,15 +709,34 @@ not False = True
 
 ---
 
-## Boolean - Special syntax
+## Boolean - if/then/else
 
 ```haskell
 if ... then ... else ...
 ```
 
+- "Special" syntax
+
+---
+
+## Boolean - if/then/else
+
 ```haskell
 not :: Bool -> Bool
-not b = if b then False else True
+not b =
+  if b then False else True
+```
+
+---
+
+## Boolean - if/then/else
+
+```haskell
+not :: Bool -> Bool
+not b =
+  if b
+    then False
+    else True
 ```
 
 
@@ -508,9 +749,21 @@ not b = if b then False else True
 
 ---
 
-## Data types ++
+template: question
 
-- Data constructors can contain values
+## Data Types ++
+
+---
+
+## Data Types ++
+
+```haskell
+data Eat = Yum       | Yuck
+```
+
+---
+
+## Data Types ++
 
 ```haskell
 data Eat = Yum Fruit | Yuck Fruit String
@@ -518,7 +771,23 @@ data Eat = Yum Fruit | Yuck Fruit String
 
 ---
 
+## Data Types ++
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+- Data constructors can contain values
+
+---
+
 ## _Very_ loose comparison
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+### Java
 
 ```java
 interface Eat { }
@@ -539,6 +808,10 @@ class Yuck extends Eat {
 ## Constructors are just functions
 
 ```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+```haskell
 > :t Yum
 Fruit -> Eat
 
@@ -551,6 +824,10 @@ Fruit -> String -> Eat
 ## Constructors are just functions
 
 ```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+```haskell
 > :t Yum Apple
 Eat
 
@@ -558,15 +835,33 @@ Eat
 Eat
 ```
 
-```java
-new Yum(Apple)
+---
 
-new Yuck(Tomato, "Not a fruit")
+## Constructors are just functions
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+```haskell
+> :t Yum Apple
+Eat
+
+> :t Yuck Tomato "Not a fruit"
+Eat
+```
+
+### Java
+
+```java
+Eat eat = new Yum(Apple)
+
+Eat eat = new Yuck(Tomato, "Not a fruit")
 ```
 
 ---
 
-## Pattern Matching
+## Example
 
 ```haskell
 eat :: Fruit -> Eat
@@ -574,61 +869,70 @@ eat fruit = case fruit of
   Apple -> Yum Apple
   Banana -> Yum Banana
   Tomato -> Yuck Tomato "It's not a real fruit"
+```
 
+---
+
+## Pattern Matching
+
+```haskell
 eatRender :: Eat -> String
 eatRender e = case e of
   Yum f ->
     "I ate " ++ fruitRender f
   Yuck f m ->
-    "I refuse to eat " ++ fruitRender f ++ " because " ++ m
+    "I refuse to eat " ++ fruitRender f ++
+      " because " ++ m
 ```
-
-
-
-
-
-
 
 ---
 
-## Lists (again)
-
-- Lists are actually linked-lists
+## Pattern Matching
 
 ```haskell
-empty :: [Int]
-empty = []
-
-one :: [Int]
-one = 1 : []
-
-list :: [Int]
-list = 1 : 2 : 3 : 4 : []
+eatRender :: Eat -> String
+eatRender e = case e of
+  Yum f ->
+    "I ate " ++ fruitRender f
+  Yuck f m ->
+    "I refuse to eat " ++ fruitRender f ++
+      " because " ++ m
 ```
+
+<pre>
+> eatRender (eat Apple)
+I ate apple
+> eatRender (eat Banana)
+I ate banana
+> eatRender (eat Tomato)
+I refuse to eat tomato because It's not a real fruit
+</pre>
 
 ---
 
-## Pattern matching
+## Immutable data
 
 ```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i [] = False
-startsWith i (h : v) = i == h
+data Count = Count Int deriving Show
 ```
-
-
-
-
-
-
-
-
-
-
 
 ---
 
-## Everything is immutable (by default)
+## Immutable data
+
+```haskell
+data Count = Count Int deriving Show
+
+plusOne :: Count -> Count
+plusOne (Count c) = Count (c + 1)
+
+> plusOne (Count 1)
+Count 2
+```
+
+---
+
+## Immutable data
 
 ```haskell
 data Count = Count Int deriving Show
@@ -651,20 +955,270 @@ Count 2
 
 
 
+
+
+
+
 ---
 
-## Loops?
+template: inverse
 
-- Recursion
+# Lists
+
+---
+
+## Lists
+
+```haskell
+
+       [1, 2, 3, 4]
+```
+
+---
+
+## Lists
+
+```haskell
+
+list = [1, 2, 3, 4]
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = [1, 2, 3, 4]
+```
+
+---
+
+## Char
+
+```haskell
+
+a   =  'a'
+```
+
+---
+
+## Char
+
+```haskell
+a   :: Char
+a   =  'a'
+```
+
+---
+
+## List of Chars
+
+```haskell
+abc :: [Char]
+abc = ['a', 'b', 'c']
+```
+
+---
+
+## Stings are [Char]
+
+```haskell
+abc :: String
+abc = ['a', 'b', 'c']
+```
+
+---
+
+## Strings are [Char]
+
+```haskell
+abc :: String
+abc = "abc"
+```
+
+---
+
+## Empty List
+
+```haskell
+
+list =                 []
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list =                 []
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1             : []
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1             : []
+
+> list
+[1]
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1 : 2 : 3 : 4 : []
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1 : 2 : 3 : 4 : []
+
+> list
+[1,2,3,4]
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+
+> drop1 [1, 2, 3]
+[2,3]
+```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+startsWith i [] = False
+startsWith i (h : v) = i == h
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+
+
+
+                                                                                                                        x
+```
+
+
+### Javascript
+
+```js
+function contains(v, list) {
+  var found = false;
+  for (var i = 0; !found &amp;&amp; i &lt; list.length; i++) {
+    found = list[i] === v
+  }
+  return found;
+}
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v [] =
+  False
+
+                                                                                                                        x
+```
+
+### Javascript
+
+```js
+function contains(v, list) {
+  var found = false;
+  for (var i = 0; !found &amp;&amp; i &lt; list.length; i++) {
+    found = list[i] === v
+  }
+  return found;
+}
+```
+
+---
+
+## Recursion
 
 ```haskell
 contains :: Int -> [Int] -> Bool
 contains v [] =
   False
 contains v (h : t) =
-  if v == h
-    then True
-    else contains v t
+  if v == h then True else contains v t
+```
+
+### Javascript
+
+```js
+function contains(v, list) {
+  var found = false;
+  for (var i = 0; !found &amp;&amp; i &lt; list.length; i++) {
+    found = list[i] === v
+  }
+  return found;
+}
 ```
 
 
@@ -685,18 +1239,47 @@ contains v (h : t) =
 
 ## Higher Order Function
 
-- Functions that take functions as inputs
+```haskell
+map (\x -> x + 3) [1, 2, 3]
+
+> [4,5,6]
+```
+
+---
+
+## Higher Order Function
 
 ```haskell
-add3 :: Int -> Int
-add3 x = x + 3
+map (\x -> x + 3) [1, 2, 3]
 
-myMap :: (Int -> Int) -> [Int] -> [Int]
-myMap _ [] = []
-myMap f (x: xt) = f x : myMap f xt
+> [4,5,6]
+```
 
-> myMap add3 [1..5]
-[4,5,6,7,8]
+### Javascript
+
+```js
+[1, 2, 3].map(function(x) {
+  return x + 3;
+})
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+map :: (Int -> Int) -> [Int] -> [Int]
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+map :: (Int -> Int) -> [Int] -> [Int]
+
+> map (\x -> x + 1) [1, 2, 3]
+[4,5,6]
 ```
 
 
@@ -713,9 +1296,17 @@ myMap f (x: xt) = f x : myMap f xt
 
 ## "Real world"
 
-- Special `do` syntax
-- Indentation aware (like Python)
-- (Curly brackets and semicolon are available, too.)
+```haskell
+main :: IO ()
+main = do
+  putStrLn "Input value"
+  v &lt;- input
+  putStrLn ("You entered" ++ show v)
+```
+
+---
+
+## "Real world"
 
 ```haskell
 main :: IO ()
@@ -724,6 +1315,10 @@ main = do
   v &lt;- input
   putStrLn ("You entered" ++ show v)
 ```
+
+- Special `do` syntax
+- Indentation aware (like Python)
+- (Curly brackets and semicolon are available, too.)
 
 
 

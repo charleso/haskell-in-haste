@@ -11,3 +11,4 @@ the provided material or complete the exercises.
   - Lists will be covered, but the implementation not mentioned
 - Partial application
 - Currying
+- Newtypes

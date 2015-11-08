@@ -744,7 +744,9 @@ not False = True
 ## Boolean - if/then/else
 
 ```haskell
-if ... then ... else ...
+
+
+  if .... then ..... else .....
 ```
 
 - "Special" syntax
@@ -755,8 +757,8 @@ if ... then ... else ...
 
 ```haskell
 not :: Bool -> Bool
-not b =
-  if b then False else True
+not bool =
+  if bool then False else True
 ```
 
 ---
@@ -1026,30 +1028,11 @@ list = [1, 2, 3, 4]
 
 ---
 
-## Character
-
-```haskell
-
-       'a'
-```
-
----
-
 ## Char
 
 ```haskell
 
-> :t   'a'
-```
-
----
-
-## Char
-
-```haskell
-
-> :t   'a'
-Char
+a   =  'a'
 ```
 
 ---
@@ -1059,6 +1042,20 @@ Char
 ```haskell
 
 a   =  'a'
+
+> :t a
+```
+
+---
+
+## Char
+
+```haskell
+
+a   =  'a'
+
+> :t a
+Char
 ```
 
 ---
@@ -1201,7 +1198,7 @@ drop1 l = case l of
   [] -> []
   a : b -> b
 
-> drop1 [1, 2, 3]
+> drop1 [1,  2,  3]
 [2,3]
 ```
 

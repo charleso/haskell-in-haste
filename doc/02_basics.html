@@ -1469,16 +1469,15 @@ in map add3 [1, 2, 3]
 let
     add3 x = x + 3
 in map add3 [1, 2, 3]
-
-> [4,5,6]
 ```
 
 ### Javascript
 
 ```js
-[1, 2, 3].map(function(x) {
+var add3 = function(x) {
   return x + 3;
-})
+};
+[1, 2, 3].map(add3);
 ```
 
 ---
@@ -1487,19 +1486,10 @@ in map add3 [1, 2, 3]
 
 ```haskell
 map :: (Int -> Int) -> [Int] -> [Int]
-```
 
----
-
-## Higher Order Function
-
-```haskell
-map :: (Int -> Int) -> [Int] -> [Int]
-
-let add3 :: ???
+let
     add3 x = x + 3 
 in map add3 [1, 2, 3]
-[4,5,6]
 ```
 
 ---
@@ -1512,7 +1502,6 @@ map :: (Int -> Int) -> [Int] -> [Int]
 let add3 :: Int -> Int
     add3 x = x + 3 
 in map add3 [1, 2, 3]
-[4,5,6]
 ```
 
 

@@ -243,6 +243,21 @@ putStrLn "Hello world"
 ```haskell
 > add 1 2
 3
+```
+
+### Javascript
+
+```js
+add(1, 2);
+```
+
+---
+
+## Calling a function
+
+```haskell
+> add 1 2
+3
 
 > add 1 (add 2 3)
 6
@@ -441,7 +456,7 @@ in add three three
 
 ```js
 var three = add(1, 2);
-add(three, three)
+add(three, three);
 ```
 
 ---
@@ -1512,32 +1527,138 @@ in map add3 [1, 2, 3]
 
 ---
 
-## "Real world"
+template: inverse
+## Do notation
+
+---
+
+## Hello world
 
 ```haskell
-main :: IO ()
-main = do
-  putStrLn "Input value"
-  v &lt;- input
-  putStrLn ("You entered" ++ show v)
+
+main =
+  putStrLn "Hello world"
 ```
 
 ---
 
-## "Real world"
+## Hello world
+
+```haskell
+
+main =
+  putStrLn "Hello world"
+```
+
+```
+:t main
+> main :: IO ()
+```
+
+---
+
+## Hello world
+
+```haskell
+main :: IO ()
+main =
+  putStrLn "Hello world"
+```
+
+---
+
+## What about?
+
+```haskell
+main :: IO ()
+main =
+  putStrLn "Hello world"
+  putStrLn "Almost there"
+```
+
+---
+
+## What about?
+
+```haskell
+main :: IO ()
+main =
+  putStrLn "Hello world"
+  putStrLn "Almost there"
+```
+
+<pre class="error" style="font-size: 20px;">
+main.hs:12:3:
+    Couldn't match expected type ‘(String -> IO ()) -> String -> IO ()’
+                with actual type ‘IO ()’
+    The function ‘putStrLn’ is applied to three arguments,
+    but its type ‘String -> IO ()’ has only one
+</pre>
+
+---
+
+## What that means
+
+```haskell
+main :: IO ()
+main =
+  putStrLn "Hello world" putStrLn "Almost there"
+```
+
+---
+
+## What that means
+
+```haskell
+main :: IO ()
+main =
+  putStrLn "Hello world" putStrLn "Almost there"
+```
+
+### Javascript
+
+```js
+putStrLn("Hello world", putStrLn, "Almost there");
+```
+
+---
+
+## What can we *do*?
+
+```haskell
+main :: IO ()
+main =
+  putStrLn "Hello world"
+  putStrLn "Almost there"
+```
+
+---
+
+## What can we *do*?
 
 ```haskell
 main :: IO ()
 main = do
-  putStrLn "Input value"
-  v &lt;- input
-  putStrLn ("You entered" ++ show v)
+  putStrLn "Hello world"
+  putStrLn "Almost there"
 ```
 
-- Special `do` syntax
-- Indentation aware (like Python)
-- (Curly brackets and semicolon are available, too.)
+---
 
+## What can we *do*?
+
+```haskell
+main :: IO ()
+main = do
+  putStrLn "Hello world"
+  putStrLn "Almost there"
+```
+
+```
+> main
+"Hello world"
+"Almost there"
+```
 
 
 

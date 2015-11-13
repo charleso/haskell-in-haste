@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Haskell in Haste - Intro</title>
+    <title>Haskell in Haste - Extras</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       /* latin-ext */
@@ -206,44 +206,97 @@ class: center, middle
 template: image
 layout: false
 
-# Introduction
+# Extras
+
+
+
+
+
+
+
+
+
+
 
 ---
-layout: false
+template: inverse
 
-## Goals
-
-- Teaching the basics of Haskell
-- Start coding
-
----
-
-## What is Haskell?
-
-- Strongly and statically typed language
-- Purely functional programming language
-
----
-
-## Warning
-
-- This is _not_ about Functional Programming
-- Not enough time :(
-- Lots of good resources
-  - https://github.com/bfpg/cis194-yorgey-lectures
-  - https://github.com/NICTA/course
+## Lambda
 
 ---
 
-## Stack
+## Lambda
 
-- `GHC` is the Haskell compiler
-- `ghci` is the "GHC Interactive"
-  - REPL (Read Eval Print Loop)
-  - Similar to `python`, `ruby`, `node`
-- `stack`
-  - Downloads `ghc`
-  - Resolves package dependencies
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+```
+
+---
+
+## Lambda
+
+```haskell
+add :: Int -> Int -> Int
+add a b = a + b
+```
+
+### Javascript
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+```
+
+---
+
+## Lambda
+
+```haskell
+
+add = \a b -> a + b
+```
+
+---
+
+## Lambda
+
+```haskell
+
+add = \a b -> a + b
+
+> :t add
+Int -> Int -> Int
+```
+
+---
+
+## Lambda
+
+```haskell
+add :: Int -> Int -> Int
+add = \a b -> a + b
+```
+
+---
+
+## Lambda
+
+```haskell
+add :: Int -> Int -> Int
+add = \a b -> a + b
+```
+
+### Javascript
+
+```javascript
+val add = function(a, b) {
+  return a + b;
+}
+```
+
+
 
 
 

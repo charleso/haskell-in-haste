@@ -405,82 +405,188 @@ public void add(int a, int b) {
 
 template: inverse
 
-## Lambda
+## Let Binding
 
 ---
 
-## Lambda
+##  Duplicate code
 
 ```haskell
-add :: Int -> Int -> Int
-add a b = a + b
+add (add 1 2) (add 1 2)
 ```
 
 ---
 
-## Lambda
+## Let
 
 ```haskell
-add :: Int -> Int -> Int
-add a b = a + b
+add (add 1 2) (add 1 2)
+
+let three = add 1 2
+in add three three
+```
+
+---
+
+## Let
+
+```haskell
+add (add 1 2) (add 1 2)
+
+let three = add 1 2
+in add three three
 ```
 
 ### Javascript
 
-```javascript
-function add(a, b) {
-  return a + b;
-}
+```js
+var three = add(1, 2);
+add(three, three)
 ```
 
 ---
 
-## Lambda
+## Let arguments
 
 ```haskell
-
-add = \a b -> a + b
+let
+    plus3 x = add 3 x
+in add (plus3 4) (plus3 5)
 ```
 
 ---
 
-## Lambda
+## Let arguments
 
 ```haskell
-
-add = \a b -> a + b
-
-> :t add
-Int -> Int -> Int
-```
-
----
-
-## Lambda
-
-```haskell
-add :: Int -> Int -> Int
-add = \a b -> a + b
-```
-
----
-
-## Lambda
-
-```haskell
-add :: Int -> Int -> Int
-add = \a b -> a + b
+let
+    plus3 x = add 3 x
+in add (plus3 4) (plus3 5)
 ```
 
 ### Javascript
 
-```javascript
-val add = function(a, b) {
-  return a + b;
+```js
+var plus3 = function(x) {
+  return add(3, x);
 }
+add(plus3(4), plus3(5));
 ```
 
+---
 
+## Let arguments + types
+
+```haskell
+let plus3 :: ???
+    plus3 x = add 3 x
+in add (plus3 4) (plus3 5)
+```
+
+---
+
+## Let arguments + types
+
+```haskell
+let plus3 :: Int -> Int
+    plus3 x = add 3 x
+in add (plus3 4) (plus3 5)
+```
+
+---
+
+## Let multiple
+
+```haskell
+let three = add 1 2
+    six = add three three
+in add three six
+```
+
+---
+
+## Let multiple
+
+```haskell
+let three = add 1 2
+    six = add three three
+    nine = add six three
+    ...
+in add three six
+```
+
+---
+
+## Let multiple
+
+```haskell
+let three = add 1 2
+    six = add three three
+in add three six
+```
+
+---
+
+## Let binding - indentation
+
+```haskell
+let three = add 1 2
+  six = add three three
+in add three six
+```
+
+<pre class="error" style="font-size: 26px">
+Example.hs:26:3:
+  parse error in let binding: missing required 'in'
+</pre>
+
+---
+
+## Let binding - indentation
+
+```haskell
+let three = add 1 2
+     six = add three three
+in add three six
+```
+
+<pre class="error" style="font-size: 26px">
+Example.hs:26:3:
+  parse error in let binding: missing required 'in'
+</pre>
+
+---
+
+## Let binding - just right
+
+```haskell
+let three = add 1 2
+    six = add three three
+in add three six
+```
+
+---
+
+## Let binding - rule
+
+```haskell
+let three = add 1 2
+    six = add three three
+in add three six
+```
+
+- One space after the `t`
+
+---
+
+## GHCi
+
+```
+> let add a b = a + b
+```
+
+- You need to use `let` in GHCi
+- No `in`
 
 
 
@@ -1308,10 +1414,32 @@ function contains(v, list) {
 
 ---
 
+template: inverse
+
+## Higher Order Functions
+
+---
+
 ## Higher Order Function
 
 ```haskell
-map (\x -> x + 3) [1, 2, 3]
+
+
+let
+    add3 x = x + 3
+in map add3 [1, 2, 3]
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+
+
+let
+    add3 x = x + 3
+in map add3 [1, 2, 3]
 
 > [4,5,6]
 ```
@@ -1321,7 +1449,11 @@ map (\x -> x + 3) [1, 2, 3]
 ## Higher Order Function
 
 ```haskell
-map (\x -> x + 3) [1, 2, 3]
+
+
+let
+    add3 x = x + 3
+in map add3 [1, 2, 3]
 
 > [4,5,6]
 ```
@@ -1349,7 +1481,22 @@ map :: (Int -> Int) -> [Int] -> [Int]
 ```haskell
 map :: (Int -> Int) -> [Int] -> [Int]
 
-> map (\x -> x + 1) [1, 2, 3]
+let add3 :: ???
+    add3 x = x + 3 
+in map add3 [1, 2, 3]
+[4,5,6]
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+map :: (Int -> Int) -> [Int] -> [Int]
+
+let add3 :: Int -> Int
+    add3 x = x + 3 
+in map add3 [1, 2, 3]
 [4,5,6]
 ```
 

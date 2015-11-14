@@ -24,7 +24,7 @@ guessMe s g =
 -- Just print something nice for the user
 guessRender :: GuessResult -> String
 guessRender result =
-  notImplemented "Guess.guessRender" (guessRender result)
+  notImplemented "Guess.guessRender" (guessRenderAnswer result)
 
 
 -- See Misc/Guess.hs

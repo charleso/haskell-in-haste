@@ -218,12 +218,18 @@ layout: false
 
 ---
 
-## Type hole
+## Hoogle - Example
+
+- Find a function that drops an element from a list
+
+---
+
+## Hoogle - Example
+
+- Find a function that drops an element from a list
 
 ```haskell
-foo :: Maybe Int -> Int
-foo m =
-  _ m
+[Int] -> [Int]
 ```
 
 ---
@@ -231,22 +237,10 @@ foo m =
 ## Type hole
 
 ```haskell
-foo :: Maybe Int -> Int
-foo m =
-  _ m
-```
-
-```
-/Foo.hs:25:9:
-Found hole ‘_’ with type: Maybe Int -> Int
-Relevant bindings include
-  m :: Maybe Int
-    (bound at /Foo.hs:24:5)
-  foo :: Maybe Int -> Int
-    (bound at /Foo.hs:24:1)
-In the expression: _
-In the expression: _ m
-In an equation for ‘foo’: foo m = _ m
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> ...
+  h : v -> ...
 ```
 
 ---
@@ -254,22 +248,16 @@ In an equation for ‘foo’: foo m = _ m
 ## Type hole
 
 ```haskell
-foo :: Maybe Int -> Int
-foo m =
-  maybe _a _b m
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> _a
+  h : v -> _b i h
 ```
 
 ```
-/Foo.hs:25:9:
-Found hole ‘_a’ with type: Int
-Relevant bindings include
-  m :: Maybe Int
-    (bound at /Foo.hs:24:5)
-  foo :: Maybe Int -> Int
-    (bound at /Foo.hs:24:1)
-In the first argument of ‘maybe’, namely ‘_a’
-In the expression: maybe _a _b m
-In an equation for ‘foo’: foo m = maybe _a _b m
+src/Example.hs:25:9:
+Found hole ‘_a’ with type: Bool
+...
 ```
 
 ---
@@ -277,22 +265,16 @@ In an equation for ‘foo’: foo m = maybe _a _b m
 ## Type hole
 
 ```haskell
-foo :: Maybe Int -> Int
-foo m =
-  maybe 0 _b m
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> False
+  h : v -> _b i h
 ```
 
 ```
-/Foo.hs:25:12:
-Found hole ‘_b’ with type: Int -> Int
-Relevant bindings include
-  m :: Maybe Int
-    (bound at /Foo.hs:24:5)
-  foo :: Maybe Int -> Int
-    (bound at /Foo.hs:24:1)
-In the second argument of ‘maybe’, namely ‘_b’
-In the expression: maybe _a _b m
-In an equation for ‘foo’: foo m = maybe _a _b m
+src/Example.hs:25:9:
+Found hole ‘_b’ with type: Int -> Int -> Bool
+...
 ```
 
 

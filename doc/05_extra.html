@@ -306,6 +306,95 @@ val add = function(a, b) {
 
 
 
+
+---
+
+template: inverse
+
+## Higher Order Functions
+
+---
+
+## Higher Order Function
+
+```haskell
+
+
+let
+    add3 x = x + 3
+in map add3 [1, 2, 3]
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+
+
+let
+    add3 x = x + 3
+in map add3 [1, 2, 3]
+
+> [4,5,6]
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+
+
+let
+    add3 x = x + 3
+in map add3 [1, 2, 3]
+```
+
+### Javascript
+
+```js
+var add3 = function(x) {
+  return x + 3;
+};
+[1, 2, 3].map(add3);
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+map :: (Int -> Int) -> [Int] -> [Int]
+
+let
+    add3 x = x + 3 
+in map add3 [1, 2, 3]
+```
+
+---
+
+## Higher Order Function
+
+```haskell
+map :: (Int -> Int) -> [Int] -> [Int]
+
+let add3 :: Int -> Int
+    add3 x = x + 3 
+in map add3 [1, 2, 3]
+```
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 template: inverse

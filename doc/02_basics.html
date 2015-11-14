@@ -323,6 +323,14 @@ Couldn't match expected type ‘Int’
 add     =
 ```
 
+### Javascript
+
+```js
+function add() {
+
+}
+```
+
 ---
 
 ## Writing a function
@@ -331,12 +339,12 @@ add     =
 add a b =
 ```
 
----
+### Javascript
 
-## Writing a function
+```js
+function add(a, b) {
 
-```haskell
-add a b = a + b
+}
 ```
 
 ---
@@ -357,6 +365,44 @@ function add(a, b) {
 
 ---
 
+## GHCi functions
+
+```haskell
+>     add a b = a + b
+```
+
+---
+
+## GHCi functions
+
+```haskell
+>     add a b = a + b
+```
+
+<pre class="error">
+&lt; interactive&gt;:3:9: parse error on input ‘=’
+</pre>
+
+---
+
+## GHCi functions
+
+```haskell
+> let add a b = a + b
+```
+
+---
+
+## GHCi functions
+
+```haskell
+> let add a b = a + b
+> add 1 2
+3
+```
+
+---
+
 ## Type Inference
 
 ```haskell
@@ -384,27 +430,20 @@ add :: Int -> Int -> Int
 
 ## Reading a function type signature
 
-```haskell
-add :: Int -> Int -> Int
-add a b = a + b
-```
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">add</span> :: <span style="color: blue;">Int</span> -&gt; <span style="color: green;">Int</span> -&gt; <span style="color: orange;">Int</span></div><div class="remark-code-line"><span class="hljs-title">add</span> <span style="color: blue">a</span> <span style="color: green">b</span> = <span style="color: orange">a + b</span></div>
+</code></pre>
 
 ---
 
 ## Reading a function type signature
 
-```haskell
-add :: Int -> Int -> Int
-add a b = a + b
-```
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">add</span> :: <span style="color: blue;">Int</span> -&gt; <span style="color: green;">Int</span> -&gt; <span style="color: orange;">Int</span></div><div class="remark-code-line"><span class="hljs-title">add</span> <span style="color: blue">a</span> <span style="color: green">b</span> = <span style="color: orange">a + b</span></div>
+</code></pre>
 
 ### Java
 
-```java
-public void add(int a, int b) {
-  return a + b;
-}
-```
+<pre><code class="java hljs scala remark-code"><div class="remark-code-line">public <span style="color: orange">int</span> add(<span style="color: blue">int a</span>, <span style="color: green">int b</span>) {</div><div class="remark-code-line">  <span class="hljs-keyword">return</span> a + b;</div><div class="remark-code-line">}</div>
+</code></pre>
 
 
 
@@ -427,7 +466,7 @@ template: inverse
 ##  Duplicate code
 
 ```haskell
-add (add 1 2) (add 1 2)
+exp = add (add 1 2) (add 1 2)
 ```
 
 ---
@@ -435,10 +474,11 @@ add (add 1 2) (add 1 2)
 ## Let
 
 ```haskell
-add (add 1 2) (add 1 2)
+exp = add (add 1 2) (add 1 2)
 
-let three = add 1 2
-in add three three
+exp =
+  let .... = ...
+  in ...
 ```
 
 ---
@@ -446,46 +486,63 @@ in add three three
 ## Let
 
 ```haskell
-add (add 1 2) (add 1 2)
+exp = add (add 1 2) (add 1 2)
 
-let three = add 1 2
-in add three three
+exp =
+  let three = add 1 2
+  in add three three
+```
+
+---
+
+## Let
+
+```haskell
+exp = add (add 1 2) (add 1 2)
+
+exp =
+  let three = add 1 2
+  in add three three
 ```
 
 ### Javascript
 
 ```js
-var three = add(1, 2);
-add(three, three);
-```
-
----
-
-## Let arguments
-
-```haskell
-let
-    plus3 x = add 3 x
-in add (plus3 4) (plus3 5)
-```
-
----
-
-## Let arguments
-
-```haskell
-let
-    plus3 x = add 3 x
-in add (plus3 4) (plus3 5)
-```
-
-### Javascript
-
-```js
-var plus3 = function(x) {
-  return add(3, x);
+function exp() {
+  var three = add(1, 2);
+  return add(three, three);
 }
-add(plus3(4), plus3(5));
+```
+
+---
+
+## Let arguments
+
+```haskell
+exp =
+  let add3 x = add 3 x
+  in add (add3 4) (add3 5)
+```
+
+---
+
+## Let arguments
+
+```haskell
+exp =
+  let add3 x = add 3 x
+  in add (add3 4) (add3 5)
+```
+
+### Javascript
+
+```js
+function exp() {
+  var add3 = function(x) {
+    return add(3, x);
+  }
+  return add(add3(4), add3(5));
+}
 ```
 
 ---
@@ -493,9 +550,10 @@ add(plus3(4), plus3(5));
 ## Let arguments + types
 
 ```haskell
-let plus3 :: ???
-    plus3 x = add 3 x
-in add (plus3 4) (plus3 5)
+exp =
+  let add3 :: ???
+      add3 x = add 3 x
+  in add (add3 4) (add3 5)
 ```
 
 ---
@@ -503,9 +561,10 @@ in add (plus3 4) (plus3 5)
 ## Let arguments + types
 
 ```haskell
-let plus3 :: Int -> Int
-    plus3 x = add 3 x
-in add (plus3 4) (plus3 5)
+exp =
+  let add3 :: Int -> Int
+      add3 x = add 3 x
+  in add (add3 4) (add3 5)
 ```
 
 ---
@@ -513,9 +572,10 @@ in add (plus3 4) (plus3 5)
 ## Let multiple
 
 ```haskell
-let three = add 1 2
-    six = add three three
-in add three six
+exp =
+  let three = add 1 2
+      six = add three three
+  in add three six
 ```
 
 ---
@@ -523,11 +583,12 @@ in add three six
 ## Let multiple
 
 ```haskell
-let three = add 1 2
-    six = add three three
-    nine = add six three
-    ...
-in add three six
+exp =
+  let three = add 1 2
+      six = add three three
+      nine = add six three
+      ...
+  in add three six
 ```
 
 ---
@@ -535,9 +596,10 @@ in add three six
 ## Let multiple
 
 ```haskell
-let three = add 1 2
-    six = add three three
-in add three six
+exp =
+  let three = add 1 2
+      six = add three three
+  in add three six
 ```
 
 ---
@@ -545,9 +607,21 @@ in add three six
 ## Let binding - indentation
 
 ```haskell
-let three = add 1 2
-  six = add three three
-in add three six
+exp =
+  let three = add 1 2
+    six = add three three
+  in add three six
+```
+
+---
+
+## Let binding - indentation
+
+```haskell
+exp =
+  let three = add 1 2
+    six = add three three
+  in add three six
 ```
 
 <pre class="error" style="font-size: 26px">
@@ -560,9 +634,10 @@ Example.hs:26:3:
 ## Let binding - indentation
 
 ```haskell
-let three = add 1 2
-     six = add three three
-in add three six
+exp =
+  let three = add 1 2
+       six = add three three
+  in add three six
 ```
 
 <pre class="error" style="font-size: 26px">
@@ -575,33 +650,23 @@ Example.hs:26:3:
 ## Let binding - just right
 
 ```haskell
-let three = add 1 2
-    six = add three three
-in add three six
+exp =
+  let three = add 1 2
+      six = add three three
+  in add three six
 ```
 
 ---
 
-## Let binding - rule
+## Let binding - two spaces
 
 ```haskell
-let three = add 1 2
-    six = add three three
-in add three six
+exp =
+  let  three = add 1 2
+       six = add three three
+  in add three six
 ```
 
-- One space after the `t`
-
----
-
-## GHCi
-
-```
-> let add a b = a + b
-```
-
-- You need to use `let` in GHCi
-- No `in`
 
 
 
@@ -641,6 +706,29 @@ data Fruit = Apple | Banana | Tomato
 ```
 
 - Similar to an "enum"
+- Can _only_ be these values
+  - Can't be `Orange`
+  - Can't be "extended" by someone else
+
+---
+
+## Data types
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+```
+
+- Fruit is the "type"
+- Apple/Banana/Tomato are "constructors"
+
+---
+
+## Data types
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+```
+
 - _Must_ start with Upper Case
 
 ---
@@ -696,7 +784,37 @@ data Fruit = Apple | Banana | Tomato
 
 ## Pattern Matching
 
+
 ```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitRender :: Fruit -> String
+fruitRender fruit =
+  ...
+```
+
+---
+
+## Pattern Matching
+
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Apple -> ...
+  Banana -> ...
+  Tomato -> ...
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
 fruitRender :: Fruit -> String
 fruitRender fruit = case fruit of
   Apple -> "apple"
@@ -709,6 +827,8 @@ fruitRender fruit = case fruit of
 ## Pattern Matching
 
 ```haskell
+data Fruit = Apple | Banana | Tomato
+
 fruitRender :: Fruit -> String
 fruitRender fruit = case fruit of
   Apple -> "apple"
@@ -723,11 +843,14 @@ fruitRender Banana = "banana"
 fruitRender Tomato = "tomato"
 ```
 
+
 ---
 
 ## Exhaustive Pattern Matching
 
 ```haskell
+data Fruit = Apple | Banana | Tomato
+
 fruitRender :: Fruit -> String
 fruitRender fruit = case fruit of
   Banana -> "banana"
@@ -739,6 +862,8 @@ fruitRender fruit = case fruit of
 ## Exhaustive Pattern Matching
 
 ```haskell
+data Fruit = Apple | Banana | Tomato
+
 fruitRender :: Fruit -> String
 fruitRender fruit = case fruit of
   Banana -> "banana"
@@ -752,6 +877,48 @@ Fruit.hs:5:1: Warning:
     Patterns not matched: Apple
 </pre>
 
+---
+
+## Pattern Matching
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+data Vege = Carrot | Potato
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+data Vege = Carrot | Potato
+
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Banana -> "banana"
+  Tomato -> "tomato"
+  Carrot -> "carrot"
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+data Vege = Carrot | Potato
+
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Banana -> "banana"
+  Tomato -> "tomato"
+  Carrot -> "carrot"
+```
+
+<pre class="error" style="font-size: 24px;">
+Couldn't match expected type ‘Fruit’ with actual type ‘Vege’
+</pre>
 
 ---
 
@@ -888,8 +1055,8 @@ not bool =
 
 ```haskell
 not :: Bool -> Bool
-not b =
-  if b
+not bool =
+  if bool
     then False
     else True
 ```
@@ -929,9 +1096,22 @@ data Eat = Yum Fruit | Yuck Fruit String
 ## Data Types ++
 
 ```haskell
+data Eat = Yum       | Yuck
+```
+
+- `Eat` is the "type"
+- `Yum`/`Fruit` are the "constructors"
+
+---
+
+## Data Types ++
+
+```haskell
 data Eat = Yum Fruit | Yuck Fruit String
 ```
 
+- `Eat` is the "type"
+- `Yum`/`Fruit` are the "constructors"
 - Data constructors can contain values
 
 ---
@@ -999,19 +1179,34 @@ data Eat = Yum Fruit | Yuck Fruit String
 ```
 
 ```haskell
-> :t Yum Apple
-Eat
+> let eat1 = Yum Apple
 
-> :t Yuck Tomato "Not a fruit"
-Eat
+> let eat2 = Yuck Tomato "Not a fruit"
+
+> :t eat1
+eat1 :: Eat
+```
+
+---
+
+## Constructors are just functions
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
+
+```haskell
+> let eat1 = Yum Apple
+
+> let eat2 = Yuck Tomato "Not a fruit"
 ```
 
 ### Java
 
 ```java
-Eat eat = new Yum(Apple)
+Eat eat1 = new Yum(Apple)
 
-Eat eat = new Yuck(Tomato, "Not a fruit")
+Eat eat1 = new Yuck(Tomato, "Not a fruit")
 ```
 
 ---
@@ -1019,6 +1214,22 @@ Eat eat = new Yuck(Tomato, "Not a fruit")
 ## Example
 
 ```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
+eat :: Fruit -> Eat
+eat fruit = case fruit of
+  Apple -> ...
+  Banana -> ...
+  Tomato -> ...
+```
+
+---
+
+## Example
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
 eat :: Fruit -> Eat
 eat fruit = case fruit of
   Apple -> Yum Apple
@@ -1031,6 +1242,50 @@ eat fruit = case fruit of
 ## Pattern Matching
 
 ```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
+eatRender :: Eat -> String
+eatRender e = case e of
+  ...
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
+eatRender :: Eat -> String
+eatRender e = case e of
+  Yum f ->
+    ...
+  Yuck f m ->
+    ...
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
+eatRender :: Eat -> String
+eatRender e = case e of
+  Yum f ->
+    "I ate " ++ fruitRender f
+  Yuck f m ->
+    ...
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
 eatRender :: Eat -> String
 eatRender e = case e of
   Yum f ->
@@ -1045,6 +1300,29 @@ eatRender e = case e of
 ## Pattern Matching
 
 ```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
+eatRender :: Eat -> String
+eatRender e = case e of
+  Yum f ->
+    "I ate " ++ fruitRender f
+  Yuck f m ->
+    "I refuse to eat " ++ fruitRender f ++
+      " because " ++ m
+```
+
+<pre>
+> eatRender (eat Apple)
+I ate apple
+</pre>
+
+---
+
+## Pattern Matching
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+
 eatRender :: Eat -> String
 eatRender e = case e of
   Yum f ->
@@ -1068,7 +1346,7 @@ I refuse to eat tomato because It's not a real fruit
 ## Immutable data
 
 ```haskell
-data Count = Count Int deriving Show
+data Count = CountValue Int deriving Show
 ```
 
 ---
@@ -1076,13 +1354,10 @@ data Count = Count Int deriving Show
 ## Immutable data
 
 ```haskell
-data Count = Count Int deriving Show
+data Count = CountValue Int deriving Show
 
-plusOne :: Count -> Count
-plusOne (Count c) = Count (c + 1)
-
-> plusOne (Count 1)
-Count 2
+zero :: Count
+zero = CountValue 0
 ```
 
 ---
@@ -1090,19 +1365,83 @@ Count 2
 ## Immutable data
 
 ```haskell
-data Count = Count Int deriving Show
+data Count = CountValue Int deriving Show
 
-plusOne :: Count -> Count
-plusOne (Count c) = Count (c + 1)
+zero :: Count
+zero = CountValue 0
 
-> plusOne (Count 1)
-Count 2
+increment :: Count -> Count
+increment c = ...
+```
+
+---
+
+## Immutable data
+
+```haskell
+data Count = CountValue Int deriving Show
+
+zero :: Count
+zero = CountValue 0
+
+increment :: Count -> Count
+increment (CountValue c) = CountValue (c + 1)
+```
+
+---
+
+## Immutable data
+
+```haskell
+data Count = CountValue Int deriving Show
+
+zero :: Count
+zero = CountValue 0
+
+increment :: Count -> Count
+increment (CountValue c) = CountValue (c + 1)
+
+> increment zero
+CountValue 1
+```
+
+---
+
+## Immutable data
+
+```haskell
+data Count = CountValue Int deriving Show
+
+zero :: Count
+zero = CountValue 0
+
+increment :: Count -> Count
+increment (CountValue c) = CountValue (c + 1)
+
+> increment zero
+CountValue 1
+> zero
+CountValue 0
+```
+
+---
+
+## Immutable data
+
+```haskell
+data Count = CountValue Int deriving Show
+
+zero :: Count
+zero = CountValue 0
+
+increment :: Count -> Count
+increment (CountValue c) = CountValue (c + 1)
 ```
 
 - Create a _new_ `Count`
 - _No_ (easy) way to mutate
-- And needs something "special"
-- Let's not talk about it...
+
+
 
 
 
@@ -1199,7 +1538,7 @@ abc = ['a', 'b', 'c']
 
 ---
 
-## Stings are [Char]
+## Strings are [Char]
 
 ```haskell
 abc :: String
@@ -1221,7 +1560,7 @@ abc = "abc"
 
 ```haskell
 
-list =                 []
+list = []
 ```
 
 ---
@@ -1230,7 +1569,7 @@ list =                 []
 
 ```haskell
 list :: [Int]
-list =                 []
+list = []
 ```
 
 ---
@@ -1239,7 +1578,7 @@ list =                 []
 
 ```haskell
 list :: [Int]
-list = 1             : []
+list = [1]
 ```
 
 ---
@@ -1248,7 +1587,16 @@ list = 1             : []
 
 ```haskell
 list :: [Int]
-list = 1             : []
+list = 1 : []
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1 : []
 
 > list
 [1]
@@ -1260,7 +1608,19 @@ list = 1             : []
 
 ```haskell
 list :: [Int]
-list = 1 : 2 : 3 : 4 : []
+list = 1 : []
+```
+
+- '`:`' is pronouced "cons"
+- You might hear the term "cons list"
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1 : [2]
 ```
 
 ---
@@ -1269,10 +1629,64 @@ list = 1 : 2 : 3 : 4 : []
 
 ```haskell
 list :: [Int]
-list = 1 : 2 : 3 : 4 : []
+list = 1 : [2]
 
 > list
-[1,2,3,4]
+[1, 2]
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = 1 : 2 : []
+
+> list
+[1, 2]
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = [1, 2] : [3, 4]
+```
+
+---
+
+## Lists
+
+```haskell
+list :: [Int]
+list = [1, 2] : [3, 4]
+```
+
+<pre class="error" style="font-size: 22px;">
+Couldn't match expected type ‘Char’ with actual type ‘[Char]’
+</pre>
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = ...
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  ...
 ```
 
 ---
@@ -1295,8 +1709,74 @@ drop1 :: [Int] -> [Int]
 drop1 l = case l of
   [] -> []
   a : b -> b
+``` 
 
-> drop1 (1 : 2 : 3 : [])
+```haskell
+> drop1 []
+[]
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```haskell
+> drop1 [1]
+[]
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```haskell
+> drop1 (1 : [])
+[]
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```haskell
+> drop1 (1 : [2])
+[2]
+```
+
+---
+
+## Pattern matching
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```haskell
+> drop1 (1 : [2, 3])
 [2,3]
 ```
 
@@ -1309,7 +1789,9 @@ drop1 :: [Int] -> [Int]
 drop1 l = case l of
   [] -> []
   a : b -> b
+```
 
+```haskell
 > drop1 [1,  2,  3]
 [2,3]
 ```
@@ -1320,6 +1802,9 @@ drop1 l = case l of
 
 ```haskell
 startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> ...
+  h : v -> ...
 ```
 
 ---
@@ -1328,9 +1813,74 @@ startsWith :: Int -> [Int] -> Bool
 
 ```haskell
 startsWith :: Int -> [Int] -> Bool
-startsWith i [] = False
-startsWith i (h : v) = i == h
+startsWith i l = case l of
+  [] -> False
+  h : v -> ...
 ```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> False
+  h : v -> i == h
+```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> False
+  h : v -> i == h
+```
+
+```haskell
+> startsWith 1 []
+False
+```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> False
+  h : v -> i == h
+```
+
+```haskell
+> startsWith 1 [1]
+True
+```
+
+---
+
+## Pattern matching
+
+```haskell
+startsWith :: Int -> [Int] -> Bool
+startsWith i l = case l of
+  [] -> False
+  h : v -> i == h
+```
+
+```haskell
+> startsWith 1 (1: [])
+True
+```
+
+---
+
+template: question
+## What about loops yo?
 
 ---
 
@@ -1346,10 +1896,6 @@ contains :: Int -> [Int] -> Bool
 
 ```haskell
 contains :: Int -> [Int] -> Bool
-
-
-
-                                                                                                                        x
 ```
 
 
@@ -1371,22 +1917,21 @@ function contains(v, list) {
 
 ```haskell
 contains :: Int -> [Int] -> Bool
-contains v [] =
-  False
-
-                                                                                                                        x
+contains v l = case l of
+  [] -> ...
+  h : t -> ...
 ```
 
-### Javascript
 
-```js
-function contains(v, list) {
-  var found = false;
-  for (var i = 0; !found &amp;&amp; i &lt; list.length; i++) {
-    found = list[i] === v
-  }
-  return found;
-}
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v l = case l of
+  [] -> False
+  h : t -> ...
 ```
 
 ---
@@ -1395,22 +1940,90 @@ function contains(v, list) {
 
 ```haskell
 contains :: Int -> [Int] -> Bool
-contains v [] =
-  False
-contains v (h : t) =
-  if v == h then True else contains v t
+contains v l = case l of
+  [] -> False
+  h : t ->
+    if v == h then True else ...
 ```
 
-### Javascript
+---
 
-```js
-function contains(v, list) {
-  var found = false;
-  for (var i = 0; !found &amp;&amp; i &lt; list.length; i++) {
-    found = list[i] === v
-  }
-  return found;
-}
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v l = case l of
+  [] -> False
+  h : t ->
+    if v == h then True else contains v t
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v l = case l of
+  [] -> False
+  h : t ->
+    if v == h then True else contains v t
+```
+
+```haskell
+> contains 1 []
+False
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v l = case l of
+  [] -> False
+  h : t ->
+    if v == h then True else contains v t
+```
+
+```haskell
+> contains 1 [2]
+False
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v l = case l of
+  [] -> False
+  h : t ->
+    if v == h then True else contains v t
+```
+
+```haskell
+> contains 1 [2, 1]
+True
+```
+
+---
+
+## Recursion
+
+```haskell
+contains :: Int -> [Int] -> Bool
+contains v l = case l of
+  [] -> False
+  h : t ->
+    if v == h then True else contains v t
+```
+
+```haskell
+> contains 1 (2 : 1 : [])
+True
 ```
 
 
@@ -1430,78 +2043,75 @@ function contains(v, list) {
 ---
 
 template: inverse
-
-## Higher Order Functions
+## Modules
 
 ---
 
-## Higher Order Function
+## Modules - src/Chat/Test.hs
 
 ```haskell
+module Chat.Test where
 
-
-let
-    add3 x = x + 3
-in map add3 [1, 2, 3]
+...
 ```
 
 ---
 
-## Higher Order Function
+## Modules - src/Chat/Foo/Bar.hs
 
 ```haskell
+module Chat.Foo.Bar where
 
-
-let
-    add3 x = x + 3
-in map add3 [1, 2, 3]
-
-> [4,5,6]
+...
 ```
 
 ---
 
-## Higher Order Function
+## Modules - src/Chat/Foo.hs
 
 ```haskell
+module Chat.Bar where
 
-
-let
-    add3 x = x + 3
-in map add3 [1, 2, 3]
-```
-
-### Javascript
-
-```js
-var add3 = function(x) {
-  return x + 3;
-};
-[1, 2, 3].map(add3);
+...
 ```
 
 ---
 
-## Higher Order Function
+## Modules - src/Chat/Foo.hs
 
 ```haskell
-map :: (Int -> Int) -> [Int] -> [Int]
+module Chat.Bar where
 
-let
-    add3 x = x + 3 
-in map add3 [1, 2, 3]
+...
 ```
+
+<pre class="error">
+./src/Chat/Foo.hs:1:8:
+    File name does not match module name:
+    Saw: ‘Chat.Bar’
+    Expected: ‘Chat.Foo’
+</pre>
+
+
+
+
+
+
 
 ---
 
-## Higher Order Function
+template: inverse
+## Imports
+
+---
+
+## Imports
 
 ```haskell
-map :: (Int -> Int) -> [Int] -> [Int]
+module Chat.Foo where
 
-let add3 :: Int -> Int
-    add3 x = x + 3 
-in map add3 [1, 2, 3]
+import           Char.Bar
+
 ```
 
 

@@ -225,6 +225,18 @@ layout: false
 
 ---
 
+## Why Haskell?
+
+- Different way of thinking
+  - Helps with other languages
+- No mutation
+  - Easier to reason about
+- Safe code
+  - Less bugs
+- Fun!
+
+---
+
 ## Warning
 
 - This is _not_ about Functional Programming
@@ -244,6 +256,30 @@ layout: false
 - `stack`
   - Downloads `ghc`
   - Resolves package dependencies
+
+---
+
+## Getting started
+
+```
+> stack ghci
+Configuring GHCi with the following packages: haskell-in-haste
+GHCi, version 7.10.2: http://www.haskell.org/ghc/  :? for help
+...
+λ>
+```
+
+---
+
+## Loading a file
+
+```
+> :l src/Example.hs
+[1 of 1] Compiling Example ( src/Example.hs, interpreted )
+Ok, modules loaded: Example.
+>
+```
+
 
 
 

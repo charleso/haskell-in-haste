@@ -223,6 +223,7 @@ src/
   Chat/
     Bot/
       Answer/
+        Guess.hs
       Misc/
       Run/
       ...
@@ -236,17 +237,11 @@ src/
 ## Bot
 
 ```haskell
-type Bot = String -> IO (Maybe String)
+myBot :: Bot
+myBot m = case m of
+  "Hi" -> Just "Hi"
+  _ -> Nothing
 ```
-
----
-
-## Bot pretend
-
-```haskell
-type Bot = String -> Maybe String
-```
-
 
 
     </textarea>

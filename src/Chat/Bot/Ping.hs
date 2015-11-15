@@ -14,9 +14,9 @@ import           Chat.Data
 -- | LEVEL: Example
 --
 -- >>> pingBot "/ping"
--- Just "pong"
+-- JustReply "pong"
 -- >>> pingBot "/pong"
--- Nothing
-pingBot :: String -> Maybe String
+-- NothingReply
+pingBot :: String -> MaybeReply
 pingBot message =
   notImplemented "pingBot" (pingBotAnswer message)

@@ -244,7 +244,9 @@ template: question
 ## Bot
 
 ```haskell
-pingBot :: String -> Maybe String
+data MaybeReply = JustReply String | NothingReply
+
+pingBot :: String -> MaybeReply
 pingBot m = ...
 ```
 
@@ -253,10 +255,12 @@ pingBot m = ...
 ## Bot
 
 ```haskell
-pingBot :: String -> Maybe String
+data MaybeReply = JustReply String | NothingReply
+
+pingBot :: String -> MaybeReply
 pingBot m = case m of
-  "/ping" -> Just "pong"
-  _ -> Nothing
+  "/ping" -> JustReply "pong"
+  _ -> NothingReply
 ```
 
 

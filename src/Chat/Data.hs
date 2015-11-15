@@ -3,6 +3,7 @@ module Chat.Data (
   , Room (..)
   , Message (..)
   , Bot
+  , MaybeReply (..)
   , message
   , noMessage
   , toBot
@@ -33,6 +34,8 @@ data Message =
 -- | A bot is just a function that might return a new message
 type Bot = String -> IO (Maybe String)
 
+data MaybeReply = JustReply String | NothingReply
+  deriving (Eq, Show)
 
 message :: String -> IO (Maybe String)
 message m = return (Just m)
@@ -40,9 +43,11 @@ message m = return (Just m)
 noMessage :: IO (Maybe String)
 noMessage = return Nothing
 
-toBot :: (String -> Maybe String) -> Bot
-toBot =
-  fmap return
+toBot :: (String -> MaybeReply) -> Bot
+toBot f message =
+  case f message of
+    JustReply r -> return (Just r)
+    NothingReply -> return Nothing
 
 notImplemented :: String -> a -> a
 notImplemented name answer =

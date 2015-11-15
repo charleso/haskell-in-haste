@@ -1,8 +1,10 @@
 module Chat.Bot.Answer.Ping where
 
+import           Chat.Data
 
-pingBotAnswer :: String -> Maybe String
+
+pingBotAnswer :: String -> MaybeReply
 pingBotAnswer message =
   case message of
-    "/ping" -> Just "pong"
-    _ -> Nothing
+    "/ping" -> JustReply "pong"
+    _ -> NothingReply

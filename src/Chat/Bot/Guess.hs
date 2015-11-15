@@ -22,11 +22,11 @@ import           Chat.Data
 --
 -- This requires implementing comparing two numbers and display a message depending on the result
 --
--- >>> guessMe 1 2
+-- >>> guess 1 2
 -- GuessLower
--- >>> guessMe 2 1
+-- >>> guess 2 1
 -- GuessHigher
--- >>> guessMe 2 2
+-- >>> guess 2 2
 -- GuessCorrect
 guess :: Int -> Int -> GuessResult
 guess secret number =

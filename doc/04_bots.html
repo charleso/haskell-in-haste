@@ -225,7 +225,9 @@ src/
       Answer/
         Guess.hs
       Misc/
+        Guess.hs
       Run/
+        Guess.hs
       ...
       Guess.hs
 
@@ -237,7 +239,7 @@ src/
 ## Bot
 
 ```haskell
-myBot :: Bot
+myBot :: String -> String
 myBot m = case m of
   "Hi" -> Just "Hi"
   _ -> Nothing

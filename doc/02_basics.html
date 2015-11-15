@@ -656,17 +656,6 @@ exp =
   in add three six
 ```
 
----
-
-## Let binding - two spaces
-
-```haskell
-exp =
-  let  three = add 1 2
-       six = add three three
-  in add three six
-```
-
 
 
 
@@ -877,6 +866,28 @@ Fruit.hs:5:1: Warning:
     Patterns not matched: Apple
 </pre>
 
+
+---
+
+## Exhaustive Pattern Matching
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitRender :: Fruit -> String
+fruitRender fruit = case fruit of
+  Banana -> "banana"
+  Tomato -> "tomato"
+```
+
+```haskell
+> fruitRender Apple
+```
+<pre class="error">
+"*** Exception: src/Example.hs:(9,21)-(11,20):
+  Non-exhaustive patterns in case
+</pre>
+
 ---
 
 ## Pattern Matching
@@ -1023,6 +1034,21 @@ data Bool = True | False
 
 ```haskell
 not :: Bool -> Bool
+not b = ...
+```
+
+---
+
+## Boolean
+
+```haskell
+data Bool = True | False
+```
+
+<br/>
+
+```haskell
+not :: Bool -> Bool
 not True = False
 not False = True
 ```
@@ -1088,19 +1114,19 @@ data Eat = Yum       | Yuck
 ## Data Types ++
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
-```
-
----
-
-## Data Types ++
-
-```haskell
 data Eat = Yum       | Yuck
 ```
 
 - `Eat` is the "type"
-- `Yum`/`Fruit` are the "constructors"
+- `Yum`/`Yuck` are the "constructors"
+
+---
+
+## Data Types ++
+
+```haskell
+data Eat = Yum Fruit | Yuck Fruit String
+```
 
 ---
 
@@ -1111,7 +1137,7 @@ data Eat = Yum Fruit | Yuck Fruit String
 ```
 
 - `Eat` is the "type"
-- `Yum`/`Fruit` are the "constructors"
+- `Yum`/`Yuck` are the "constructors"
 - Data constructors can contain values
 
 ---
@@ -1206,7 +1232,7 @@ data Eat = Yum Fruit | Yuck Fruit String
 ```java
 Eat eat1 = new Yum(Apple)
 
-Eat eat1 = new Yuck(Tomato, "Not a fruit")
+Eat eat2 = new Yuck(Tomato, "Not a fruit")
 ```
 
 ---
@@ -1335,7 +1361,7 @@ eatRender e = case e of
 <pre>
 > eatRender (eat Apple)
 I ate apple
-> eatRender (eat Banana)
+> eatRender (Yum Banana)
 I ate banana
 > eatRender (eat Tomato)
 I refuse to eat tomato because It's not a real fruit
@@ -1666,7 +1692,7 @@ list = [1, 2] : [3, 4]
 ```
 
 <pre class="error" style="font-size: 22px;">
-Couldn't match expected type ‘Char’ with actual type ‘[Char]’
+Couldn't match expected type ’Int’ with actual type ‘[Int]’
 </pre>
 
 ---
@@ -2094,25 +2120,6 @@ module Chat.Bar where
 
 
 
-
-
-
-
----
-
-template: inverse
-## Imports
-
----
-
-## Imports
-
-```haskell
-module Chat.Foo where
-
-import           Char.Bar
-
-```
 
 
 

@@ -2063,6 +2063,163 @@ True
 
 
 
+---
+
+template: inverse
+## Parametricity
+
+---
+
+## Remember this?
+
+```haskell
+drop1 :: [Int] -> [Int]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+---
+
+## Is this the same?
+
+```haskell
+drop1 :: [Char] -> [Char]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+---
+
+## No type
+
+```haskell
+
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+---
+
+## No type
+
+```haskell
+
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```
+> drop1 [1, 2, 3]
+[2,3]
+```
+
+---
+
+## No type
+
+```haskell
+
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```
+> drop1 [1, 2, 3]
+[2,3]
+```
+
+```
+> drop1 "abc"
+"bc"
+```
+
+---
+
+## What does haskell think?
+
+```haskell
+
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```
+> :t drop1
+```
+
+---
+
+## What does haskell think?
+
+```haskell
+
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+```
+> :t drop1
+drop1 :: [t] -> [t]
+```
+
+---
+
+## Parametric function
+
+```haskell
+drop1 :: [t] -> [t]
+drop1 l = case l of
+  [] -> []
+  a : b -> b
+```
+
+---
+
+## Parametric function
+
+```haskell
+drop1 :: [t] -> [t]
+drop1 l = ...
+
+
+```
+
+### Java
+
+```javascript
+public &lt;T&gt; List&lt;T&gt; drop1(List&lt;T&gt; l) {
+  ...
+}
+```
+
+---
+
+## Parametric function
+
+```haskell
+drop1 :: [t] -> [t]
+drop1 l = ...
+```
+
+- Lowercase means type variable
+  - Rember that uppercase is a "type"
+- Don't need to "introduce" it
+
+
+
+
+
+
+
+
+
 
 
 

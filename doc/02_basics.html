@@ -826,49 +826,6 @@ fruitRender fruit = case fruit of
 
 ---
 
-## Pattern Matching
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-data Vege = Carrot | Potato
-```
-
----
-
-## Pattern Matching
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-data Vege = Carrot | Potato
-
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
-  Banana -> "banana"
-  Tomato -> "tomato"
-  Carrot -> "carrot"
-```
-
----
-
-## Pattern Matching
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-data Vege = Carrot | Potato
-
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
-  Banana -> "banana"
-  Tomato -> "tomato"
-  Carrot -> "carrot"
-```
-
-<pre class="error" style="font-size: 24px;">
-Couldn't match expected type ‘Fruit’ with actual type ‘Vege’
-</pre>
-
----
-
 ## Deriving
 
 ```haskell

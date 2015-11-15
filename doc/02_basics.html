@@ -602,59 +602,6 @@ exp =
   in add three six
 ```
 
----
-
-## Let binding - indentation
-
-```haskell
-exp =
-  let three = add 1 2
-    six = add three three
-  in add three six
-```
-
----
-
-## Let binding - indentation
-
-```haskell
-exp =
-  let three = add 1 2
-    six = add three three
-  in add three six
-```
-
-<pre class="error" style="font-size: 26px">
-Example.hs:26:3:
-  parse error in let binding: missing required 'in'
-</pre>
-
----
-
-## Let binding - indentation
-
-```haskell
-exp =
-  let three = add 1 2
-       six = add three three
-  in add three six
-```
-
-<pre class="error" style="font-size: 26px">
-Example.hs:26:3:
-  parse error in let binding: missing required 'in'
-</pre>
-
----
-
-## Let binding - just right
-
-```haskell
-exp =
-  let three = add 1 2
-      six = add three three
-  in add three six
-```
 
 
 

@@ -5,6 +5,7 @@ module Chat.Data (
   , Bot
   , message
   , noMessage
+  , toBot
   , notImplemented
   ) where
 
@@ -39,6 +40,9 @@ message m = return (Just m)
 noMessage :: IO (Maybe String)
 noMessage = return Nothing
 
+toBot :: (String -> Maybe String) -> Bot
+toBot =
+  fmap return
 
 notImplemented :: String -> a -> a
 notImplemented name answer =

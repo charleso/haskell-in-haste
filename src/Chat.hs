@@ -1,5 +1,6 @@
 module Chat where
 
+import           Chat.Bot.Ping
 import           Chat.Bot.Run.Guess
 import           Chat.Bot.Run.Cipher
 import           Chat.Bot.Run.Calculator
@@ -17,5 +18,6 @@ start = do
     , return cipherBot
     , return wordCountBot
     , ticTacToeBot
+    , return (toBot pingBot)
     ]
   startChat bots

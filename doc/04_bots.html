@@ -216,7 +216,7 @@ layout: false
 
 ---
 
-## Layout
+## Repository Layout
 
 ```
 src/
@@ -236,12 +236,26 @@ src/
 
 ---
 
+template: question
+## Bot
+
+---
+
 ## Bot
 
 ```haskell
-myBot :: String -> String
-myBot m = case m of
-  "Hi" -> Just "Hi"
+pingBot :: String -> Maybe String
+pingBot m = ...
+```
+
+---
+
+## Bot
+
+```haskell
+pingBot :: String -> Maybe String
+pingBot m = case m of
+  "/ping" -> Just "pong"
   _ -> Nothing
 ```
 

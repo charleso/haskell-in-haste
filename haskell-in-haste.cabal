@@ -43,6 +43,9 @@ library
                      , Chat.Bot.Misc.Guess
                      , Chat.Bot.Run.Guess
 
+                     , Chat.Bot.Ping
+                     , Chat.Bot.Answer.Ping
+
                      , Chat.Bot.TicTacToe
                      , Chat.Bot.Answer.TicTacToe
                      , Chat.Bot.Misc.TicTacToe

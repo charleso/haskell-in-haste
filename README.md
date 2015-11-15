@@ -59,6 +59,7 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 ### Easy
 
 - [Guessing game](src/Chat/Bot/Guess.hs)
+- [Calculator](src/Chat/Bot/Calculator.hs)
 
 ### Medium
 
@@ -69,7 +70,6 @@ Once you feel comfortable, or perhaps you're getting bored, try moving to the ne
 ### Hard
 
 - [TicTacToe](src/Chat/Bot/TicTacToe.hs)
-- [Calculator](src/Chat/Bot/Calculator.hs)
 
 ## Answers
 

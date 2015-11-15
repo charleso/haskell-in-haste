@@ -7,10 +7,8 @@ import           Chat.Data
 import           Data.List (stripPrefix)
 
 
-calculatorBot :: Bot
-calculatorBot m =
-  case stripPrefix "/calculator " m of
-    Nothing -> noMessage
-    Just m' -> message
-      . either id show
-      $ calculateParse m'
+calculatorBot :: String -> Maybe String
+calculatorBot message =
+  case stripPrefix "/calculator " message of
+    Nothing -> Nothing
+    Just string -> Just (calculateParse string)

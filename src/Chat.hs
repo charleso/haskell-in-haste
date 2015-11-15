@@ -15,7 +15,7 @@ start :: IO ()
 start = do
   bots <- sequence [
       guessBot
-    , return calculatorBot
+    , return (toBot calculatorBot)
     , return cipherBot
     , return wordCountBot
     , ticTacToeBot

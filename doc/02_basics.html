@@ -2271,69 +2271,6 @@ drop1 l = ...
 
 
 
-
-
-
-
-
-
----
-
-template: inverse
-## Modules
-
----
-
-## Modules - src/Chat/Test.hs
-
-```haskell
-module Chat.Test where
-
-...
-```
-
----
-
-## Modules - src/Chat/Foo/Bar.hs
-
-```haskell
-module Chat.Foo.Bar where
-
-...
-```
-
----
-
-## Modules - src/Chat/Foo.hs
-
-```haskell
-module Chat.Bar where
-
-...
-```
-
----
-
-## Modules - src/Chat/Foo.hs
-
-```haskell
-module Chat.Bar where
-
-...
-```
-
-<pre class="error">
-./src/Chat/Foo.hs:1:8:
-    File name does not match module name:
-    Saw: ‘Chat.Bar’
-    Expected: ‘Chat.Foo’
-</pre>
-
-
-
-
-
-
     </textarea>
     <link rel="stylesheet" href="../js/styles/idea.css">
     <script src="../js/remark.js" type="text/javascript">

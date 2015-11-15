@@ -1097,7 +1097,7 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit       | UnknownFruit
+data MaybeFruit = JustFruit       | NothingFruit
 ```
 
 ---
@@ -1107,14 +1107,14 @@ data MaybeFruit = JustFruit       | UnknownFruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ---
 
 ## Data Types ++
 
-<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: green;">MaybeFruit</span> = <span class="hljs-type">JustFruit</span> <span class="hljs-type">Fruit</span> | <span class="hljs-type">UnknownFruit</span></span></div>
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: green;">MaybeFruit</span> = <span class="hljs-type">JustFruit</span> <span class="hljs-type">Fruit</span> | <span class="hljs-type">NothingFruit</span></span></div>
 </code></pre>
 
 - `MaybeFruit` is the <span style="color: green;">"type"</span>
@@ -1123,33 +1123,33 @@ data MaybeFruit = JustFruit Fruit | UnknownFruit
 
 ## Data Types ++
 
-<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">MaybeFruit</span> = <span style="color: blue;">JustFruit</span> <span class="hljs-type">Fruit</span> | <span style="color: blue;">UnknownFruit</span></span></div>
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">MaybeFruit</span> = <span style="color: blue;">JustFruit</span> <span class="hljs-type">Fruit</span> | <span style="color: blue;">NothingFruit</span></span></div>
 </code></pre>
 
 - `MaybeFruit` is the "type"
-- `JustFruit`/`UnknownFruit` are the <span style="color: blue;">"constructors"</span>
+- `JustFruit`/`NothingFruit` are the <span style="color: blue;">"constructors"</span>
 
 ---
 
 ## Data Types ++
 
-<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: orange;">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">MaybeFruit</span> = <span>JustFruit</span> <span style="color: orange;">Fruit</span> | <span>UnknownFruit</span></span></div>
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: orange;">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">MaybeFruit</span> = <span>JustFruit</span> <span style="color: orange;">Fruit</span> | <span>NothingFruit</span></span></div>
 </code></pre>
 
 - `MaybeFruit` is the "type"
-- `JustFruit`/`UnknownFruit` are the "constructors"
+- `JustFruit`/`NothingFruit` are the "constructors"
 - Data constructors can contain <span style="color: orange;">other types</span>
 
 ---
 
 ## _Very_ loose comparison
 
-<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: green;">MaybeFruit</span> = <span style="color: blue;">JustFruit</span> <span style="color: orange;">Fruit</span> | <span style="color: blue;">UnknownFruit</span></span></div>
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: green;">MaybeFruit</span> = <span style="color: blue;">JustFruit</span> <span style="color: orange;">Fruit</span> | <span style="color: blue;">NothingFruit</span></span></div>
 </code></pre>
 
 ### Java
 
-<pre><code class="java hljs scala remark-code"><div><span class="hljs-keyword">interface</span> <span style="color: green;">MaybeFruit</span> { }</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JustFruit</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">MaybeFruit</span> {</span></div><div class="remark-code-line">  public <span style="color: blue;">JustFruit</span>(<span style="color: orange;">Fruit</span> f) { .. }</div><div class="remark-code-line">}</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UnknownFruit</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">MaybeFruit</span> {</span></div><div class="remark-code-line">  public <span class="hljs-type"><span style="color: blue;">UnknownFruit</span></span>() { .. }</div><div class="remark-code-line">}</div>
+<pre><code class="java hljs scala remark-code"><div><span class="hljs-keyword">interface</span> <span style="color: green;">MaybeFruit</span> { }</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JustFruit</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">MaybeFruit</span> {</span></div><div class="remark-code-line">  public <span style="color: blue;">JustFruit</span>(<span style="color: orange;">Fruit</span> f) { .. }</div><div class="remark-code-line">}</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">NothingFruit</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">MaybeFruit</span> {</span></div><div class="remark-code-line">  public <span class="hljs-type"><span style="color: blue;">NothingFruit</span></span>() { .. }</div><div class="remark-code-line">}</div>
 </code></pre>
 
 ---
@@ -1159,14 +1159,14 @@ data MaybeFruit = JustFruit Fruit | UnknownFruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ```haskell
 > :t JustFruit
 Fruit -> MaybeFruit
 
-> :t UnknownFruit
+> :t NothingFruit
 MaybeFruit
 ```
 
@@ -1177,7 +1177,7 @@ MaybeFruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ```haskell
@@ -1195,13 +1195,13 @@ Eat
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ```haskell
 > let r1 = JustFruit Apple
 
-> let r2 = UnknownFruit
+> let r2 = NothingFruit
 
 > :t r1
 r1 :: MaybeFruit
@@ -1214,13 +1214,13 @@ r1 :: MaybeFruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ```haskell
 > let r1 = JustFruit Apple
 
-> let r2 = UnknownFruit
+> let r2 = NothingFruit
 ```
 
 ### Java
@@ -1228,7 +1228,7 @@ data MaybeFruit = JustFruit Fruit | UnknownFruit
 ```java
 MaybeFruit r1 = new JustFruit(Apple)
 
-MaybeFruit r2 = new UnknownFruit()
+MaybeFruit r2 = new NothingFruit()
 ```
 
 ---
@@ -1238,7 +1238,7 @@ MaybeFruit r2 = new UnknownFruit()
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 parseFruit :: String -> Fruit
 parseFruit string = case string of
@@ -1255,7 +1255,7 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 parseFruit :: String -> MaybeFruit
 parseFruit string = case string of
@@ -1272,14 +1272,14 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 parseFruit :: String -> MaybeFruit
 parseFruit string = case string of
   "apple" -> JustFruit Apple
   "banana" -> JustFruit Banana
   "tomato" -> JustFruit Tomato
-  _ -> UnknownFruit
+  _ -> NothingFruit
 ```
 
 ---
@@ -1289,21 +1289,21 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 parseFruit :: String -> MaybeFruit
 parseFruit string = case string of
   "apple" -> JustFruit Apple
   "banana" -> JustFruit Banana
   "tomato" -> JustFruit Tomato
-  _ -> UnknownFruit
+  _ -> NothingFruit
 ```
 
 ```haskell
 > parseFruit "apple"
 JustFruit Apple
 > parseFruit "carrot"
-UnknownFruit
+NothingFruit
 ```
 
 ---
@@ -1313,7 +1313,7 @@ UnknownFruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit
 ```
@@ -1325,7 +1325,7 @@ maybeFruit :: MaybeFruit -> Fruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit
 maybeFruit mf = case mf of
@@ -1339,12 +1339,12 @@ maybeFruit mf = case mf of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit
 maybeFruit mf = case mf of
   JustFruit fruit -> ...
-  UnknownFruit -> ...
+  NothingFruit -> ...
 ```
 
 ---
@@ -1354,12 +1354,12 @@ maybeFruit mf = case mf of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit
 maybeFruit mf = case mf of
   JustFruit fruit -> fruit
-  UnknownFruit -> ...
+  NothingFruit -> ...
 ```
 
 ---
@@ -1369,12 +1369,12 @@ maybeFruit mf = case mf of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit
 maybeFruit mf = case mf of
   JustFruit fruit -> fruit
-  UnknownFruit -> Apple
+  NothingFruit -> Apple
 ```
 
 ---
@@ -1384,12 +1384,12 @@ maybeFruit mf = case mf of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit -> Fruit
 maybeFruit mf other = case mf of
   JustFruit fruit -> fruit
-  UnknownFruit -> other
+  NothingFruit -> other
 ```
 
 ---
@@ -1399,7 +1399,7 @@ maybeFruit mf other = case mf of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | UnknownFruit
+data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit -> Fruit
 ```
@@ -2265,6 +2265,143 @@ drop1 l = ...
 - Lowercase means type variable
   - Rember that uppercase is a "type"
 - Don't need to "introduce" it
+
+
+
+
+
+
+
+
+
+
+
+---
+
+template: question
+## Parametric Data
+
+---
+
+## Rememeber this?
+
+```haskell
+data MaybeFruit = JustFruit Fruit | NothingFruit
+
+parseFruit :: String -> MaybeFruit
+```
+
+---
+
+## Copy and paste
+
+```haskell
+data MaybeVege = JustVege Vege | NothingVege
+
+parseVege :: String -> MaybeVege
+```
+
+---
+
+## Copy and paste
+
+```haskell
+data Maybe??? = Just??? ??? | Nothing???
+
+parse??? :: String -> Maybe???
+```
+
+---
+
+## Maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+```
+
+---
+
+## Maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+```
+
+```haskell
+> :t Just Apple
+```
+
+---
+
+## Maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+```
+
+```haskell
+> :t Just Apple
+Maybe Fruit
+```
+
+---
+
+## Maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+```
+
+```haskell
+> :t Just "hello"
+Maybe String
+```
+
+---
+
+## Maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+
+parseFruit :: String -> Maybe Fruit
+```
+
+---
+
+## MaybeFruit
+
+```haskell
+data MaybeFruit = JustFruit Fruit | NothingFruit
+
+parseFruit :: String -> MaybeFruit
+parseFruit string = case string of
+  "apple" -> JustFruit Apple
+  "banana" -> JustFruit Banana
+  "tomato" -> JustFruit Tomato
+  _ -> NothingFruit
+```
+
+---
+
+## Maybe
+
+```haskell
+data Maybe a = Just a | Nothing
+
+parseFruit :: String -> Maybe Fruit
+parseFruit string = case string of
+  "apple" -> Just Apple
+  "banana" -> Just Banana
+  "tomato" -> Just Tomato
+  _ -> Nothing
+```
+
+
+
+
+
+
 
 
 

@@ -1521,23 +1521,6 @@ CountValue 1
 CountValue 0
 ```
 
----
-
-## Immutable data
-
-```haskell
-data Count = CountValue Int deriving Show
-
-zero :: Count
-zero = CountValue 0
-
-increment :: Count -> Count
-increment (CountValue c) = CountValue (c + 1)
-```
-
-- Create a _new_ `Count`
-- _No_ (easy) way to mutate
-
 
 
 

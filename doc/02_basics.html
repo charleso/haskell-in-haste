@@ -1202,7 +1202,7 @@ MaybeFruit r2 = new NothingFruit()
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-data MaybeFruit = JustFruit Fruit | NothingFruit
+
 
 parseFruit :: String -> Fruit
 parseFruit string = case string of
@@ -1223,9 +1223,9 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 
 parseFruit :: String -> MaybeFruit
 parseFruit string = case string of
-  "apple" -> Apple
-  "banana" -> Banana
-  "tomato" -> Tomato
+  "apple" -> ??? Apple
+  "banana" -> ??? Banana
+  "tomato" -> ??? Tomato
   _ -> ???
 ```
 

@@ -1170,11 +1170,11 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ```haskell
-> :t Yum Apple
-Eat
+> :t JustFruit Apple
+MaybeFruit
 
-> :t Yuck Tomato "Not a fruit"
-Eat
+> :t NothingFruit
+MaybeFruit
 ```
 
 ---

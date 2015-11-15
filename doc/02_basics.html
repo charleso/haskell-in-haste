@@ -999,7 +999,9 @@ template: question
 ## Data Types ++
 
 ```haskell
-data Eat = Yum       | Yuck
+data Fruit = Apple | Banana | Tomato
+
+fruitRender :: Fruit -> String
 ```
 
 ---
@@ -1007,18 +1009,9 @@ data Eat = Yum       | Yuck
 ## Data Types ++
 
 ```haskell
-data Eat = Yum       | Yuck
-```
+data Fruit = Apple | Banana | Tomato
 
-- `Eat` is the "type"
-- `Yum`/`Yuck` are the "constructors"
-
----
-
-## Data Types ++
-
-```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+parseFruit :: String -> Fruit
 ```
 
 ---
@@ -1026,35 +1019,155 @@ data Eat = Yum Fruit | Yuck Fruit String
 ## Data Types ++
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
+
+parseFruit :: String -> Fruit
+parseFruit string = case string of
+  ...
 ```
 
-- `Eat` is the "type"
-- `Yum`/`Yuck` are the "constructors"
-- Data constructors can contain values
+---
+
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+parseFruit :: String -> Fruit
+parseFruit string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+```
+
+---
+
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+parseFruit :: String -> Fruit
+parseFruit string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+  _ -> ???
+```
+
+---
+
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+parseFruit :: String -> Fruit
+parseFruit string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+  _ -> null
+```
+
+---
+
+template: question
+## Haskell has no `null`
+
+---
+
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+parseFruit :: String -> Fruit
+parseFruit string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+  _ -> ???
+```
+
+---
+
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit       | UnknownFruit
+```
+
+---
+
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+```
+
+---
+
+## Data Types ++
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: green;">MaybeFruit</span> = <span class="hljs-type">JustFruit</span> <span class="hljs-type">Fruit</span> | <span class="hljs-type">UnknownFruit</span></span></div>
+</code></pre>
+
+- `MaybeFruit` is the <span style="color: green;">"type"</span>
+
+---
+
+## Data Types ++
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">MaybeFruit</span> = <span style="color: blue;">JustFruit</span> <span class="hljs-type">Fruit</span> | <span style="color: blue;">UnknownFruit</span></span></div>
+</code></pre>
+
+- `MaybeFruit` is the "type"
+- `JustFruit`/`UnknownFruit` are the <span style="color: blue;">"constructors"</span>
+
+---
+
+## Data Types ++
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: orange;">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">MaybeFruit</span> = <span>JustFruit</span> <span style="color: orange;">Fruit</span> | <span>UnknownFruit</span></span></div>
+</code></pre>
+
+- `MaybeFruit` is the "type"
+- `JustFruit`/`UnknownFruit` are the "constructors"
+- Data constructors can contain <span style="color: orange;">other types</span>
 
 ---
 
 ## _Very_ loose comparison
 
-```haskell
-data Eat = Yum Fruit | Yuck Fruit String
-```
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span style="color: green;">MaybeFruit</span> = <span style="color: blue;">JustFruit</span> <span style="color: orange;">Fruit</span> | <span style="color: blue;">UnknownFruit</span></span></div>
+</code></pre>
 
 ### Java
 
-```java
-interface Eat { }
+<pre><code class="java hljs scala remark-code"><div><span class="hljs-keyword">interface</span> <span style="color: green;">MaybeFruit</span> { }</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">JustFruit</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">MaybeFruit</span> {</span></div><div class="remark-code-line">  public <span style="color: blue;">JustFruit</span>(<span style="color: orange;">Fruit</span> f) { .. }</div><div class="remark-code-line">}</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UnknownFruit</span> <span class="hljs-keyword"><span class="hljs-keyword">extends</span></span> <span class="hljs-title">MaybeFruit</span> {</span></div><div class="remark-code-line">  public <span class="hljs-type"><span style="color: blue;">UnknownFruit</span></span>() { .. }</div><div class="remark-code-line">}</div>
+</code></pre>
 
-class Yum extends Eat {
+---
 
-  public Yum(Fruit f) { .. }
-}
+## Constructors are just functions
 
-class Yuck extends Eat {
+```haskell
+data Fruit = Apple | Banana | Tomato
 
-  public Yuck(Fruit f, String m) { .. }
-}
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+```
+
+```haskell
+> :t JustFruit
+Fruit -> MaybeFruit
+
+> :t UnknownFruit
+MaybeFruit
 ```
 
 ---
@@ -1062,23 +1175,9 @@ class Yuck extends Eat {
 ## Constructors are just functions
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
-```
+data Fruit = Apple | Banana | Tomato
 
-```haskell
-> :t Yum
-Fruit -> Eat
-
-> :t Yuck
-Fruit -> String -> Eat
-```
-
----
-
-## Constructors are just functions
-
-```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data MaybeFruit = JustFruit Fruit | UnknownFruit
 ```
 
 ```haskell
@@ -1094,16 +1193,18 @@ Eat
 ## Constructors are just functions
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit Fruit | UnknownFruit
 ```
 
 ```haskell
-> let eat1 = Yum Apple
+> let r1 = JustFruit Apple
 
-> let eat2 = Yuck Tomato "Not a fruit"
+> let r2 = UnknownFruit
 
-> :t eat1
-eat1 :: Eat
+> :t r1
+r1 :: MaybeFruit
 ```
 
 ---
@@ -1111,21 +1212,23 @@ eat1 :: Eat
 ## Constructors are just functions
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit Fruit | UnknownFruit
 ```
 
 ```haskell
-> let eat1 = Yum Apple
+> let r1 = JustFruit Apple
 
-> let eat2 = Yuck Tomato "Not a fruit"
+> let r2 = UnknownFruit
 ```
 
 ### Java
 
 ```java
-Eat eat1 = new Yum(Apple)
+MaybeFruit r1 = new JustFruit(Apple)
 
-Eat eat2 = new Yuck(Tomato, "Not a fruit")
+MaybeFruit r2 = new UnknownFruit()
 ```
 
 ---
@@ -1133,13 +1236,16 @@ Eat eat2 = new Yuck(Tomato, "Not a fruit")
 ## Example
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eat :: Fruit -> Eat
-eat fruit = case fruit of
-  Apple -> ...
-  Banana -> ...
-  Tomato -> ...
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+parseFruit :: String -> Fruit
+parseFruit string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+  _ -> ???
 ```
 
 ---
@@ -1147,13 +1253,57 @@ eat fruit = case fruit of
 ## Example
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eat :: Fruit -> Eat
-eat fruit = case fruit of
-  Apple -> Yum Apple
-  Banana -> Yum Banana
-  Tomato -> Yuck Tomato "It's not a real fruit"
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+parseFruit :: String -> MaybeFruit
+parseFruit string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+  _ -> ???
+```
+
+---
+
+## Example
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+parseFruit :: String -> MaybeFruit
+parseFruit string = case string of
+  "apple" -> JustFruit Apple
+  "banana" -> JustFruit Banana
+  "tomato" -> JustFruit Tomato
+  _ -> UnknownFruit
+```
+
+---
+
+## Example
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+parseFruit :: String -> MaybeFruit
+parseFruit string = case string of
+  "apple" -> JustFruit Apple
+  "banana" -> JustFruit Banana
+  "tomato" -> JustFruit Tomato
+  _ -> UnknownFruit
+```
+
+```haskell
+> parseFruit "apple"
+JustFruit Apple
+> parseFruit "carrot"
+UnknownFruit
 ```
 
 ---
@@ -1161,10 +1311,24 @@ eat fruit = case fruit of
 ## Pattern Matching
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eatRender :: Eat -> String
-eatRender e = case e of
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit
+```
+
+---
+
+## Pattern Matching
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit
+maybeFruit mf = case mf of
   ...
 ```
 
@@ -1173,14 +1337,14 @@ eatRender e = case e of
 ## Pattern Matching
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eatRender :: Eat -> String
-eatRender e = case e of
-  Yum f ->
-    ...
-  Yuck f m ->
-    ...
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit
+maybeFruit mf = case mf of
+  JustFruit fruit -> ...
+  UnknownFruit -> ...
 ```
 
 ---
@@ -1188,14 +1352,14 @@ eatRender e = case e of
 ## Pattern Matching
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eatRender :: Eat -> String
-eatRender e = case e of
-  Yum f ->
-    "I ate " ++ fruitRender f
-  Yuck f m ->
-    ...
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit
+maybeFruit mf = case mf of
+  JustFruit fruit -> fruit
+  UnknownFruit -> ...
 ```
 
 ---
@@ -1203,15 +1367,14 @@ eatRender e = case e of
 ## Pattern Matching
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eatRender :: Eat -> String
-eatRender e = case e of
-  Yum f ->
-    "I ate " ++ fruitRender f
-  Yuck f m ->
-    "I refuse to eat " ++ fruitRender f ++
-      " because " ++ m
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit
+maybeFruit mf = case mf of
+  JustFruit fruit -> fruit
+  UnknownFruit -> Apple
 ```
 
 ---
@@ -1219,46 +1382,61 @@ eatRender e = case e of
 ## Pattern Matching
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eatRender :: Eat -> String
-eatRender e = case e of
-  Yum f ->
-    "I ate " ++ fruitRender f
-  Yuck f m ->
-    "I refuse to eat " ++ fruitRender f ++
-      " because " ++ m
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit -> Fruit
+maybeFruit mf other = case mf of
+  JustFruit fruit -> fruit
+  UnknownFruit -> other
 ```
-
-<pre>
-> eatRender (eat Apple)
-I ate apple
-</pre>
 
 ---
 
 ## Pattern Matching
 
 ```haskell
-data Eat = Yum Fruit | Yuck Fruit String
+data Fruit = Apple | Banana | Tomato
 
-eatRender :: Eat -> String
-eatRender e = case e of
-  Yum f ->
-    "I ate " ++ fruitRender f
-  Yuck f m ->
-    "I refuse to eat " ++ fruitRender f ++
-      " because " ++ m
+data MaybeFruit = JustFruit Fruit | UnknownFruit
+
+maybeFruit :: MaybeFruit -> Fruit -> Fruit
 ```
 
-<pre>
-> eatRender (eat Apple)
-I ate apple
-> eatRender (Yum Banana)
-I ate banana
-> eatRender (eat Tomato)
-I refuse to eat tomato because It's not a real fruit
-</pre>
+<br/>
+
+```haskell
+> maybeFruit (parseFruit "apple") Banana
+Apple
+> maybeFruit (parseFruit "carrot") Banana
+Banana
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+template: question
+## Immutable
 
 ---
 

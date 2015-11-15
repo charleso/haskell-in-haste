@@ -51,6 +51,11 @@ library
                      , Chat.Bot.Misc.TicTacToe
                      , Chat.Bot.Run.TicTacToe
 
+                     , Chat.Bot.Vote
+                     , Chat.Bot.Answer.Vote
+                     , Chat.Bot.Misc.Vote
+                     , Chat.Bot.Run.Vote
+
                      , Chat.Bot.WordCount
                      , Chat.Bot.Answer.WordCount
                      , Chat.Bot.Run.WordCount

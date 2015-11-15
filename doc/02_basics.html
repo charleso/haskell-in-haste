@@ -1154,9 +1154,6 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 ```haskell
 > :t JustFruit
 Fruit -> MaybeFruit
-
-> :t NothingFruit
-MaybeFruit
 ```
 
 ---
@@ -1172,28 +1169,6 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 ```haskell
 > :t JustFruit Apple
 MaybeFruit
-
-> :t NothingFruit
-MaybeFruit
-```
-
----
-
-## Constructors are just functions
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-
-data MaybeFruit = JustFruit Fruit | NothingFruit
-```
-
-```haskell
-> let r1 = JustFruit Apple
-
-> let r2 = NothingFruit
-
-> :t r1
-r1 :: MaybeFruit
 ```
 
 ---
@@ -1215,7 +1190,7 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 ### Java
 
 ```java
-MaybeFruit r1 = new JustFruit(Apple)
+MaybeFruit r1 = new JustFruit(new Apple())
 
 MaybeFruit r2 = new NothingFruit()
 ```

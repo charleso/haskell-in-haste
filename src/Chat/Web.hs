@@ -6,6 +6,7 @@ module Chat.Web (
 
 import           Chat.Data
 import           Control.Concurrent
+import           Control.Exception
 import           Control.Monad.IO.Class
 import           Data.List
 import           Data.Maybe
@@ -49,7 +50,8 @@ startChat bots = do
       user <- currentUser
       liftIO $ addUser room user
       now <- liftIO getCurrentTime
-      botReplies <- liftIO $ mapM (\b -> b body) bots
+      let catchError (e :: SomeException) = return . Just . ("Error: " ++) . show $ e
+      botReplies <- liftIO $ mapM (\b -> handle catchError (b body)) bots
       let botMessages = fmap (\b -> Message "bot" b now) $ catMaybes botReplies
       let message = Message user body now
       liftIO . modifyMVar_ room $ \r ->

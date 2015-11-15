@@ -4,6 +4,19 @@ import           Chat.Bot.Answer.Guess
 import           Chat.Bot.Misc.Guess
 import           Chat.Data
 
+{-
+  USAGE: /guess number
+
+  Guess a randomly number between 1 and 100.
+
+  EXAMPLE:
+    > /guess 50
+    higher
+    > /guess 100
+    lower
+    > /guess 75
+    hit
+-}
 
 -- | LEVEL: Easy
 --
@@ -15,9 +28,9 @@ import           Chat.Data
 -- GuessHigher
 -- >>> guessMe 2 2
 -- GuessCorrect
-guessMe :: Int -> Int -> GuessResult
-guessMe s g =
-  notImplemented "Guess.guessMe" (guessMeAnswer s g)
+guess :: Int -> Int -> GuessResult
+guess secret number =
+  notImplemented "Guess.guessMe" (guessAnswer secret number)
 
 -- | LEVEL: Easy
 --

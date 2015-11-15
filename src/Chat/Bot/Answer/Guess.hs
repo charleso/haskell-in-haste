@@ -3,11 +3,11 @@ module Chat.Bot.Answer.Guess where
 import           Chat.Bot.Misc.Guess
 
 
-guessMeAnswer :: Int -> Int -> GuessResult
-guessMeAnswer s g =
-  if s < g
+guessAnswer :: Int -> Int -> GuessResult
+guessAnswer secret number =
+  if secret < number
     then GuessLower
-    else if s > g
+    else if secret > number
       then GuessHigher
       else GuessCorrect
 

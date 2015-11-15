@@ -9,3 +9,5 @@ hopefully in a live and interactive manner.
 - [Tools](03_tools.html)
 - [Bots](04_bots.html)
 - Start Hacking! :)
+- [Intermediate](05_intermediate.html)
+- More Hacking! :)

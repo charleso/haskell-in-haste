@@ -29,14 +29,14 @@ import           Chat.Data
 --
 -- >>> createPoll "Tabs" ["Yes","No"]
 -- Poll "Tabs" [Vote "Yes" 0,Vote "No" 0]
--- 
+--
 -- HINTS:
 --
 --   map :: (a -> b) -> [a] -> [b]
 --
 createPoll :: String -> [String] -> Poll
-createPoll question answers =
-  notImplemented "Vote.createPoll" (createPollAnswer question answers)
+createPoll question options =
+  notImplemented "Vote.createPoll" (createPollAnswer question options)
 
 -- | LEVEL: Medium
 --
@@ -52,16 +52,17 @@ createPoll question answers =
 --   map :: (a -> b) -> [a] -> [b]
 --
 castVote :: Poll -> String -> Poll
-castVote poll vote =
-  notImplemented "Vote.castVote" (castVoteAnswer poll vote)
+castVote (Poll question options) vote =
+  notImplemented "Vote.castVote" (castVoteAnswer (Poll question options) vote)
 
 -- | LEVEL: Medium
--- 
+--
 -- HINTS:
 --
 --   map :: (a -> b) -> [a] -> [b]
 --   unlines :: [String] -> String
+--   ++ :: [a] -> [a] -> [a]
 --
 pollRender :: Poll -> String
-pollRender poll =
-  notImplemented "Vote.pollRender" (pollRenderAnswer poll)
+pollRender (Poll question options) =
+  notImplemented "Vote.pollRender" (pollRenderAnswer (Poll question options))

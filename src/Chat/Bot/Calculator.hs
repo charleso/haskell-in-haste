@@ -6,6 +6,21 @@ import           Chat.Bot.Answer.Calculator
 import           Chat.Bot.Misc.Calculator
 import           Chat.Data
 
+{-
+  USAGE: /calculate a operation b
+
+  Simple calculator to add, minus or multiply two numbers
+
+  EXAMPLE:
+    > /calculate 2 + 5
+    7
+    > /calculate 10 - 2
+    8
+    > /calculate 3 * 5
+    15
+    > /calculate 8 / 3
+    Invalid calculation
+-}
 
 -- | LEVEL: Easy
 --
@@ -25,15 +40,15 @@ calculate op a b =
 
 
 
--- LEVEL: Easy
+-- | LEVEL: Easy
 --
--- >>> calculateParse "2 + 5"
--- JustCalculation 7
--- >>> calculateParse "5 - 2"
--- JustCalculation 3
--- >>> calculateParse "2 * 5"
--- JustCalculation 10
--- >>> calculateParse "2 / 5"
+-- >>> operationParser "2 + 5"
+-- JustCalculation Plus 2 5
+-- >>> operationParser "5 - 2"
+-- JustCalculation Minus 5 2
+-- >>> operationParser "2 * 5"
+-- JustCalculation Multiply 2 5
+-- >>> operationParser "2 / 5"
 -- NothingCalculation
 --
 -- HINT:
@@ -41,8 +56,8 @@ calculate op a b =
 --   read :: String -> Int
 --
 operationParser :: String -> MaybeCalculation
-operationParser =
-  notImplemented "Calculator.operationParser" operationParserAnswer
+operationParser input =
+  notImplemented "Calculator.operationParser" operationParserAnswer input
 
 
 -- | LEVEL: Easy
@@ -51,12 +66,21 @@ operationParser =
 --
 -- Here you will parse your operation and if it is successfull you will make a calculation
 --
+-- >>> calculateParse "2 + 5"
+-- "7"
+-- >>> calculateParse "5 - 2"
+-- "3"
+-- >>> calculateParse "2 * 5"
+-- "10"
+-- >>> calculateParse "2 / 5"
+-- "Invalid calculation"
+--
 -- HINT:
 --   show :: Int -> String
 --
 calculateParse :: String -> String
-calculateParse m =
-  notImplemented "Calculator.calculateParse" (calculateParseAnswer m)
+calculateParse input =
+  notImplemented "Calculator.calculateParse" (calculateParseAnswer input)
 
 
 -- See Misc/Calculator.hs

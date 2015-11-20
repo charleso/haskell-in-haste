@@ -42,6 +42,11 @@ library
                      , Chat.Bot.Misc.Guess
                      , Chat.Bot.Run.Guess
 
+                     , Chat.Bot.Hangman
+                     , Chat.Bot.Answer.Hangman
+                     , Chat.Bot.Misc.Hangman
+                     , Chat.Bot.Run.Hangman
+
                      , Chat.Bot.Ping
                      , Chat.Bot.Answer.Ping
 

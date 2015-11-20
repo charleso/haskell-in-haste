@@ -9,6 +9,6 @@ import           Data.List (stripPrefix)
 
 calculatorBot :: String -> MaybeReply
 calculatorBot message =
-  case stripPrefix "/calculator " message of
+  case stripPrefix "/calculate " message of
     Nothing -> NothingReply
     Just string -> JustReply (calculateParse string)

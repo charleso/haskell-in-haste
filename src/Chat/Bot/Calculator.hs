@@ -6,6 +6,21 @@ import           Chat.Bot.Answer.Calculator
 import           Chat.Bot.Misc.Calculator
 import           Chat.Data
 
+{-
+  USAGE: /calculate a operation b
+
+  Simple calculator to add, minus or multiply two numbers
+
+  EXAMPLE:
+    > /calculate 2 + 5
+    7
+    > /calculate 10 - 2
+    8
+    > /calculate 3 * 5
+    15
+    > /calculate 8 / 3
+    Invalid calculation
+-}
 
 -- | LEVEL: Easy
 --

@@ -60,10 +60,6 @@ library
                      , Chat.Bot.Misc.Vote
                      , Chat.Bot.Run.Vote
 
-                     , Chat.Bot.WordCount
-                     , Chat.Bot.Answer.WordCount
-                     , Chat.Bot.Run.WordCount
-
 test-suite           doctests
   type:              exitcode-stdio-1.0
   main-is:           doctests.hs

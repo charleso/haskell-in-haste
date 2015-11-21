@@ -7,7 +7,6 @@ import           Chat.Bot.Run.Calculator
 import           Chat.Bot.Run.Hangman
 import           Chat.Bot.Run.TicTacToe
 import           Chat.Bot.Run.Vote
-import           Chat.Bot.Run.WordCount
 import           Chat.Data
 import           Chat.Web
 
@@ -18,7 +17,6 @@ start = do
       guessBot
     , return (toBot calculatorBot)
     , return cipherBot
-    , return wordCountBot
     , ticTacToeBot
     , return (toBot pingBot)
     , voteBot

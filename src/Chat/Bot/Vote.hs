@@ -36,7 +36,7 @@ import           Chat.Data
 --
 -- HINTS:
 --
---   map :: (a -> b) -> [a] -> [b]
+--   map :: (String -> Vote) -> [String] -> [Vote]
 --
 createPoll :: String -> [String] -> Poll
 createPoll question options =
@@ -53,7 +53,7 @@ createPoll question options =
 --
 -- HINTS:
 --
---   map :: (a -> b) -> [a] -> [b]
+--   map :: (Vote -> Vote) -> [Vote] -> [Vote]
 --
 castVote :: Poll -> String -> Poll
 castVote (Poll question options) vote =
@@ -63,9 +63,9 @@ castVote (Poll question options) vote =
 --
 -- HINTS:
 --
---   map :: (a -> b) -> [a] -> [b]
+--   map :: (Vote -> String) -> [Vote] -> [String]
 --   unlines :: [String] -> String
---   ++ :: [a] -> [a] -> [a]
+--   ++ :: String -> String -> String
 --
 pollRender :: Poll -> String
 pollRender (Poll question options) =

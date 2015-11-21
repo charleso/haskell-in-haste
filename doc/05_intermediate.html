@@ -515,7 +515,7 @@ template: question
 ```haskell
 data MaybeFruit = JustFruit Fruit | NothingFruit
 
-parseFruit :: String -> MaybeFruit
+fruitFromString :: String -> MaybeFruit
 ```
 
 ---
@@ -525,7 +525,7 @@ parseFruit :: String -> MaybeFruit
 ```haskell
 data MaybeVege = JustVege Vege | NothingVege
 
-parseVege :: String -> MaybeVege
+vegeFromString :: String -> MaybeVege
 ```
 
 ---
@@ -535,7 +535,7 @@ parseVege :: String -> MaybeVege
 ```haskell
 data Maybe??? = Just??? ??? | Nothing???
 
-parse??? :: String -> Maybe???
+???FromString :: String -> Maybe???
 ```
 
 ---
@@ -616,22 +616,7 @@ Maybe String
 ```haskell
 data Maybe a = Just a | Nothing
 
-parseFruit :: String -> Maybe Fruit
-```
-
----
-
-## MaybeFruit
-
-```haskell
-data MaybeFruit = JustFruit Fruit | NothingFruit
-
-parseFruit :: String -> MaybeFruit
-parseFruit string = case string of
-  "apple" -> JustFruit Apple
-  "banana" -> JustFruit Banana
-  "tomato" -> JustFruit Tomato
-  _ -> NothingFruit
+fruitFromString :: String -> Maybe Fruit
 ```
 
 ---
@@ -641,8 +626,8 @@ parseFruit string = case string of
 ```haskell
 data Maybe a = Just a | Nothing
 
-parseFruit :: String -> Maybe Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Maybe Fruit
+fruitFromString string = case string of
   "apple" -> Just Apple
   "banana" -> Just Banana
   "tomato" -> Just Tomato

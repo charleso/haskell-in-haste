@@ -493,6 +493,25 @@ data Fruit = Apple | Banana | Tomato
 
 ## Data types
 
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type"><span style="color: green;">Fruit</span></span> = <span class="hljs-type">Apple</span> | <span class="hljs-type">Banana</span> | <span class="hljs-type">Tomato</span></span></div>
+</code></pre>
+
+- `Fruit` is the <span style="color: green;">"type"</span>
+
+---
+
+## Data types
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-typedef"><span class="hljs-keyword">data</span> <span class="hljs-type">Fruit</span> = <span style="color: blue;">Apple</span> | <span style="color: blue;">Banana</span> | <span style="color: blue;">Tomato</span></span></div>
+</code></pre>
+
+- `Fruit` is the "type"
+- `Apple`/`Banana`/`Tomato` are the <span style="color: blue;">"data constructors"</span>
+
+---
+
+## Data types
+
 ```haskell
 data Fruit = Apple | Banana | Tomato
 ```
@@ -976,7 +995,7 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 </code></pre>
 
 - `MaybeFruit` is the "type"
-- `JustFruit`/`NothingFruit` are the <span style="color: blue;">"constructors"</span>
+- `JustFruit`/`NothingFruit` are the <span style="color: blue;">"data constructors"</span>
 
 ---
 
@@ -986,7 +1005,7 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 </code></pre>
 
 - `MaybeFruit` is the "type"
-- `JustFruit`/`NothingFruit` are the "constructors"
+- `JustFruit`/`NothingFruit` are the "data constructors"
 - Data constructors can contain <span style="color: orange;">other types</span>
 
 ---

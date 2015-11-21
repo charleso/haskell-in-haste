@@ -39,7 +39,7 @@ move g pos =
 -- any :: (a -> Bool) -> [a] -> Bool
 canMove :: Board -> Position -> Bool
 canMove b p =
-  notImplemented "TicTacToe.canMove" (canMove b p)
+  notImplemented "TicTacToe.canMove" (canMoveAnswer b p)
 
 -- If you want to save yourself some time calculating this, the following is a useful trick.
 --
@@ -51,7 +51,7 @@ canMove b p =
 -- any :: (a -> Bool) -> [a] -> Bool
 hasWon :: Board -> Player -> Bool
 hasWon b p =
-  notImplemented "TicTacToe.hasWon" (hasWon b p)
+  notImplemented "TicTacToe.hasWon" (hasWonAnswer b p)
 
 
 -- See Misc/TicTacToe.hs

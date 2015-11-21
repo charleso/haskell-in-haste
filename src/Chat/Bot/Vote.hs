@@ -5,6 +5,8 @@ import           Chat.Bot.Misc.Vote
 import           Chat.Data
 
 {-
+  LEVEL: Medium
+
   USAGE: /poll question answer answer answer
   USAGE: /poll
   USAGE: /vote answer
@@ -27,7 +29,7 @@ import           Chat.Data
   data Poll = Poll String [Vote]
 -}
 
--- | LEVEL: Medium
+-- |
 --
 -- >>> createPoll "Tabs" ["Yes","No"]
 -- Poll "Tabs" [Vote "Yes" 0,Vote "No" 0]
@@ -40,7 +42,7 @@ createPoll :: String -> [String] -> Poll
 createPoll question options =
   notImplemented "Vote.createPoll" (createPollAnswer question options)
 
--- | LEVEL: Medium
+-- |
 --
 -- >>> castVote (Poll "Tabs" [Vote "Yes" 0,Vote "No" 0]) "Yes"
 -- Poll "Tabs" [Vote "Yes" 1,Vote "No" 0]
@@ -57,7 +59,7 @@ castVote :: Poll -> String -> Poll
 castVote (Poll question options) vote =
   notImplemented "Vote.castVote" (castVoteAnswer (Poll question options) vote)
 
--- | LEVEL: Medium
+-- |
 --
 -- HINTS:
 --

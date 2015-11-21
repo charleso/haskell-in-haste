@@ -4,6 +4,8 @@ import           Chat.Bot.Answer.Ping
 import           Chat.Data
 
 {-
+  LEVEL: Example
+
   USAGE: /ping
 
   EXAMPLE:
@@ -11,7 +13,7 @@ import           Chat.Data
     pong
 -}
 
--- | LEVEL: Example
+-- |
 --
 -- >>> pingBot "/ping"
 -- JustReply "pong"

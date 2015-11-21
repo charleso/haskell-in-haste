@@ -7,6 +7,8 @@ import           Chat.Bot.Misc.Calculator
 import           Chat.Data
 
 {-
+  LEVEL: Easy
+
   USAGE: /calculate a operation b
 
   Simple calculator to add, minus or multiply two numbers
@@ -22,7 +24,7 @@ import           Chat.Data
     Invalid calculation
 -}
 
--- | LEVEL: Easy
+-- |
 --
 -- This method makes the calculation itself
 -- Based on operation return a result of calculation or an error if operaiton is not supported
@@ -40,7 +42,7 @@ calculate op a b =
 
 
 
--- | LEVEL: Easy
+-- |
 --
 -- >>> operationParser "2 + 5"
 -- JustCalculation Plus 2 5
@@ -60,7 +62,7 @@ operationParser input =
   notImplemented "Calculator.operationParser" operationParserAnswer input
 
 
--- | LEVEL: Easy
+-- |
 --
 -- This is a main method you invoke to calculate the expression
 --

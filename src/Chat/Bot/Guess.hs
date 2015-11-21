@@ -5,6 +5,8 @@ import           Chat.Bot.Misc.Guess
 import           Chat.Data
 
 {-
+  LEVEL: Easy
+
   USAGE: /guess number
 
   Guess a randomly number between 1 and 100.
@@ -18,7 +20,7 @@ import           Chat.Data
     hit
 -}
 
--- | LEVEL: Easy
+-- |
 --
 -- This requires implementing comparing two numbers and display a message depending on the result
 --
@@ -32,7 +34,7 @@ guess :: Int -> Int -> GuessResult
 guess secret number =
   notImplemented "Guess.guessMe" (guessAnswer secret number)
 
--- | LEVEL: Easy
+-- |
 --
 -- Just print something nice for the user
 guessRender :: GuessResult -> String

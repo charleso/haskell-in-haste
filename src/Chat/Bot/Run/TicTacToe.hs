@@ -25,5 +25,5 @@ ticTacToeBot = do
         InProgress g -> g
       pure $ Just $ case next of
         InProgress (Game g p) -> printBoard g ++ " [" ++ show p ++ "]"
-        Draw (EndBoard b) -> printBoard b
-        Won p (EndBoard b) -> printBoard b
+        Draw (EndBoard b) -> printBoard b ++ "[DRAW]"
+        Won p (EndBoard b) -> printBoard b ++ " [" ++ show p ++ "] WON!"

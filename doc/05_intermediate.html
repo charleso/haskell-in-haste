@@ -313,13 +313,30 @@ plusOne x =
 plusOneList :: [Int] -> [Int]
 plusOneList list =
   map plusOne list
+```
 
-map :: (Int -> Int) -> [Int] -> [Int]  
+```haskell
+> plusOneList [1, 2, 3]
+[2,3,4]
 ```
 
 ---
 
-## Plus one?
+## Map
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">plusOne</span> :: <span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span></div><div class="remark-code-line"><span class="hljs-title">plusOne</span> x =</div><div class="remark-code-line">  x + <span class="hljs-number">1</span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-title">plusOneList</span> :: [<span class="hljs-type">Int</span>] -&gt; [<span class="hljs-type">Int</span>]</div><div class="remark-code-line"><span class="hljs-title">plusOneList</span> list =</div><div class="remark-code-line">  map plusOne list</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-title">map</span> :: (<span class="hljs-type">Int</span> -&gt; <span class="hljs-type">Int</span>) -&gt; [<span class="hljs-type">Int</span>] -&gt; [<span class="hljs-type">Int</span>]</div>
+</code></pre>
+
+---
+
+## Map
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">plusOne</span> :: <span style="color: red;">Int -&gt; Int</span></div><div class="remark-code-line"><span class="hljs-title">plusOne</span> x =</div><div class="remark-code-line">  x + <span class="hljs-number">1</span></div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-title">plusOneList</span> :: [<span class="hljs-type">Int</span>] -&gt; [<span class="hljs-type">Int</span>]</div><div class="remark-code-line"><span class="hljs-title">plusOneList</span> list =</div><div class="remark-code-line">  map plusOne list</div><div class="remark-code-line"></div><div class="remark-code-line"><span class="hljs-title">map</span> :: (<span style="color: red;">Int -&gt; Int</span>) -&gt; [<span class="hljs-type">Int</span>] -&gt; [<span class="hljs-type">Int</span>]</div>
+</code></pre>
+
+---
+
+## Comparison
 
 ```haskell
 plusOne :: Int -> Int
@@ -334,16 +351,17 @@ plusOneList list =
 ### Javascript
 
 ```js
-function plusOne(list) {
-  return list.map(function(x) {
-    return x + 1
-  })
+function plusOne(x) {
+  return x + 1;
+}
+function plusOneList(list) {
+  return list.map(plusOne);
 }
 ```
 
 ---
 
-## Plus one?
+## Local functions
 
 ```haskell
 plusOne :: Int -> Int
@@ -353,6 +371,17 @@ plusOne x =
 plusOneList :: [Int] -> [Int]
 plusOneList list =
   map plusOne list
+```
+
+### Javascript
+
+```js
+function plusOneList(list) {
+  function plusOne(x) {
+    return x + 1;
+  }
+  return list.map(plusOne);
+}
 ```
 
 ---
@@ -368,6 +397,17 @@ plusOneList :: [Int] -> [Int]
 plusOneList list =
   let plusOne x = x + 1
   in map plusOne list
+```
+
+### Javascript
+
+```js
+function plusOneList(list) {
+  function plusOne(x) {
+    return x + 1;
+  }
+  return list.map(plusOne);
+}
 ```
 
 ---
@@ -412,6 +452,63 @@ toUpper :: Char -> Char
 toUpperList :: [Char] -> [Char]
 toUpperList list =
   map toUpper list
+```
+
+```haskell
+> toUpperList ['a', 'b', 'c']
+['A','B','C']
+```
+
+---
+
+## Lies
+
+```haskell
+import Data.Char
+
+toUpper :: Char -> Char
+
+toUpperList :: [Char] -> [Char]
+toUpperList list =
+  map toUpper list
+```
+
+```haskell
+> toUpperList ['a', 'b', 'c']
+"ABC"
+```
+
+---
+
+## String = [Char]
+
+```haskell
+import Data.Char
+
+toUpper :: Char -> Char
+
+toUpperList :: [Char] -> [Char]
+toUpperList list =
+  map toUpper list
+```
+
+```haskell
+> toUpperList "abc"
+"ABC"
+```
+
+---
+
+## Map
+
+```haskell
+import Data.Char
+
+toUpper :: Char -> Char
+
+toUpperList :: [Char] -> [Char]
+toUpperList list =
+  map toUpper list
 
 map :: (Char -> Char) -> [Char] -> [Char] 
 ```
@@ -429,7 +526,6 @@ map :: (Char -> Char) -> [Char] -> [Char]
 ## What does haskell think?
 
 ```
-> :t map
 map :: (a -> b) -> [a] -> [b]
 ```
 

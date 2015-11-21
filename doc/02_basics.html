@@ -702,8 +702,8 @@ data Fruit = Apple | Banana | Tomato
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit =
+fruitToString :: Fruit -> String
+fruitToString fruit =
   ...
 ```
 
@@ -715,8 +715,8 @@ fruitRender fruit =
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
   Apple -> ...
   Banana -> ...
   Tomato -> ...
@@ -729,8 +729,8 @@ fruitRender fruit = case fruit of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
   Apple -> "apple"
   Banana -> "banana"
   Tomato -> "tomato"
@@ -743,18 +743,18 @@ fruitRender fruit = case fruit of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
   Apple -> "apple"
   Banana -> "banana"
   Tomato -> "tomato"
 ```
 
 ```haskell
-fruitRender :: Fruit -> String
-fruitRender Apple = "apple"
-fruitRender Banana = "banana"
-fruitRender Tomato = "tomato"
+fruitToString :: Fruit -> String
+fruitToString Apple = "apple"
+fruitToString Banana = "banana"
+fruitToString Tomato = "tomato"
 ```
 
 
@@ -765,8 +765,8 @@ fruitRender Tomato = "tomato"
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
   Banana -> "banana"
   Tomato -> "tomato"
 ```
@@ -778,8 +778,8 @@ fruitRender fruit = case fruit of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
   Banana -> "banana"
   Tomato -> "tomato"
 ```
@@ -787,7 +787,7 @@ fruitRender fruit = case fruit of
 <pre class="error">
 Fruit.hs:5:1: Warning:
   Pattern match(es) are non-exhaustive
-  In an equation for ‘fruitRender’:
+  In an equation for ‘fruitToString’:
     Patterns not matched: Apple
 </pre>
 
@@ -799,14 +799,14 @@ Fruit.hs:5:1: Warning:
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
-fruitRender fruit = case fruit of
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
   Banana -> "banana"
   Tomato -> "tomato"
 ```
 
 ```haskell
-> fruitRender Apple
+> fruitToString Apple
 ```
 <pre class="error">
 "*** Exception: src/Example.hs:(9,21)-(11,20):
@@ -990,7 +990,7 @@ template: question
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-fruitRender :: Fruit -> String
+fruitToString :: Fruit -> String
 ```
 
 ---
@@ -1000,7 +1000,7 @@ fruitRender :: Fruit -> String
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-parseFruit :: String -> Fruit
+fruitFromString :: String -> Fruit
 ```
 
 ---
@@ -1010,8 +1010,8 @@ parseFruit :: String -> Fruit
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-parseFruit :: String -> Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
   ...
 ```
 
@@ -1022,8 +1022,8 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-parseFruit :: String -> Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
   "apple" -> Apple
   "banana" -> Banana
   "tomato" -> Tomato
@@ -1036,8 +1036,8 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-parseFruit :: String -> Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
   "apple" -> Apple
   "banana" -> Banana
   "tomato" -> Tomato
@@ -1051,8 +1051,8 @@ parseFruit string = case string of
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-parseFruit :: String -> Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
   "apple" -> Apple
   "banana" -> Banana
   "tomato" -> Tomato
@@ -1071,8 +1071,8 @@ template: question
 ```haskell
 data Fruit = Apple | Banana | Tomato
 
-parseFruit :: String -> Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
   "apple" -> Apple
   "banana" -> Banana
   "tomato" -> Tomato
@@ -1204,8 +1204,8 @@ data Fruit = Apple | Banana | Tomato
 
 
 
-parseFruit :: String -> Fruit
-parseFruit string = case string of
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
   "apple" -> Apple
   "banana" -> Banana
   "tomato" -> Tomato
@@ -1221,8 +1221,8 @@ data Fruit = Apple | Banana | Tomato
 
 data MaybeFruit = JustFruit Fruit | NothingFruit
 
-parseFruit :: String -> MaybeFruit
-parseFruit string = case string of
+fruitFromString :: String -> MaybeFruit
+fruitFromString string = case string of
   "apple" -> ??? Apple
   "banana" -> ??? Banana
   "tomato" -> ??? Tomato
@@ -1238,8 +1238,8 @@ data Fruit = Apple | Banana | Tomato
 
 data MaybeFruit = JustFruit Fruit | NothingFruit
 
-parseFruit :: String -> MaybeFruit
-parseFruit string = case string of
+fruitFromString :: String -> MaybeFruit
+fruitFromString string = case string of
   "apple" -> JustFruit Apple
   "banana" -> JustFruit Banana
   "tomato" -> JustFruit Tomato
@@ -1255,8 +1255,8 @@ data Fruit = Apple | Banana | Tomato
 
 data MaybeFruit = JustFruit Fruit | NothingFruit
 
-parseFruit :: String -> MaybeFruit
-parseFruit string = case string of
+fruitFromString :: String -> MaybeFruit
+fruitFromString string = case string of
   "apple" -> JustFruit Apple
   "banana" -> JustFruit Banana
   "tomato" -> JustFruit Tomato
@@ -1264,9 +1264,9 @@ parseFruit string = case string of
 ```
 
 ```haskell
-> parseFruit "apple"
+> fruitFromString "apple"
 JustFruit Apple
-> parseFruit "carrot"
+> fruitFromString "carrot"
 NothingFruit
 ```
 
@@ -1371,9 +1371,9 @@ maybeFruit :: MaybeFruit -> Fruit -> Fruit
 <br/>
 
 ```haskell
-> maybeFruit (parseFruit "apple") Banana
+> maybeFruit (fruitFromString "apple") Banana
 Apple
-> maybeFruit (parseFruit "carrot") Banana
+> maybeFruit (fruitFromString "carrot") Banana
 Banana
 ```
 

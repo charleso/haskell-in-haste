@@ -11,9 +11,9 @@ moveAnswer (Game b pl) pos =
   else
     let b' = (pos, pl) : b
     in if hasWonAnswer b' pl
-       then Won pl $ EndBoard b'
+       then Won pl b'
          else if length b == 15
-           then Draw $ EndBoard b'
+           then Draw b'
            else InProgress (Game b' (nextPlayer pl))
 
 canMoveAnswer :: Board -> Position -> Bool

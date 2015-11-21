@@ -61,9 +61,8 @@ data Player = O | X deriving Eq
 
 type Move = (Position, Player)
 type Board = [(Position, Player)]
-newtype EndBoard = EndBoard Board deriving (Eq, Show)
 data Game = Game Board Player deriving (Eq, Show)
-data Result = InProgress Game | Draw EndBoard | Won Player EndBoard deriving Eq
+data Result = InProgress Game | Draw Board | Won Player Board deriving Eq
 -}
 
 

@@ -12,9 +12,8 @@ data Player = O | X deriving Eq
 
 type Move = (Position, Player)
 type Board = [(Position, Player)]
-newtype EndBoard = EndBoard Board deriving (Eq, Show)
 data Game = Game Board Player deriving (Eq, Show)
-data Result = InProgress Game | Draw EndBoard | Won Player EndBoard deriving Eq
+data Result = InProgress Game | Draw Board | Won Player Board deriving Eq
 
 
 
@@ -27,8 +26,8 @@ instance Show Player where
 instance Show Result where
   show r = printBoard $ case r of
     InProgress (Game b _) -> b
-    Draw (EndBoard b) -> b
-    Won _ (EndBoard b) -> b
+    Draw b -> b
+    Won _ b -> b
 
 nextPlayer :: Player -> Player
 nextPlayer O = X

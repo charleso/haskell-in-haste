@@ -4,6 +4,7 @@ import           Chat.Bot.Ping
 import           Chat.Bot.Run.Guess
 import           Chat.Bot.Run.Cipher
 import           Chat.Bot.Run.Calculator
+import           Chat.Bot.Run.Hangman
 import           Chat.Bot.Run.TicTacToe
 import           Chat.Bot.Run.Vote
 import           Chat.Bot.Run.WordCount
@@ -21,5 +22,6 @@ start = do
     , ticTacToeBot
     , return (toBot pingBot)
     , voteBot
+    , hangmanBot
     ]
   startChat bots

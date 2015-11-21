@@ -235,51 +235,6 @@ drop :: Int -> [a] -> [a]
 take :: Int -> [a] -> [a]
 ```
 
----
-
-## Type hole
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> ...
-  h : v -> ...
-```
-
----
-
-## Type hole
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> _a
-  h : v -> _b i h
-```
-
-```
-src/Example.hs:25:9:
-Found hole ‘_a’ with type: Bool
-...
-```
-
----
-
-## Type hole
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> False
-  h : v -> _b i h
-```
-
-```
-src/Example.hs:25:9:
-Found hole ‘_b’ with type: Int -> Int -> Bool
-...
-```
-
 
 
 

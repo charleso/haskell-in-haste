@@ -10,7 +10,7 @@ import           System.Random
 
 
 data HangmanGame =
-    HangmanGame HangmanWord [HangmanGuess]
+    HangmanGame String [HangmanGuess]
   deriving (Eq, Show)
 
 hangmanBot :: IO Bot
@@ -36,10 +36,10 @@ hangmanBot = do
         if hasWon
           then "Win! " ++ render
           else if hasLost
-            then "Loss! " ++ render ++ " it was: \"" ++ (case word of HangmanWord w -> w) ++ "\""
+            then "Loss! " ++ render ++ " it was: \"" ++ word ++ "\""
             else render
 
 newHangman :: IO HangmanGame
 newHangman  = do
   i <- getStdRandom $ randomR (0, length hangmanWords - 1)
-  return $ HangmanGame (HangmanWord $ hangmanWords !! i) []
+  return $ HangmanGame (hangmanWords !! i) []

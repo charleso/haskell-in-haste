@@ -3,19 +3,19 @@ module Chat.Bot.Answer.Hangman where
 import           Chat.Bot.Misc.Hangman
 
 
-hangmanGuessAnswer :: Char -> HangmanWord -> HangmanGuess
-hangmanGuessAnswer char (HangmanWord word) =
+hangmanGuessAnswer :: Char -> String -> HangmanGuess
+hangmanGuessAnswer char word =
   if elem char word
     then HangmanRight char
     else HangmanWrong char
 
-hangmanGuessesAnswer :: HangmanWord -> [Char] -> [HangmanGuess]
+hangmanGuessesAnswer :: String -> [Char] -> [HangmanGuess]
 hangmanGuessesAnswer word guesses =
   let guess c = hangmanGuessAnswer c word
   in map guess guesses
 
-hangmanHasWonAnswer :: HangmanWord -> [HangmanGuess] -> Bool
-hangmanHasWonAnswer (HangmanWord word) guesses =
+hangmanHasWonAnswer :: String -> [HangmanGuess] -> Bool
+hangmanHasWonAnswer word guesses =
   let notGuessed c = not (elem c ([' '] ++ map hangmanGuessChar guesses))
   in length (filter notGuessed word) == 0
 
@@ -25,8 +25,8 @@ hangmanWrongGuessesAnswer guesses =
       isWrong (HangmanRight _) = False
   in map hangmanGuessChar (filter isWrong guesses)
 
-hangmanRenderAnswer :: HangmanWord -> [HangmanGuess] -> String
-hangmanRenderAnswer (HangmanWord word) guesses =
+hangmanRenderAnswer :: String -> [HangmanGuess] -> String
+hangmanRenderAnswer word guesses =
   let lookupChar c =
         if c == ' ' || elem c (map hangmanGuessChar guesses)
           then c

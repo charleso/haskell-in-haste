@@ -25,7 +25,7 @@ import           Chat.Data
 -}
 
 -- $setup
--- >>> let word = HangmanWord "fizz buzz"
+-- >>> let word = "fizz buzz"
 
 --
 -- >>> hangmanGuess 'u' word
@@ -36,9 +36,9 @@ import           Chat.Data
 -- HINTS:
 --   elem :: Char -> String -> Bool
 --
-hangmanGuess :: Char -> HangmanWord -> HangmanGuess
-hangmanGuess char (HangmanWord word) =
-  notImplemented "Hangman.hangmanGuess" (hangmanGuessAnswer char (HangmanWord word))
+hangmanGuess :: Char -> String -> HangmanGuess
+hangmanGuess char word=
+  notImplemented "Hangman.hangmanGuess" (hangmanGuessAnswer char word)
 
 -- |
 -- >>> hangmanGuesses word "z"
@@ -49,7 +49,7 @@ hangmanGuess char (HangmanWord word) =
 -- HINTS:
 --   map :: (Char -> Char) -> String -> String
 --
-hangmanGuesses :: HangmanWord -> [Char] -> [HangmanGuess]
+hangmanGuesses :: String -> [Char] -> [HangmanGuess]
 hangmanGuesses word guesses =
   notImplemented "Hangman.hangmanGuesses" (hangmanGuessesAnswer word guesses)
 
@@ -65,7 +65,7 @@ hangmanGuesses word guesses =
 --   elem :: Char -> String -> Bool
 --   map :: (HangmanGuess -> Char) -> [HangmanGuess] -> [Char]
 --   filter :: (Char -> Bool) -> String -> String
-hangmanHasWon :: HangmanWord -> [HangmanGuess] -> Bool
+hangmanHasWon :: String -> [HangmanGuess] -> Bool
 hangmanHasWon word guesses =
   notImplemented "Hangman.hangmanHasWon" (hangmanHasWonAnswer word guesses)
 
@@ -95,16 +95,12 @@ hangmanWrongGuesses guesses =
 --   elem :: Char -> String -> Bool
 --   map :: (Char -> Char) -> String -> String
 --
-hangmanRender :: HangmanWord -> [HangmanGuess] -> String
+hangmanRender :: String -> [HangmanGuess] -> String
 hangmanRender word guesses =
   notImplemented "Hangman.hangmanRender" (hangmanRenderAnswer word guesses)
 
 -- See Misc/Hangman.hs
 {-
-data HangmanWord =
-    HangmanWord String
-  deriving (Eq, Show)
-
 data HangmanGuess =
     HangmanRight Char
   | HangmanWrong Char

@@ -12,11 +12,13 @@ import           Chat.Data
   Create a poll for people to vote on.
 
   EXAMPLE:
-    > /poll Tabs Yes No
+    > /poll Tabs or Spaces? Tabs Spaces
     Poll created
-    > /vote Yes
+    > /vote Tabs
+    > /vote Spaces
+    > /vote Tabs
     > /poll
-    Tabs? Yes: 1 No: 0
+    Tabs or Spaces? Tabs: 2 Spaces: 1
 -}
 
 -- See Misc/Vote.hs

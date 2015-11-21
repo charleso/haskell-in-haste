@@ -20,10 +20,12 @@ voteBot = do
           modifyMVar_ pollVar (\poll -> return (castVote poll vote))
           pure Nothing
     Just string -> do
-      case words string of
-        [] -> do
+      case break (== '?') string of
+        ([], []) -> do
           poll <- readMVar pollVar
           return (Just (pollRender poll))
-        question : answers -> do
-          _ <- swapMVar pollVar (createPoll question answers)
+        (_, []) ->
+          return (Just "No question, must contain a question ending in '?'")
+        (question, _ : answers) -> do
+          _ <- swapMVar pollVar (createPoll (question ++ "?") (words answers))
           return (Just "Poll created")

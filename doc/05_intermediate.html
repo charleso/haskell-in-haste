@@ -204,7 +204,7 @@ class: center, middle, inverse
 
 class: center, middle
 template: image
-layout: false
+
 
 # Intermediate
 
@@ -219,734 +219,274 @@ layout: false
 
 
 
+
+
+
 ---
 
 template: inverse
-
-# Lists
+## Lists
 
 ---
 
 layout: false
-## Lists
-
-```haskell
-
-list = [1, 2, 3, 4]
-```
-
----
 
 ## Lists
 
 ```haskell
 list :: [Int]
-list = [1, 2, 3, 4]
+list = [1, 2, 3]
 ```
 
 ---
 
-## Char
-
-```haskell
-
-a   =  'a'
-```
-
----
-
-## Char
-
-```haskell
-
-a   =  'a'
-
-> :t a
-```
-
----
-
-## Char
-
-```haskell
-
-a   =  'a'
-
-> :t a
-Char
-```
-
----
-
-## Char
-
-```haskell
-a   :: Char
-a   =  'a'
-```
-
----
-
-## List of Chars
-
-```haskell
-a   :: [Char]
-a   = ['a']
-```
-
----
-
-## List of Chars
-
-```haskell
-abc :: [Char]
-abc = ['a', 'b', 'c']
-```
-
----
-
-## Strings are [Char]
-
-```haskell
-abc :: String
-abc = ['a', 'b', 'c']
-```
-
----
-
-## Strings are [Char]
-
-```haskell
-abc :: String
-abc = "abc"
-```
-
----
-
-## Empty List
-
-```haskell
-
-list = []
-```
-
----
+layout: false
 
 ## Lists
 
 ```haskell
 list :: [Int]
-list = []
+list = [1, 2, 3]
 ```
 
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = [1]
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = 1 : []
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = 1 : []
-
-> list
-[1]
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = 1 : []
-```
-
-- '`:`' is pronouced "cons"
-- You might hear the term "cons list"
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = 1 : [2]
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = 1 : [2]
-
-> list
-[1, 2]
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = 1 : 2 : []
-
-> list
-[1, 2]
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = [1, 2] : [3, 4]
-```
-
----
-
-## Lists
-
-```haskell
-list :: [Int]
-list = [1, 2] : [3, 4]
-```
-
-<pre class="error" style="font-size: 22px;">
-Couldn't match expected type ’Int’ with actual type ‘[Int]’
-</pre>
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = ...
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  ...
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-``` 
-
-```haskell
-> drop1 []
-[]
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```haskell
-> drop1 [1]
-[]
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```haskell
-> drop1 (1 : [])
-[]
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```haskell
-> drop1 (1 : [2])
-[2]
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```haskell
-> drop1 (1 : [2, 3])
-[2,3]
-```
-
----
-
-## Pattern matching
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```haskell
-> drop1 [1,  2,  3]
-[2,3]
-```
-
----
-
-## Pattern matching
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> ...
-  h : v -> ...
-```
-
----
-
-## Pattern matching
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> False
-  h : v -> ...
-```
-
----
-
-## Pattern matching
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> False
-  h : v -> i == h
-```
-
----
-
-## Pattern matching
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> False
-  h : v -> i == h
-```
-
-```haskell
-> startsWith 1 []
-False
-```
-
----
-
-## Pattern matching
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> False
-  h : v -> i == h
-```
-
-```haskell
-> startsWith 1 [1]
-True
-```
-
----
-
-## Pattern matching
-
-```haskell
-startsWith :: Int -> [Int] -> Bool
-startsWith i l = case l of
-  [] -> False
-  h : v -> i == h
-```
-
-```haskell
-> startsWith 1 (1: [])
-True
+### Javascript
+
+```js
+function list() {
+  return [1, 2, 3];
+}
 ```
 
 ---
 
 template: question
-## What about loops yo?
+
+## Plus one to every element?
 
 ---
 
-## Recursion
+## Map
 
 ```haskell
-contains :: Int -> [Int] -> Bool
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
 ```
 
 ---
 
-## Recursion
+## Map
 
 ```haskell
-contains :: Int -> [Int] -> Bool
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  ??? plusOne list
 ```
 
+---
+
+## Map
+
+```haskell
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  map plusOne list
+```
+
+---
+
+## Map
+
+```haskell
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  map plusOne list
+
+map :: (Int -> Int) -> [Int] -> [Int]  
+```
+
+---
+
+## Plus one?
+
+```haskell
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  map plusOne list
+```
 
 ### Javascript
 
 ```js
-function contains(v, list) {
-  var found = false;
-  for (var i = 0; !found &amp;&amp; i &lt; list.length; i++) {
-    found = list[i] === v
-  }
-  return found;
+function plusOne(list) {
+  return list.map(function(x) {
+    return x + 1
+  })
 }
 ```
 
 ---
 
-## Recursion
+## Plus one?
 
 ```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> ...
-  h : t -> ...
-```
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
 
-
----
-
-## Recursion
-
-```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t -> ...
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  map plusOne list
 ```
 
 ---
 
-## Recursion
+## Plus one?
 
 ```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t ->
-    if v == h then True else ...
+
+
+
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  let plusOne x = x + 1
+  in map plusOne list
 ```
 
 ---
 
-## Recursion
+template: question
+
+## Uppercase a list of characters
+
+---
+
+## Map
 
 ```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t ->
-    if v == h then True else contains v t
+import Data.Char
+
+toUpper :: Char -> Char
 ```
 
 ---
 
-## Recursion
+## Map
 
 ```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t ->
-    if v == h then True else contains v t
-```
+import Data.Char
 
-```haskell
-> contains 1 []
-False
+toUpper :: Char -> Char
+
+toUpperList :: [Char] -> [Char]
+toUpperList list =
+  map toUpper list
 ```
 
 ---
 
-## Recursion
+## Map
 
 ```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t ->
-    if v == h then True else contains v t
-```
+import Data.Char
 
-```haskell
-> contains 1 [2]
-False
-```
+toUpper :: Char -> Char
 
----
+toUpperList :: [Char] -> [Char]
+toUpperList list =
+  map toUpper list
 
-## Recursion
-
-```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t ->
-    if v == h then True else contains v t
-```
-
-```haskell
-> contains 1 [2, 1]
-True
-```
-
----
-
-## Recursion
-
-```haskell
-contains :: Int -> [Int] -> Bool
-contains v l = case l of
-  [] -> False
-  h : t ->
-    if v == h then True else contains v t
-```
-
-```haskell
-> contains 1 (2 : 1 : [])
-True
-```
-
-
-
-
-
-
-
-
-
-
-
-
----
-
-template: inverse
-## Parametricity
-
----
-
-## Remember this?
-
-```haskell
-drop1 :: [Int] -> [Int]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
----
-
-## Is this the same?
-
-```haskell
-drop1 :: [Char] -> [Char]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
----
-
-## No type
-
-```haskell
-
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
----
-
-## No type
-
-```haskell
-
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```
-> drop1 [1, 2, 3]
-[2,3]
-```
-
----
-
-## No type
-
-```haskell
-
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
-```
-> drop1 [1, 2, 3]
-[2,3]
-```
-
-```
-> drop1 "abc"
-"bc"
+map :: (Char -> Char) -> [Char] -> [Char] 
 ```
 
 ---
 
 ## What does haskell think?
 
-```haskell
-
-drop1 l = case l of
-  [] -> []
-  a : b -> b
 ```
-
-```
-> :t drop1
+> :t map
 ```
 
 ---
 
 ## What does haskell think?
 
-```haskell
-
-drop1 l = case l of
-  [] -> []
-  a : b -> b
 ```
-
-```
-> :t drop1
-drop1 :: [t] -> [t]
+> :t map
+map :: (a -> b) -> [a] -> [b]
 ```
 
 ---
 
 ## Parametric function
 
-```haskell
-drop1 :: [t] -> [t]
-drop1 l = case l of
-  [] -> []
-  a : b -> b
-```
-
----
-
-## Parametric function
-
-```haskell
-drop1 :: [t] -> [t]
-drop1 l = ...
-
-
-```
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">map</span> :: (a -&gt; b) -&gt; [a] -&gt; [b]</div>
+</code></pre>
 
 ### Java
 
-```javascript
-public &lt;T&gt; List&lt;T&gt; drop1(List&lt;T&gt; l) {
-  ...
-}
-```
+<pre><code class="java hljs remark-code"><div class="remark-code-line"><span class="hljs-keyword">interface</span> List<span>&lt;</span>A&gt; {</div><div class="remark-code-line">  <span class="hljs-keyword">public</span> <span>&lt;</span>B&gt; List<span>&lt;</span>B&gt; map(Function<span>&lt;</span>A, B&gt; f) {</div><div class="remark-code-line">    ...</div><div class="remark-code-line">  }</div><div class="remark-code-line">}</div>
+</code></pre>
+
+---
+
+## Parametric function
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">map</span> :: (a -&gt; b) -&gt; [<span style="color: red;">a</span>] -&gt; [b]</div>
+</code></pre>
+
+### Java
+
+<pre><code class="java hljs remark-code"><div class="remark-code-line"><span class="hljs-keyword">interface</span> List<span>&lt;</span><span style="color: red;">A</span>&gt; {</div><div class="remark-code-line">  <span class="hljs-keyword">public</span> <span>&lt;</span>B&gt; List<span>&lt;</span>B&gt; map(Function<span>&lt;</span>A, B&gt; f) {</div><div class="remark-code-line">    ...</div><div class="remark-code-line">  }</div><div class="remark-code-line">}</div>
+</code></pre>
+
+---
+
+## Parametric function
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">map</span> :: (a -&gt; b) -&gt; [a] -&gt; [<span style="color: red;">b</span>]</div>
+</code></pre>
+
+### Java
+
+<pre><code class="java hljs remark-code"><div class="remark-code-line"><span class="hljs-keyword">interface</span> List<span>&lt;</span>A&gt; {</div><div class="remark-code-line">  <span class="hljs-keyword">public</span> <span>&lt;</span>B&gt; List<span>&lt;</span><span style="color: red;">B</span>&gt; map(Function<span>&lt;</span>A, B&gt; f) {</div><div class="remark-code-line">    ...</div><div class="remark-code-line">  }</div><div class="remark-code-line">}</div>
+</code></pre>
+
+---
+
+## Parametric function
+
+<pre><code class="haskell hljs remark-code"><div class="remark-code-line"><span class="hljs-title">map</span> :: (<span style="color: red;">a</span> -&gt; <span style="color: blue;">b</span>) -&gt; [a] -&gt; [b]</div>
+</code></pre>
+
+### Java
+
+<pre><code class="java hljs remark-code"><div class="remark-code-line"><span class="hljs-keyword">interface</span> List<span>&lt;</span>A&gt; {</div><div class="remark-code-line">  <span class="hljs-keyword">public</span> <span>&lt;</span>B&gt; List<span>&lt;</span>B&gt; map(Function<span>&lt;</span><span style="color: red;">A</span>, <span style="color: blue;">B</span>&gt; f) {</div><div class="remark-code-line">    ...</div><div class="remark-code-line">  }</div><div class="remark-code-line">}</div>
+</code></pre>
 
 ---
 
 ## Parametric function
 
 ```haskell
-drop1 :: [t] -> [t]
-drop1 l = ...
+map :: (a -> b) -> [a] -> [b]
 ```
 
 - Lowercase means type variable

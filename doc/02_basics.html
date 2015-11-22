@@ -928,8 +928,20 @@ fruitFromString string = case string of
 
 ---
 
-template: question
-## Haskell has no `null`
+## Data Types ++
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitFromString :: String -> Fruit
+fruitFromString string = case string of
+  "apple" -> Apple
+  "banana" -> Banana
+  "tomato" -> Tomato
+  _ -> null
+```
+
+### Haskell has _no_ `null`
 
 ---
 

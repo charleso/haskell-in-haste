@@ -336,6 +336,23 @@ plusOneList list =
 
 ---
 
+## Not the same
+
+```haskell
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  map plusOne list
+
+map :: (Int -> Int) -> [Int] -> [Int]
+
+mapNot :: Int -> Int -> [Int] -> [Int]
+```
+---
+
 ## Comparison
 
 ```haskell
@@ -386,7 +403,7 @@ function plusOneList(list) {
 
 ---
 
-## Plus one?
+## Let binding
 
 ```haskell
 

@@ -56,6 +56,7 @@ calculate op a b =
 -- HINT:
 --   words :: String -> [String]
 --   read :: String -> Int
+--   Try pattern matching on lists. :)
 --
 operationParser :: String -> MaybeCalculation
 operationParser input =

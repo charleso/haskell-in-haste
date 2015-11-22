@@ -4,18 +4,6 @@ import           Chat.Bot.Misc.TicTacToe
 import           Data.List
 
 
-moveAnswer :: Game -> Position -> Result
-moveAnswer (Game board player) pos =
-  if not (canMoveAnswer board pos)
-  then InProgress (Game board player)
-  else
-    let newBoard = (pos, player) : board
-    in if hasWonAnswer newBoard player
-       then Won player newBoard
-         else if length board == 15
-           then Draw newBoard
-           else InProgress (Game newBoard (nextPlayer player))
-
 canMoveAnswer :: Board -> Position -> Bool
 canMoveAnswer board pos =
   let inPosition (pos', _) = pos == pos'
@@ -37,3 +25,15 @@ hasWonAnswer board player =
       positions = map fst (filter isPlayer board)
       addsUp counts = 15 == sum (take 3 counts)
   in any addsUp (permutations (fmap toMagic positions))
+
+moveAnswer :: Game -> Position -> Result
+moveAnswer (Game board player) pos =
+  if not (canMoveAnswer board pos)
+  then InProgress (Game board player)
+  else
+    let newBoard = (pos, player) : board
+    in if hasWonAnswer newBoard player
+       then Won player newBoard
+         else if length board == 15
+           then Draw newBoard
+           else InProgress (Game newBoard (nextPlayer player))

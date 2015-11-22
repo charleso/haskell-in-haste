@@ -21,26 +21,6 @@ import           Data.List
 -- It's worth trying to implement this in your language of choice. :)
 --
 -- http://blog.tmorris.net/posts/understanding-practical-api-design-static-typing-and-functional-programming/
---
---
--- >>> start ~> NW
--- O........
--- >>> start ~> NW ~> E ~> W ~> S ~> SW
--- O..O.XOX.
--- >>> start ~> NW ~> N ~> NE ~> W ~> E ~> M ~> S ~> SE ~> SW
--- OXOXXOOOX
--- >>> start ~> NW ~> E ~> W ~> S ~> SW ~> SW
--- O..O.XOX.
--- >>> start ~> NW ~> NW
--- O........
---
--- HINTS:
---   length :: [a] -> Int
---   This will need to call `canMove` and `hasWon`
---
-move :: Game -> Position -> Result
-move g pos =
-  notImplemented "TicTacToe.move" (moveAnswer g pos)
 
 -- |
 -- Determine if the Position is already taken.
@@ -79,6 +59,25 @@ hasWon :: Board -> Player -> Bool
 hasWon b p =
   notImplemented "TicTacToe.hasWon" (hasWonAnswer b p)
 
+-- |
+-- >>> start ~> NW
+-- O........
+-- >>> start ~> NW ~> E ~> W ~> S ~> SW
+-- O..O.XOX.
+-- >>> start ~> NW ~> N ~> NE ~> W ~> E ~> M ~> S ~> SE ~> SW
+-- OXOXXOOOX
+-- >>> start ~> NW ~> E ~> W ~> S ~> SW ~> SW
+-- O..O.XOX.
+-- >>> start ~> NW ~> NW
+-- O........
+--
+-- HINTS:
+--   length :: [a] -> Int
+--   This will need to call `canMove` and `hasWon`
+--
+move :: Game -> Position -> Result
+move g pos =
+  notImplemented "TicTacToe.move" (moveAnswer g pos)
 
 -- See Misc/TicTacToe.hs
 {-

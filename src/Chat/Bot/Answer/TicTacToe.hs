@@ -5,23 +5,24 @@ import           Data.List
 
 
 moveAnswer :: Game -> Position -> Result
-moveAnswer (Game b pl) pos =
-  if not (canMoveAnswer b pos)
-  then InProgress (Game b pl)
+moveAnswer (Game board player) pos =
+  if not (canMoveAnswer board pos)
+  then InProgress (Game board player)
   else
-    let b' = (pos, pl) : b
-    in if hasWonAnswer b' pl
-       then Won pl b'
-         else if length b == 15
-           then Draw b'
-           else InProgress (Game b' (nextPlayer pl))
+    let newBoard = (pos, player) : board
+    in if hasWonAnswer newBoard player
+       then Won player newBoard
+         else if length board == 15
+           then Draw newBoard
+           else InProgress (Game newBoard (nextPlayer player))
 
 canMoveAnswer :: Board -> Position -> Bool
-canMoveAnswer b p =
-  not $ any ((==) p . fst) b
+canMoveAnswer board pos =
+  let inPosition (pos', _) = pos == pos'
+  in not (any inPosition board)
 
 hasWonAnswer :: Board -> Player -> Bool
-hasWonAnswer b p =
+hasWonAnswer board player =
   let toMagic x = case x of
           NW -> 8
           N -> 1
@@ -32,5 +33,7 @@ hasWonAnswer b p =
           SW -> 4
           S -> 9
           SE -> 2
-      b' = b >>= \(pos, pl) -> if pl == p then [pos] else []
-  in any ((==) 15 . sum . take 3) . permutations . fmap toMagic $ b'
+      isPlayer move = player == snd move
+      positions = map fst (filter isPlayer board)
+      addsUp counts = 15 == sum (take 3 counts)
+  in any addsUp (permutations (fmap toMagic positions))

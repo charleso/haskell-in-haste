@@ -7,13 +7,19 @@ import           Data.Ord
 import           Data.List
 
 
-data Position = NW | N | NE | W | M | E | SW | S | SE deriving (Bounded, Enum, Eq, Ord, Show)
-data Player = O | X deriving Eq
+data Position = NW | N | NE | W | M | E | SW | S | SE
+  deriving (Bounded, Enum, Eq, Ord, Show)
+
+data Player = O | X
+  deriving Eq
 
 type Move = (Position, Player)
 type Board = [(Position, Player)]
-data Game = Game Board Player deriving (Eq, Show)
-data Result = InProgress Game | Draw Board | Won Player Board deriving Eq
+
+data Game = Game Board Player
+  deriving (Eq, Show)
+data Result = InProgress Game | Draw Board | Won Player Board
+  deriving Eq
 
 
 
@@ -24,10 +30,7 @@ instance Show Player where
   show X = "X"
 
 instance Show Result where
-  show r = printBoard $ case r of
-    InProgress (Game b _) -> b
-    Draw b -> b
-    Won _ b -> b
+  show r = printBoard (resultBoard r)
 
 nextPlayer :: Player -> Player
 nextPlayer O = X
@@ -73,4 +76,10 @@ printBoard b =
   intercalate "" . chunksOf 3 . flip fmap allPositions $ \pos' ->
     case find ((==) pos' . fst) b of
       Just (_, pl) -> head $ show pl
-      Nothing -> ' '
+      Nothing -> '.'
+
+resultBoard :: Result -> Board
+resultBoard result = case result of
+  InProgress (Game b _) -> b
+  Draw b -> b
+  Won _ b -> b

@@ -27,10 +27,10 @@ import           Chat.Data
 -- $setup
 -- >>> let word = "fizz buzz"
 
---
+-- |
 -- >>> hangmanGuess 'u' word
 -- HangmanRight 'u'
--- >>> hangman 'o' word
+-- >>> hangmanGuess 'o' word
 -- HangmanWrong 'o'
 --
 -- HINTS:
@@ -47,7 +47,7 @@ hangmanGuess char word=
 -- [HangmanWrong 'x',HangmanRight 'z']
 --
 -- HINTS:
---   map :: (Char -> Char) -> String -> String
+--   map :: (Char -> HangmanGuess) -> [Char] -> [HangmanGuess]
 --
 hangmanGuesses :: String -> [Char] -> [HangmanGuess]
 hangmanGuesses word guesses =

@@ -975,23 +975,9 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 ```
 
 ```haskell
-> :t JustFruit
-Fruit -> MaybeFruit
-```
+> let r1 = JustFruit Apple
 
----
-
-## Constructors are just functions
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-
-data MaybeFruit = JustFruit Fruit | NothingFruit
-```
-
-```haskell
-> :t JustFruit Apple
-MaybeFruit
+> let r2 = NothingFruit
 ```
 
 ---

@@ -1213,31 +1213,16 @@ data Fruit = Apple | Banana | Tomato
 
 data MaybeFruit = JustFruit Fruit | NothingFruit
 
-maybeFruit :: MaybeFruit -> Fruit -> Fruit
-maybeFruit mf other = case mf of
-  JustFruit fruit -> fruit
-  NothingFruit -> other
-```
-
----
-
-## Pattern Matching
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-
-data MaybeFruit = JustFruit Fruit | NothingFruit
-
-maybeFruit :: MaybeFruit -> Fruit -> Fruit
+maybeFruit :: MaybeFruit -> Fruit
 ```
 
 <br/>
 
 ```haskell
-> maybeFruit (fruitFromString "apple") Banana
-Apple
-> maybeFruit (fruitFromString "carrot") Banana
+> maybeFruit (fruitFromString "banana")
 Banana
+> maybeFruit (fruitFromString "carrot")
+Apple
 ```
 
 

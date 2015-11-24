@@ -590,9 +590,63 @@ data Fruit = Apple | Banana | Tomato
 
 fruitToString :: Fruit -> String
 fruitToString fruit = case fruit of
-  Apple -> ...
-  Banana -> ...
-  Tomato -> ...
+  Apple ->
+  Banana ->
+  Tomato ->
+```
+
+---
+
+## Pattern Matching
+
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
+  Apple ->
+  Banana ->
+  Tomato ->
+```
+
+<pre >
+&gt; :r
+<pre class="error" style="font-size: 20px;">
+parse error (possibly incorrect indentation or mismatched brackets)
+</pre>
+</pre>
+
+---
+
+## Pattern Matching
+
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
+  Apple -> undefined
+  Banana -> undefined
+  Tomato -> undefined
+```
+
+### HINT: Only deal with one compiler error at a time
+
+---
+
+## Pattern Matching
+
+
+```haskell
+data Fruit = Apple | Banana | Tomato
+
+fruitToString :: Fruit -> String
+fruitToString fruit = case fruit of
+  Apple -> "apple"
+  Banana -> undefined
+  Tomato -> undefined
 ```
 
 ---

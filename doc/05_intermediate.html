@@ -303,6 +303,31 @@ plusOneList list =
 
 ---
 
+## Comparison
+
+```haskell
+plusOne :: Int -> Int
+plusOne x =
+  x + 1
+
+plusOneList :: [Int] -> [Int]
+plusOneList list =
+  map plusOne list
+```
+
+### Javascript
+
+```js
+function plusOne(x) {
+  return x + 1;
+}
+function plusOneList(list) {
+  return list.map(plusOne);
+}
+```
+
+---
+
 ## Map
 
 ```haskell
@@ -350,30 +375,6 @@ plusOneList list =
 map :: (Int -> Int) -> [Int] -> [Int]
 
 mapNot :: Int -> Int -> [Int] -> [Int]
-```
----
-
-## Comparison
-
-```haskell
-plusOne :: Int -> Int
-plusOne x =
-  x + 1
-
-plusOneList :: [Int] -> [Int]
-plusOneList list =
-  map plusOne list
-```
-
-### Javascript
-
-```js
-function plusOne(x) {
-  return x + 1;
-}
-function plusOneList(list) {
-  return list.map(plusOne);
-}
 ```
 
 ---

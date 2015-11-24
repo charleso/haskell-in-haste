@@ -184,7 +184,7 @@ function add(a, b) {
 ## GHCi functions
 
 ```haskell
->     add a b = a + b
+>     minus a b = a - b
 ```
 
 ---
@@ -192,7 +192,7 @@ function add(a, b) {
 ## GHCi functions
 
 ```haskell
->     add a b = a + b
+>     minus a b = a + b
 ```
 
 <pre class="error">
@@ -204,7 +204,7 @@ function add(a, b) {
 ## GHCi functions
 
 ```haskell
-> let add a b = a + b
+> let minus a b = a + b
 ```
 
 ---
@@ -212,9 +212,12 @@ function add(a, b) {
 ## GHCi functions
 
 ```haskell
-> let add a b = a + b
-> add 1 2
-3
+> let minus a b = a + b
+```
+
+```
+> minus 3 1
+2
 ```
 
 ---

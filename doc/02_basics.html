@@ -577,7 +577,7 @@ data Fruit = Apple | Banana | Tomato
 
 fruitToString :: Fruit -> String
 fruitToString fruit =
-  ...
+  ???
 ```
 
 ---
@@ -589,33 +589,9 @@ fruitToString fruit =
 data Fruit = Apple | Banana | Tomato
 
 fruitToString :: Fruit -> String
-fruitToString fruit = case fruit of
-  Apple ->
-  Banana ->
-  Tomato ->
+fruitToString fruit =
+  undefined
 ```
-
----
-
-## Pattern Matching
-
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-
-fruitToString :: Fruit -> String
-fruitToString fruit = case fruit of
-  Apple ->
-  Banana ->
-  Tomato ->
-```
-
-<pre >
-&gt; :r
-<pre class="error" style="font-size: 20px;">
-parse error (possibly incorrect indentation or mismatched brackets)
-</pre>
-</pre>
 
 ---
 
@@ -631,8 +607,6 @@ fruitToString fruit = case fruit of
   Banana -> undefined
   Tomato -> undefined
 ```
-
-### HINT: Only deal with one compiler error at a time
 
 ---
 
@@ -793,7 +767,7 @@ data Bool = True | False
 
 ```haskell
 not :: Bool -> Bool
-not b = ...
+not b = undefined
 ```
 
 ---
@@ -906,7 +880,7 @@ fruitFromString string = case string of
   "apple" -> Apple
   "banana" -> Banana
   "tomato" -> Tomato
-  _ -> ???
+  _ -> undefined
 ```
 
 ---
@@ -940,21 +914,6 @@ fruitFromString string = case string of
 ```
 
 ### Haskell has _no_ `null`
-
----
-
-## Data Types ++
-
-```haskell
-data Fruit = Apple | Banana | Tomato
-
-fruitFromString :: String -> Fruit
-fruitFromString string = case string of
-  "apple" -> Apple
-  "banana" -> Banana
-  "tomato" -> Tomato
-  _ -> ???
-```
 
 ---
 
@@ -1170,8 +1129,8 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 
 maybeFruit :: MaybeFruit -> Fruit
 maybeFruit mf = case mf of
-  JustFruit fruit -> ...
-  NothingFruit -> ...
+  JustFruit fruit -> undefined
+  NothingFruit -> undefined
 ```
 
 ---
@@ -1186,7 +1145,7 @@ data MaybeFruit = JustFruit Fruit | NothingFruit
 maybeFruit :: MaybeFruit -> Fruit
 maybeFruit mf = case mf of
   JustFruit fruit -> fruit
-  NothingFruit -> ...
+  NothingFruit -> undefined
 ```
 
 ---

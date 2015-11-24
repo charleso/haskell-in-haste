@@ -150,3 +150,6 @@ h1, h2, h3 {
 .red span {
   color: red;
 }
+.title {
+  background-image: url(images/haskell_logo.png)
+}

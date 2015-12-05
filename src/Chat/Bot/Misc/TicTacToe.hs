@@ -53,8 +53,8 @@ readPosition s = case map toUpper s of
   "SE" -> Just NW
   _ -> Nothing
 
-start :: Result
-start =
+newTTT :: Result
+newTTT =
   InProgress newGame
 
 allPositions :: [Position]

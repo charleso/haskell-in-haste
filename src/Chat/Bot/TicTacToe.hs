@@ -60,15 +60,15 @@ hasWon b p =
   notImplemented "TicTacToe.hasWon" (hasWonAnswer b p)
 
 -- |
--- >>> start ~> NW
+-- >>> newTTT ~> NW
 -- O........
--- >>> start ~> NW ~> E ~> W ~> S ~> SW
+-- >>> newTTT ~> NW ~> E ~> W ~> S ~> SW
 -- O..O.XOX.
--- >>> start ~> NW ~> N ~> NE ~> W ~> E ~> M ~> S ~> SE ~> SW
+-- >>> newTTT ~> NW ~> N ~> NE ~> W ~> E ~> M ~> S ~> SE ~> SW
 -- OXOXXOOOX
--- >>> start ~> NW ~> E ~> W ~> S ~> SW ~> SW
+-- >>> newTTT ~> NW ~> E ~> W ~> S ~> SW ~> SW
 -- O..O.XOX.
--- >>> start ~> NW ~> NW
+-- >>> newTTT ~> NW ~> NW
 -- O........
 --
 -- HINTS:
